@@ -16,7 +16,7 @@ const products: Product[] = [
     price: '600',
     unit: 'per Kg',
     category: 'podis',
-    image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: '/public/menu/KarivepakuPodi.png',
   },
   {
     nameTelugu: 'వెల్లుల్లి కారం',
@@ -24,7 +24,7 @@ const products: Product[] = [
     price: '600',
     unit: 'per Kg',
     category: 'podis',
-    image: 'https://images.pexels.com/photos/2098085/pexels-photo-2098085.jpeg?auto=compress&cs=tinysrgb&w=400',
+    image: 'https://images.pexels.com/photos/1458694/pexels-photo-1458694.jpeg?auto=compress&cs=tinysrgb&w=400',
   },
   {
     nameTelugu: 'మునగాకు పొడి',

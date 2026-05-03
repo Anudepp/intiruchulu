@@ -40,14 +40,14 @@ export default function Home() {
               <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
                 Authentic homemade Telugu style edible powders, pickles, and chapathis — crafted with traditional recipes and the freshest ingredients.
               </p>
-              <div className="flex flex-wrap gap-4">
-                <Link to="/menu" className="btn-primary gap-2">
-                  View Our Menu <ArrowRight size={18} />
-                </Link>
-                <Link to="/contact" className="btn-secondary">
-                  Contact Us
-                </Link>
-              </div>
+            <div className="flex flex-wrap gap-4 relative z-20">
+  <Link 
+    to="/menu" 
+    className="flex items-center gap-2 px-8 py-4 bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-all shadow-md"
+  >
+    View Our Menu <ArrowRight size={18} />
+  </Link>
+</div>
             </div>
             <div className="relative">
               <div className="aspect-square max-w-md mx-auto relative">
