@@ -36,25 +36,17 @@ export default function Contact() {
               </div>
 
               <div className="space-y-5">
-                <a href="tel:+919347977431" className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 hover:bg-brand-50 transition-colors group">
+                <a href="tel:" className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 hover:bg-brand-50 transition-colors group">
                   <div className="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center group-hover:bg-brand-200 transition-colors">
                     <Phone size={22} className="text-brand-600" />
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Phone</p>
-                    <p className="font-semibold text-gray-900">+91 9347977431</p>
+                    <p className="font-semibold text-gray-900"></p>
                   </div>
                 </a>
 
-                <a href="https://wa.me/919347977431" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 hover:bg-green-50 transition-colors group">
-                  <div className="w-12 h-12 rounded-xl bg-green-100 flex items-center justify-center group-hover:bg-green-200 transition-colors">
-                    <MessageCircle size={22} className="text-green-600" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">WhatsApp</p>
-                    <p className="font-semibold text-gray-900">+91 9347977431</p>
-                  </div>
-                </a>
+
 
                 <a href="mailto:intiruchulu@gmail.com" className="flex items-center gap-4 p-4 rounded-xl bg-gray-50 hover:bg-brand-50 transition-colors group">
                   <div className="w-12 h-12 rounded-xl bg-brand-100 flex items-center justify-center group-hover:bg-brand-200 transition-colors">
@@ -62,7 +54,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <p className="text-sm text-gray-500">Email</p>
-                    <p className="font-semibold text-gray-900">intiruchulu@gmail.com</p>
+                    <p className="font-semibold text-gray-900"></p>
                   </div>
                 </a>
 
