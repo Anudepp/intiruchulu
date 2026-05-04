@@ -9,16 +9,36 @@ interface ShippingBadgeProps {
 export default function ShippingBadge({ className = "", isMobileBar = false }: ShippingBadgeProps) {
   // Mobile Top Bar version
   if (isMobileBar) {
-    return (
-      <div className="bg-gray-950 py-2.5 px-4 w-full flex items-center justify-center gap-3 border-b border-orange-500/20">
-        <Truck size={14} className="text-orange-500 animate-delivery" />
-        <p className="text-[10px] font-black text-white uppercase tracking-[0.2em]">
-          Shipping Pan-India & International
-        </p>
-        <Globe size={12} className="text-gray-500 animate-spin-slow" />
+  return (
+    <div className="bg-gray-950 py-3.5 px-4 w-full flex items-center justify-center gap-4 border-b border-orange-500/20 shadow-md">
+      
+      {/* Left Icon */}
+      <div className="flex items-center justify-center bg-orange-600/20 p-2 rounded-xl">
+        <Truck size={16} className="text-orange-500 animate-delivery" />
       </div>
-    );
-  }
+
+      {/* Text Content */}
+      <div className="flex flex-col leading-tight text-center">
+        
+        {/* Main Message */}
+        <div className="flex items-center justify-center gap-2">
+          <span className="text-[11px] font-black text-white uppercase tracking-wider">
+            We Deliver Everywhere
+          </span>
+          <span className="h-1.5 w-1.5 bg-green-500 rounded-full animate-pulse" />
+        </div>
+
+        {/* Sub Message */}
+        <span className="text-[10px] font-bold text-orange-400 uppercase tracking-[0.25em] mt-0.5">
+          Across India & International
+        </span>
+      </div>
+
+      {/* Right Icon */}
+      <Globe size={14} className="text-gray-400 animate-spin-slow" />
+    </div>
+  );
+}
 
   // Desktop Floating version
   return (
