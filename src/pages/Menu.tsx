@@ -118,18 +118,6 @@ export default function Menu() {
           items={products.filter(p => p.category === 'chapathi')} 
         />
       </main>
-
-      {/* Simple Footer CTA */}
-      <footer className="mt-10 py-8 bg-gray-50 text-center border-t border-gray-100">
-        <p className="text-gray-600 font-medium mb-3 text-sm">Need a bulk order?</p>
-        <a
-          href="https://wa.me/919347977431"
-          className="inline-flex items-center gap-2 px-5 py-2.5 bg-green-500 text-white text-sm font-bold rounded-xl"
-        >
-          <MessageCircle size={18} />
-          WhatsApp Us
-        </a>
-      </footer>
     </div>
   );
 }
