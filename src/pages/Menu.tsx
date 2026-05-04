@@ -34,7 +34,7 @@ const products: Product[] = [
 ];
 
 function ProductCard({ product }: { product: Product }) {
-  const [selectedIdx, setSelectedIdx] = useState(1); // Default to 250g
+  const [selectedIdx, setSelectedIdx] = useState(1); 
   const isChapathi = product.category === 'chapathi';
   
   const displayPrice = isChapathi 
@@ -42,12 +42,18 @@ function ProductCard({ product }: { product: Product }) {
     : Math.round(product.basePrice * weightOptions[selectedIdx].factor);
 
   return (
-    <div className="group bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col transition-all duration-300 hover:shadow-xl hover:border-orange-100">
-      {/* Image Section */}
-      <div className="relative aspect-[16/11] overflow-hidden bg-gray-100">
+    <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col transition-all hover:shadow-lg">
+      {/* 
+          Image Section:
+          Using aspect-[16/13] gives a slightly taller view than standard 16/9.
+          'object-cover' with 'object-center' ensures the bowl remains the hero.
+      */}
+      <div className="relative aspect-[16/13] w-full overflow-hidden bg-gray-100">
         <img
           src={product.image}
           alt={product.nameEnglish}
+          className="w-full h-full object-cover object-center"
+          loading="lazy"
         />
         {!isChapathi && (
           <div className="absolute top-3 right-3 bg-orange-600 text-white px-2.5 py-1 rounded-full text-[10px] font-bold shadow-lg animate-pulse">
@@ -57,7 +63,6 @@ function ProductCard({ product }: { product: Product }) {
       </div>
 
       <div className="p-4 flex flex-col flex-1">
-        {/* Product Names */}
         <div className="mb-4">
           <h3 className="font-telugu font-bold text-lg text-gray-800 leading-tight">
             {product.nameTelugu}
@@ -68,7 +73,6 @@ function ProductCard({ product }: { product: Product }) {
         </div>
 
         <div className="mt-auto">
-          {/* Custom Weight Selector (Segmented Chips) */}
           {!isChapathi && (
             <div className="mb-5">
               <p className="text-[10px] text-gray-400 font-bold uppercase mb-2 ml-1 tracking-wider">
@@ -92,7 +96,6 @@ function ProductCard({ product }: { product: Product }) {
             </div>
           )}
 
-          {/* Pricing Info */}
           <div className="pt-3 border-t border-gray-50 flex items-center justify-between">
             <div>
               <span className="text-[10px] text-gray-400 font-bold uppercase block mb-0.5">
@@ -117,7 +120,6 @@ function ProductCard({ product }: { product: Product }) {
 export default function Menu() {
   const SectionLayout = ({ title, teluguTitle, items }: any) => (
     <div className="mb-14">
-      {/* Decorative Section Header */}
       <div className="mb-6 flex flex-col border-l-4 border-orange-500 pl-4">
         <h2 className="text-2xl font-black text-gray-900 leading-none">
           {title}
@@ -125,7 +127,6 @@ export default function Menu() {
         <span className="font-telugu text-orange-600 text-lg mt-1">{teluguTitle}</span>
       </div>
       
-      {/* Responsive Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
         {items.map((product: Product) => (
           <ProductCard key={product.nameEnglish} product={product} />
@@ -136,7 +137,6 @@ export default function Menu() {
 
   return (
     <div className="min-h-screen bg-gray-50/50">
-      {/* Header Area */}
       <header className="pt-10 pb-6 px-4 max-w-7xl mx-auto">
         <Link 
           to="/" 
@@ -159,7 +159,6 @@ export default function Menu() {
         </p>
       </header>
 
-      {/* Main Content Area */}
       <main className="max-w-7xl mx-auto px-4 pb-20">
         <SectionLayout 
           title="Podis" 
@@ -179,7 +178,6 @@ export default function Menu() {
           items={products.filter(p => p.category === 'chapathi')} 
         />
         
-        {/* Optional: Simple Notice at bottom */}
         <div className="mt-10 p-8 bg-white rounded-3xl border border-dashed border-gray-200 text-center">
           <p className="text-gray-600 font-medium">
             Contact us for bulk orders or customized spice levels!
