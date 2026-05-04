@@ -54,9 +54,8 @@ export default function Home() {
                 Homemade with Love
               </div>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Taste of <span className="font-telugu text-brand-600">ఇంటి</span>
+                Taste of <span className="font-telugu text-brand-600">Home</span>
                 <br />
-                <span className="text-spice-600">Home</span>
               </h1>
               <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
                 Authentic homemade Telugu style edible powders, pickles, and chapathis — crafted with traditional recipes and the freshest ingredients.
