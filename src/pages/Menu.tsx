@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ShoppingBag, ArrowLeft, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import ShippingBadge from '../components/ShippingBadge'; // Ensure path is correct
 
 interface Product {
   nameTelugu: string;
@@ -144,6 +145,11 @@ export default function Menu() {
 
   return (
     <div className="min-h-screen bg-white animate-page relative">
+      {/* 1. MOBILE STICKY BAR - Critical for keeping shipping context during menu scroll */}
+      <div className="md:hidden sticky top-0 z-[100] shadow-md">
+        <ShippingBadge isMobileBar={true} />
+      </div>
+
       <header className="pt-12 pb-10 px-4 max-w-7xl mx-auto">
         <Link 
           to="/" 
@@ -165,6 +171,11 @@ export default function Menu() {
           Authentic Telugu flavors prepared with love. From our family kitchen to your table.
         </p>
       </header>
+
+      {/* 2. DESKTOP FLOATING BADGE - Fixed on the left side */}
+      <div className="hidden md:block fixed bottom-8 left-8 z-50 animate-bounce-slow">
+        <ShippingBadge />
+      </div>
 
       <main className="max-w-7xl mx-auto px-4 pb-32">
         <SectionLayout 
@@ -192,7 +203,7 @@ export default function Menu() {
         </div>
       </main>
 
-      {/* Optimized Floating Button - Pill style on mobile, shifted right */}
+      {/* Fixed Call Button (Right Side) */}
       <div className="fixed bottom-6 right-4 md:right-8 z-50 pointer-events-none">
         <a 
           href={`tel:${phoneNumber}`}

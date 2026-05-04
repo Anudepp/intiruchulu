@@ -33,3 +33,50 @@
     opacity: 1;
   }
 }
+/* Shipping Badge Animations */
+@layer utilities {
+  @keyframes delivery {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-delivery {
+    animation: delivery 0.8s ease-in-out infinite;
+  }
+
+  .animate-spin-slow {
+    animation: spin-slow 12s linear infinite;
+  }
+
+  .animate-bounce-slow {
+    animation: bounce-slow 4s ease-in-out infinite;
+  }
+}
+
+@layer utilities {
+  @keyframes delivery {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(3px); }
+  }
+
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); }
+  }
+
+}

@@ -1,8 +1,16 @@
-import { Phone, MapPin, Mail, Sparkles, Clock } from 'lucide-react';
+import { Phone, MapPin, Sparkles, Clock } from 'lucide-react';
+import ShippingBadge from '../components/ShippingBadge'; // Ensure path is correct
 
 export default function Contact() {
+  const phoneNumber = "+918499962882";
+
   return (
-    <div className="bg-white min-h-screen animate-page">
+    <div className="bg-white min-h-screen animate-page relative">
+      {/* 1. MOBILE STICKY TOP BAR */}
+      <div className="md:hidden sticky top-0 z-[100] shadow-md">
+        <ShippingBadge isMobileBar={true} />
+      </div>
+
       {/* Header Area */}
       <div className="bg-orange-50/50 py-24 px-4 text-center border-b border-orange-100">
         <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
@@ -11,6 +19,11 @@ export default function Contact() {
         </div>
         <h1 className="text-6xl md:text-7xl font-telugu font-black text-gray-900 mb-4">సంప్రదించండి</h1>
         <p className="text-orange-600 font-black tracking-[0.3em] uppercase text-xs">Contact Details</p>
+      </div>
+
+      {/* 2. DESKTOP FLOATING BADGE */}
+      <div className="hidden md:block fixed bottom-8 right-8 z-50 animate-bounce-slow">
+        <ShippingBadge />
       </div>
 
       <div className="max-w-4xl mx-auto px-4 -mt-16 pb-20">
@@ -26,25 +39,20 @@ export default function Contact() {
               </div>
 
               <div className="space-y-6">
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all">
+                <a 
+                  href={`tel:${phoneNumber}`} 
+                  className="flex items-center gap-4 group transition-all active:scale-95 w-fit"
+                >
+                  <div className="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all shadow-sm">
                     <Phone size={24} />
                   </div>
                   <div>
                     <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider">Phone Number</p>
-                    <p className="text-lg font-bold text-gray-800">+91 99999-99999</p>
+                    <p className="text-lg font-bold text-gray-800 group-hover:text-orange-600 transition-colors">
+                      +91 8499962882
+                    </p>
                   </div>
-                </div>
-
-                <div className="flex items-center gap-4 group">
-                  <div className="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all">
-                    <Mail size={24} />
-                  </div>
-                  <div>
-                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider">Email Address</p>
-                    <p className="text-lg font-bold text-gray-800">contact@intiruchulu.com</p>
-                  </div>
-                </div>
+                </a>
               </div>
             </div>
 
