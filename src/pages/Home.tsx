@@ -58,7 +58,7 @@ export default function Home() {
                 <br />
               </h1>
               <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
-                Authentic homemade Telugu style edible powders, pickles, and chapathis — crafted with traditional recipes and the freshest ingredients.
+                తరతరాలుగా వస్తున్న సాంప్రదాయ పద్ధతులతో, స్వచ్ఛమైన పదార్ధాలతో, ఇంట్లోనే ఎంతో రుచిగా మరియు శుచిగా తయారుచేసిన అచ్చమైన తెలుగు ఇంటి రుచులు — కారం పొడులు, పచ్చళ్లు మరియు చపాతీలు.
               </p>
               <div className="flex flex-wrap gap-4 relative z-20">
                 <Link 
