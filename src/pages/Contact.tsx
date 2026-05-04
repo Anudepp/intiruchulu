@@ -1,65 +1,86 @@
-import { MessageCircle, Phone, Instagram, Send } from 'lucide-react';
+import { Phone, MapPin, Mail, Sparkles, Clock } from 'lucide-react';
 
 export default function Contact() {
   return (
-    <div className="bg-white min-h-screen">
-      {/* Decorative Hero Area */}
-      <div className="bg-brand-50 py-16 px-4 text-center border-b border-brand-100">
-        <h1 className="text-5xl font-telugu font-black text-brand-700 mb-2">సంప్రదించండి</h1>
-        <p className="text-gray-500 font-medium tracking-widest uppercase text-xs">Get in Touch</p>
+    <div className="bg-white min-h-screen animate-page">
+      {/* Header Area */}
+      <div className="bg-orange-50/50 py-24 px-4 text-center border-b border-orange-100">
+        <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
+          <Sparkles size={14} />
+          Get in touch with us
+        </div>
+        <h1 className="text-6xl md:text-7xl font-telugu font-black text-gray-900 mb-4">సంప్రదించండి</h1>
+        <p className="text-orange-600 font-black tracking-[0.3em] uppercase text-xs">Contact Details</p>
       </div>
 
-      <div className="max-w-5xl mx-auto px-4 -mt-10">
-        <div className="bg-white rounded-[3rem] shadow-2xl shadow-brand-900/5 overflow-hidden border border-gray-100">
-          <div className="grid md:grid-cols-2">
-
-                        {/* Right: The Action Side */}
-            <div className="p-12 space-y-8">
-              <div className="space-y-4">
-                <p className="text-xs font-black text-brand-600 tracking-[0.2em] uppercase">Primary Contact</p>
-                <h3 className="text-2xl font-bold text-gray-900">Suneetha Debbata</h3>
-              </div>
-
-              <div className="space-y-3">
-                
-                <a href="tel:+919999999999" className="flex items-center gap-4 p-5 bg-gray-50 text-gray-700 border border-gray-100 rounded-2xl font-bold hover:bg-gray-100 transition-all">
-                  <Phone size={24} className="text-brand-600" />
-                  <span>Call +91 99999-99999</span>
-                </a>
-              </div>
-
-              <div className="pt-8 border-t border-gray-100">
-              </div>
-            </div>
+      <div className="max-w-4xl mx-auto px-4 -mt-16 pb-20">
+        <div className="bg-white rounded-[3rem] shadow-2xl shadow-orange-900/10 overflow-hidden border border-gray-100 p-8 md:p-16">
+          <div className="grid md:grid-cols-2 gap-12">
             
-            {/* Left: The "Vibe" Side */}
-            <div className="p-12 bg-gray-900 text-white flex flex-col justify-between relative overflow-hidden">
-              <div className="relative z-10 space-y-6">
-                <h2 className="text-3xl font-bold leading-tight">
-                  From our kitchen <br />to your table.
-                </h2>
-                <p className="text-gray-400 leading-relaxed">
-                  Every pickle, powder, and chapathi is made fresh to order. For the best experience, we recommend chatting with us directly on WhatsApp.
-                </p>
-                
-                <div className="pt-6 space-y-4">
-                  <div className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-full bg-brand-600 flex items-center justify-center">
-                      <Send size={18} />
-                    </div>
-                    <span className="text-sm font-medium">Hanamkonda, Warangal</span>
+            {/* Left Column: Personal Contact */}
+            <div className="space-y-8">
+              <div>
+                <h2 className="text-sm font-black text-orange-600 uppercase tracking-widest mb-2">Owner & Primary Contact</h2>
+                <h3 className="text-3xl font-black text-gray-900">Suneetha Debbata</h3>
+                <div className="h-1.5 w-12 bg-orange-500 rounded-full mt-4" />
+              </div>
+
+              <div className="space-y-6">
+                <div className="flex items-center gap-4 group">
+                  <div className="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all">
+                    <Phone size={24} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider">Phone Number</p>
+                    <p className="text-lg font-bold text-gray-800">+91 99999-99999</p>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-4 group">
+                  <div className="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all">
+                    <Mail size={24} />
+                  </div>
+                  <div>
+                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider">Email Address</p>
+                    <p className="text-lg font-bold text-gray-800">contact@intiruchulu.com</p>
                   </div>
                 </div>
               </div>
+            </div>
 
-              {/* Decorative Watermark */}
-              <div className="absolute -bottom-10 -right-10 text-white/5 font-telugu text-[10rem] pointer-events-none select-none">
-                రుచి
+            {/* Right Column: Location & Hours */}
+            <div className="space-y-8">
+              <div className="bg-gray-50 rounded-[2rem] p-8 space-y-6">
+                <div className="flex items-start gap-4">
+                  <MapPin size={24} className="text-orange-600 shrink-0 mt-1" />
+                  <div>
+                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider mb-1">Business Location</p>
+                    <p className="text-gray-800 font-bold leading-relaxed">
+                      Hanamkonda, Warangal,<br />
+                      Telangana, India
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex items-start gap-4 pt-4 border-t border-gray-200">
+                  <Clock size={24} className="text-orange-600 shrink-0 mt-1" />
+                  <div>
+                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider mb-1">Order Hours</p>
+                    <p className="text-gray-800 font-bold">9:00 AM – 8:00 PM</p>
+                    <p className="text-gray-500 text-xs">Monday to Saturday</p>
+                  </div>
+                </div>
               </div>
             </div>
 
+          </div>
 
-
+          {/* Bottom Branding */}
+          <div className="mt-16 pt-8 border-t border-gray-100 text-center">
+            <p className="text-gray-400 text-sm font-medium">
+              Thank you for choosing <span className="text-orange-600 font-bold font-telugu">ఇంటి రుచులు</span>. <br /> 
+              Handcrafted with tradition since 2026.
+            </p>
           </div>
         </div>
       </div>
