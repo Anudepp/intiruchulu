@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Leaf, Flame, Heart } from 'lucide-react';
+import { ArrowRight, Leaf, Flame, Heart, Star, Sparkles } from 'lucide-react';
 
 const features = [
   {
@@ -42,127 +42,156 @@ const categories = [
 
 export default function Home() {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-brand-50 via-white to-spice-50">
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%239C92AC\' fill-opacity=\'0.4\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-32">
+      <section className="relative min-h-[90vh] flex items-center bg-gradient-to-b from-orange-50 via-white to-transparent pt-16 md:pt-0">
+        {/* Animated Background Elements */}
+        <div className="absolute top-20 left-[10%] animate-bounce opacity-20 hidden md:block">
+          <Leaf className="text-green-600 rotate-12" size={40} />
+        </div>
+        <div className="absolute bottom-40 right-[5%] animate-pulse opacity-20 hidden md:block">
+          <Flame className="text-orange-500 -rotate-12" size={48} />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="inline-flex items-center gap-2 bg-brand-100 text-brand-700 px-4 py-1.5 rounded-full text-sm font-medium">
-                <Leaf size={14} />
-                Homemade with Love
+            <div className="space-y-6 md:space-y-8 text-center md:text-left z-10">
+              <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-xs md:text-sm font-bold uppercase tracking-wider shadow-sm">
+                <Sparkles size={16} className="animate-pulse" />
+                Purely Homemade
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                Taste of <span className="font-telugu text-brand-600">Home</span>
-                <br />
+              
+              <h1 className="text-5xl md:text-7xl font-extrabold text-gray-900 tracking-tight">
+                Experience the <br />
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-600 to-red-600">
+                  Legacy of Taste
+                </span>
               </h1>
-              <p className="text-lg text-gray-600 leading-relaxed max-w-lg">
-                తరతరాలుగా వస్తున్న సాంప్రదాయ పద్ధతులతో, స్వచ్ఛమైన పదార్ధాలతో, ఇంట్లోనే ఎంతో రుచిగా మరియు శుచిగా తయారుచేసిన అచ్చమైన తెలుగు ఇంటి రుచులు — కారం పొడులు, పచ్చళ్లు మరియు చపాతీలు.
+
+              <p className="text-lg md:text-xl text-gray-600 leading-relaxed max-w-lg mx-auto md:mx-0 font-medium">
+                తరతరాలుగా వస్తున్న సాంప్రదాయ పద్ధతులతో, ఇంట్లోనే తయారుచేసిన అచ్చమైన 
+                <span className="text-orange-700 font-bold font-telugu mx-1">తెలుగు ఇంటి రుచులు</span>.
               </p>
-              <div className="flex flex-wrap gap-4 relative z-20">
+
+              <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
                 <Link 
                   to="/menu" 
-                  className="flex items-center gap-2 px-8 py-4 bg-orange-600 text-white font-semibold rounded-lg hover:bg-orange-700 transition-all shadow-md"
+                  className="w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-5 bg-orange-600 text-white font-bold rounded-2xl hover:bg-orange-700 transition-all shadow-[0_10px_20px_-5px_rgba(234,88,12,0.4)] active:scale-95"
                 >
-                  View Our Menu <ArrowRight size={18} />
+                  Explore Menu <ArrowRight size={20} />
                 </Link>
+                <div className="flex items-center gap-2 text-gray-500 font-semibold">
+                  <div className="flex -space-x-2">
+                    {[1, 2, 3].map((i) => (
+                      <div key={i} className="w-8 h-8 rounded-full bg-orange-200 border-2 border-white flex items-center justify-center text-[10px]">❤</div>
+                    ))}
+                  </div>
+                  <span className="text-sm">Trusted by Families</span>
+                </div>
               </div>
             </div>
-            <div className="relative">
-              <div className="aspect-square max-w-md mx-auto relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-400 to-spice-500 rounded-3xl rotate-6 opacity-20" />
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-400 to-spice-500 rounded-3xl -rotate-3 opacity-10" />
-                <div className="relative bg-gradient-to-br from-brand-100 to-spice-100 rounded-3xl overflow-hidden h-full flex items-center justify-center">
-                  <div className="text-center p-8 space-y-4">
-                    <div className="text-8xl font-telugu font-bold text-brand-600/20">ఇంటి</div>
-                    <div className="text-6xl font-telugu font-bold text-spice-600/20">రుచులు</div>
-                    <div className="text-sm text-gray-500 font-medium tracking-widest uppercase">Inti Ruchulu</div>
-                  </div>
+
+            {/* Visual Hero Element */}
+            <div className="relative group">
+              <div className="relative aspect-square max-w-[450px] mx-auto transition-transform duration-700 group-hover:rotate-2">
+                <div className="absolute inset-0 bg-orange-200 rounded-[3rem] rotate-6 scale-95 blur-sm opacity-50" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-orange-400 to-red-500 rounded-[3rem] -rotate-3 shadow-2xl" />
+                
+                <div className="relative h-full bg-white rounded-[2.8rem] overflow-hidden p-4 flex flex-col items-center justify-center border-4 border-orange-50">
+                   <div className="text-center">
+                      <span className="block text-orange-200 text-2xl font-telugu opacity-40 italic">Authentic</span>
+                      <h2 className="text-6xl md:text-8xl font-telugu font-black text-orange-600 leading-none">
+                        ఇంటి <br /> రుచులు
+                      </h2>
+                      <div className="h-1 w-20 bg-orange-500 mx-auto mt-4 rounded-full" />
+                   </div>
+                   {/* Abstract Food Shape Decorations */}
+                   <div className="absolute top-4 right-4 text-orange-100 rotate-45"><Star size={40} fill="currentColor" /></div>
+                   <div className="absolute bottom-8 left-8 text-orange-50 -rotate-12"><Heart size={60} fill="currentColor" /></div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-{/* Shop By Category Section */}
-<section className="py-16 md:py-24 bg-brand-50/30">
-  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div className="text-center mb-12">
-      <h2 className="text-3xl font-bold text-gray-900">Shop by Category</h2>
-      <p className="text-gray-600 mt-2">Pick your favorite category to see our full menu</p>
-    </div>
-    
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {categories.map((cat) => (
-        <Link 
-          key={cat.title} 
-          to={cat.link}
-          className="group relative overflow-hidden rounded-2xl aspect-[4/3] bg-gray-200"
-        >
-          <img 
-            src={cat.image} 
-            alt={cat.title}
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-          />
-          {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-          
-          <div className="absolute bottom-0 left-0 p-6 w-full">
-            <span className="block text-brand-400 font-telugu text-lg mb-1">{cat.teluguTitle}</span>
-            <h3 className="text-2xl font-bold text-white mb-3">
-              {cat.title}
-            </h3>
-            
-            {/* New CTA Label */}
-            <div className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 ">
-              Click to view items 
-              <span className="p-1 bg-white/10 rounded-full">
-                <ArrowRight size={14} />
-              </span>
-            </div>
-          </div>
-        </Link>
-      ))}
-    </div>
-  </div>
-</section>
 
-      {/* Features Section */}
-      <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-gray-900">Why Choose <span className="font-telugu text-brand-600">ఇంటి రుచులు</span>?</h2>
-            <p className="text-gray-500 mt-2">We bring the authentic taste of Telugu kitchens straight to your home.</p>
+      {/* Categories Grid - Enhanced for Mobile */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+            <div className="text-left">
+              <h2 className="text-4xl font-black text-gray-900 mb-2">Our Specialties</h2>
+              <p className="text-gray-500 font-medium">Handcrafted with premium ingredients</p>
+            </div>
+            <Link to="/menu" className="text-orange-600 font-bold flex items-center gap-2 border-b-2 border-orange-100 hover:border-orange-600 transition-all">
+              View all items <ArrowRight size={16} />
+            </Link>
           </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {features.map((f) => (
-              <div key={f.title} className="p-8 text-center border border-gray-100 rounded-2xl group hover:shadow-xl hover:-translate-y-1 transition-all">
-                <div className="w-14 h-14 mx-auto mb-5 rounded-2xl bg-brand-50 flex items-center justify-center group-hover:bg-brand-100 transition-colors">
-                  <f.icon size={28} className="text-brand-600" />
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {categories.map((cat) => (
+              <Link 
+                key={cat.title} 
+                to={cat.link}
+                className="group relative h-[400px] overflow-hidden rounded-[2.5rem] shadow-xl"
+              >
+                <img 
+                  src={cat.image} 
+                  alt={cat.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                
+                <div className="absolute bottom-0 left-0 p-8 w-full">
+                  <p className="text-orange-400 font-telugu text-xl font-bold mb-1">{cat.teluguTitle}</p>
+                  <h3 className="text-3xl font-bold text-white tracking-tight">
+                    {cat.title}
+                  </h3>
+                  <div className="mt-4 flex items-center gap-2 text-white/70 text-sm font-bold opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
+                    SHOP NOW <ArrowRight size={16} />
+                  </div>
                 </div>
-                <h3 className="text-lg font-semibold text-gray-900 mb-2">{f.title}</h3>
-                <p className="text-sm text-gray-500 leading-relaxed">{f.desc}</p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Features - Clean & Modern */}
+      <section className="py-20 bg-orange-50/50">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid md:grid-cols-3 gap-6">
+            {features.map((f) => (
+              <div key={f.title} className="bg-white p-10 rounded-[2rem] border border-orange-100/50 shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-16 h-16 mb-6 rounded-2xl bg-orange-100 flex items-center justify-center text-orange-600">
+                  <f.icon size={32} />
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{f.title}</h3>
+                <p className="text-gray-500 leading-relaxed font-medium">{f.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-
-
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-gradient-to-r from-brand-600 to-spice-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Ready to Taste the Difference?
-          </h2>
-          <p className="text-lg text-brand-100 mb-8 max-w-xl mx-auto">
-            Browse our menu of homemade powders, pickles, and chapathis. Place your order via WhatsApp!
-          </p>
-          <Link to="/menu" className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-700 font-semibold rounded-lg hover:bg-brand-50 transition-all duration-200 shadow-lg hover:shadow-xl gap-2">
-            Explore Menu <ArrowRight size={18} />
-          </Link>
+      {/* Final CTA - "The Magic Banner" */}
+      <section className="px-4 py-20">
+        <div className="max-w-6xl mx-auto relative rounded-[3rem] overflow-hidden bg-gray-900 py-16 px-8 text-center shadow-2xl">
+          <div className="absolute inset-0 opacity-20" 
+               style={{ backgroundImage: 'radial-gradient(#ea580c 1px, transparent 0)', backgroundSize: '30px 30px' }} />
+          
+          <div className="relative z-10 space-y-8">
+            <h2 className="text-4xl md:text-5xl font-black text-white leading-tight">
+              Ready to bring the <br /> 
+              <span className="text-orange-500 italic">Authentic Aroma</span> home?
+            </h2>
+            <p className="text-gray-400 text-lg max-w-lg mx-auto font-medium">
+              Join hundreds of happy families enjoying our fresh, homemade Telugu delicacies every day.
+            </p>
+            <Link to="/menu" className="inline-flex items-center gap-3 px-12 py-5 bg-white text-gray-900 font-black rounded-2xl hover:bg-orange-500 hover:text-white transition-all shadow-xl">
+              EXPLORE AROMA <ArrowRight size={20} />
+            </Link>
+          </div>
         </div>
       </section>
     </div>
