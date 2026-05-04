@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ShoppingBag, ArrowLeft } from 'lucide-react';
+import { ShoppingBag, ArrowLeft, Phone } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface Product {
@@ -120,6 +120,8 @@ function ProductCard({ product }: { product: Product }) {
 }
 
 export default function Menu() {
+  const phoneNumber = "+918499962882"; 
+
   const SectionLayout = ({ title, teluguTitle, items }: any) => {
     if (items.length === 0) return null;
     return (
@@ -141,8 +143,7 @@ export default function Menu() {
   };
 
   return (
-    /* animate-page handles the smooth, eye-friendly entry */
-    <div className="min-h-screen bg-white animate-page">
+    <div className="min-h-screen bg-white animate-page relative">
       <header className="pt-12 pb-10 px-4 max-w-7xl mx-auto">
         <Link 
           to="/" 
@@ -165,7 +166,7 @@ export default function Menu() {
         </p>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 pb-24">
+      <main className="max-w-7xl mx-auto px-4 pb-32">
         <SectionLayout 
           title="Traditional Powders" 
           teluguTitle="పొడిలు" 
@@ -188,9 +189,25 @@ export default function Menu() {
           <p className="text-orange-900 text-xl font-bold font-telugu italic">
             "బల్క్ ఆర్డర్లు లేదా మరిన్ని వివరాల కోసం మమ్మల్ని సంప్రదించండి!"
           </p>
-          <p className="text-gray-500 mt-2 text-sm uppercase font-black tracking-widest">Available for all occasions</p>
         </div>
       </main>
+
+      {/* Optimized Floating Button - Pill style on mobile, shifted right */}
+      <div className="fixed bottom-6 right-4 md:right-8 z-50 pointer-events-none">
+        <a 
+          href={`tel:${phoneNumber}`}
+          className="pointer-events-auto flex items-center gap-2 md:gap-3 bg-gray-900 text-white px-5 py-3 md:px-8 md:py-4 rounded-full md:rounded-2xl shadow-2xl shadow-orange-900/40 hover:bg-orange-600 active:scale-95 transition-all duration-300 group"
+        >
+          <div className="relative shrink-0">
+            <div className="absolute inset-0 bg-white/20 rounded-full animate-ping group-hover:hidden" />
+            <Phone size={16} className="relative fill-white md:w-5 md:h-5" />
+          </div>
+          
+          <span className="font-black text-[10px] md:text-sm uppercase tracking-[0.15em] md:tracking-widest whitespace-nowrap">
+            Call to Order
+          </span>
+        </a>
+      </div>
     </div>
   );
 }
