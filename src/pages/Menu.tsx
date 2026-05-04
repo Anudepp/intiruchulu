@@ -6,7 +6,7 @@ interface Product {
   nameTelugu: string;
   nameEnglish: string;
   basePrice: number;
-  category: 'podis' | 'pacchadi' | 'chapathi';
+  category: 'podis' | 'pacchadi' | 'staples';
   image: string;
 }
 
@@ -18,36 +18,40 @@ const weightOptions = [
 ];
 
 const products: Product[] = [
-  { nameTelugu: 'కరివేపాకు పొడి', nameEnglish: 'Karivepaku Podi', basePrice: 600, category: 'podis', image: '/menu/KarivepakuPodi.png' },
-  { nameTelugu: 'వెల్లుల్లి కారం', nameEnglish: 'Velulli Kaaram', basePrice: 600, category: 'podis', image: '/menu/VellulliKaram.png' },
-  { nameTelugu: 'మునగాకు పొడి', nameEnglish: 'Munagaku Podi', basePrice: 600, category: 'podis', image: '/menu/MunagakuPodi.png' },
+  // Podis
+  { nameTelugu: 'కరివేపాకు పొడి', nameEnglish: 'Curry leaves powder', basePrice: 600, category: 'podis', image: '/menu/KarivepakuPodi.png' },
+  { nameTelugu: 'వెల్లుల్లి కారం', nameEnglish: 'Garlic Chili Powder', basePrice: 600, category: 'podis', image: '/menu/VellulliKaram.png' },
+  { nameTelugu: 'మునగాకు పొడి', nameEnglish: 'Moringa Leaves Powder', basePrice: 600, category: 'podis', image: '/menu/MunagakuPodi.png' },
   { nameTelugu: 'పప్పుల పొడి', nameEnglish: 'Pappula Podi', basePrice: 600, category: 'podis', image: '/menu/PappulaPodi.png' },
-  { nameTelugu: 'నువ్వుల పొడి', nameEnglish: 'Nuvvula Podi', basePrice: 600, category: 'podis', image: '/menu/NuvvulaPodi.png' },
-  { nameTelugu: 'అవిసెగింజల పొడి', nameEnglish: 'Avisaginjala Podi', basePrice: 600, category: 'podis', image: '/menu/AvisaginjalaPodi.png' },
-  { nameTelugu: 'గోంగూర పచ్చడి', nameEnglish: 'Gongura Pacchadi', basePrice: 500, category: 'pacchadi', image: '/menu/GonguraPacchadi.png' },
-  { nameTelugu: 'కొత్తిమీర పచ్చడి', nameEnglish: 'Kotthimera Pacchadi', basePrice: 500, category: 'pacchadi', image: '/menu/KotthimeraPacchadi.png' },
-  { nameTelugu: 'మీల్ మేకర్ పచ్చడి', nameEnglish: 'Meal Maker Pacchadi', basePrice: 500, category: 'pacchadi', image: '/menu/MealMakerPacchadi.png' },
-  { nameTelugu: 'టొమాటో పచ్చడి', nameEnglish: 'Tomato Pacchadi', basePrice: 500, category: 'pacchadi', image: '/menu/TomatoPacchadi.png' },
-  { nameTelugu: 'మామిడికాయ బెల్లం పచ్చడి', nameEnglish: 'Mamidikaya Bellam Pacchadi', basePrice: 500, category: 'pacchadi', image: '/menu/MamidikayaBellamPacchadi.png' },
-  { nameTelugu: 'మామిడికాయ పచ్చడి', nameEnglish: 'Mamidikaya Pacchadi', basePrice: 500, category: 'pacchadi', image: '/menu/MamidikayaPacchadi.png' },
-  { nameTelugu: 'చపాతీలు', nameEnglish: 'Chapathis', basePrice: 12, category: 'chapathi', image: '/menu/Chapathi.png' },
+  { nameTelugu: 'నువ్వుల పొడి', nameEnglish: 'Sesame Seeds Powder', basePrice: 600, category: 'podis', image: '/menu/NuvvulaPodi.png' },
+  { nameTelugu: 'అవిసెగింజల పొడి', nameEnglish: 'Flaxseed Powder', basePrice: 600, category: 'podis', image: '/menu/AvisaginjalaPodi.png' },
+    { nameTelugu: 'చారు పొడి', nameEnglish: 'Rasam Powder', basePrice: 600, category: 'podis', image: '/menu/ChaaruPodi.png' },
+
+  
+  // Pacchadis
+  { nameTelugu: 'గోంగూర పచ్చడి', nameEnglish: 'Gongura Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/GonguraPacchadi.png' },
+  { nameTelugu: 'కొత్తిమీర పచ్చడి', nameEnglish: 'Kotthimera Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/KotthimeraPacchadi.png' },
+  { nameTelugu: 'మీల్ మేకర్ పచ్చడి', nameEnglish: 'Meal Maker Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/MealMakerPacchadi.png' },
+  { nameTelugu: 'టొమాటో పచ్చడి', nameEnglish: 'Tomato Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/TomatoPacchadi.png' },
+  { nameTelugu: 'మామిడికాయ బెల్లం పచ్చడి', nameEnglish: 'Mongo Jaggery Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/MamidikayaBellamPacchadi.png' },
+  { nameTelugu: 'మామిడికాయ పచ్చడి', nameEnglish: 'Mango Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/MamidikayaPacchadi.png' },
+  
+  // Daily Staples (Including Pulusu)
+  { nameTelugu: 'పులిహోర పులుసు', nameEnglish: 'Tamarind Rice Paste ', basePrice: 600, category: 'staples', image: '/menu/PulihoraPulusu.png' },
+  { nameTelugu: 'చపాతీలు', nameEnglish: 'Chapathis', basePrice: 12, category: 'staples', image: '/menu/Chapathi.png' },
 ];
 
 function ProductCard({ product }: { product: Product }) {
   const [selectedIdx, setSelectedIdx] = useState(1); 
-  const isChapathi = product.category === 'chapathi';
+  // We check for "Chapathis" specifically for the per-piece pricing logic
+  const isPerPiece = product.nameEnglish === 'Chapathis';
   
-  const displayPrice = isChapathi 
+  const displayPrice = isPerPiece 
     ? product.basePrice 
     : Math.round(product.basePrice * weightOptions[selectedIdx].factor);
 
   return (
     <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col transition-all hover:shadow-lg">
-      {/* 
-          Image Section:
-          Using aspect-[16/13] gives a slightly taller view than standard 16/9.
-          'object-cover' with 'object-center' ensures the bowl remains the hero.
-      */}
       <div className="relative aspect-[16/13] w-full overflow-hidden bg-gray-100">
         <img
           src={product.image}
@@ -55,7 +59,7 @@ function ProductCard({ product }: { product: Product }) {
           className="w-full h-full object-cover object-center"
           loading="lazy"
         />
-        {!isChapathi && (
+        {!isPerPiece && (
           <div className="absolute top-3 right-3 bg-orange-600 text-white px-2.5 py-1 rounded-full text-[10px] font-bold shadow-lg animate-pulse">
             Starts ₹{Math.round(product.basePrice * 0.1)}
           </div>
@@ -73,7 +77,7 @@ function ProductCard({ product }: { product: Product }) {
         </div>
 
         <div className="mt-auto">
-          {!isChapathi && (
+          {!isPerPiece && (
             <div className="mb-5">
               <p className="text-[10px] text-gray-400 font-bold uppercase mb-2 ml-1 tracking-wider">
                 Select Quantity
@@ -99,11 +103,11 @@ function ProductCard({ product }: { product: Product }) {
           <div className="pt-3 border-t border-gray-50 flex items-center justify-between">
             <div>
               <span className="text-[10px] text-gray-400 font-bold uppercase block mb-0.5">
-                {isChapathi ? 'Per Piece' : 'Total Price'}
+                {isPerPiece ? 'Per Piece' : 'Total Price'}
               </span>
               <div className="flex items-center gap-1">
                 <span className="text-2xl font-black text-gray-900">₹{displayPrice}</span>
-                {!isChapathi && (
+                {!isPerPiece && (
                   <span className="text-[10px] text-gray-500 font-medium bg-gray-100 px-1.5 py-0.5 rounded">
                     {weightOptions[selectedIdx].label}
                   </span>
@@ -118,22 +122,25 @@ function ProductCard({ product }: { product: Product }) {
 }
 
 export default function Menu() {
-  const SectionLayout = ({ title, teluguTitle, items }: any) => (
-    <div className="mb-14">
-      <div className="mb-6 flex flex-col border-l-4 border-orange-500 pl-4">
-        <h2 className="text-2xl font-black text-gray-900 leading-none">
-          {title}
-        </h2>
-        <span className="font-telugu text-orange-600 text-lg mt-1">{teluguTitle}</span>
+  const SectionLayout = ({ title, teluguTitle, items }: any) => {
+    if (items.length === 0) return null;
+    return (
+      <div className="mb-14">
+        <div className="mb-6 flex flex-col border-l-4 border-orange-500 pl-4">
+          <h2 className="text-2xl font-black text-gray-900 leading-none">
+            {title}
+          </h2>
+          <span className="font-telugu text-orange-600 text-lg mt-1">{teluguTitle}</span>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+          {items.map((product: Product) => (
+            <ProductCard key={product.nameEnglish} product={product} />
+          ))}
+        </div>
       </div>
-      
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
-        {items.map((product: Product) => (
-          <ProductCard key={product.nameEnglish} product={product} />
-        ))}
-      </div>
-    </div>
-  );
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gray-50/50">
@@ -174,13 +181,13 @@ export default function Menu() {
 
         <SectionLayout 
           title="Daily Staples" 
-          teluguTitle="చపాతీలు" 
-          items={products.filter(p => p.category === 'chapathi')} 
+          teluguTitle="రోజువారీ వంటలు" 
+          items={products.filter(p => p.category === 'staples')} 
         />
         
         <div className="mt-10 p-8 bg-white rounded-3xl border border-dashed border-gray-200 text-center">
-          <p className="text-gray-600 font-medium">
-            Contact us for bulk orders or customized spice levels!
+          <p className="text-gray-600 font-medium font-telugu">
+            బల్క్ ఆర్డర్లు లేదా మరిన్ని వివరాల కోసం మమ్మల్ని సంప్రదించండి!
           </p>
         </div>
       </main>
