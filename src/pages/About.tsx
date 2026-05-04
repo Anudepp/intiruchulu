@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle, Users, Award, Clock, Heart, Sparkles } from 'lucide-react';
+import ShippingBadge from '../components/ShippingBadge'; // Ensure path is correct
 
 const values = [
   { 
@@ -26,7 +27,12 @@ const values = [
 
 export default function About() {
   return (
-    <div className="animate-page overflow-x-hidden">
+    <div className="animate-page overflow-x-hidden relative">
+      {/* 1. MOBILE STICKY TOP BAR - Keeps shipping in mind while reading the story */}
+      <div className="md:hidden sticky top-0 z-[100] shadow-md">
+        <ShippingBadge isMobileBar={true} />
+      </div>
+
       {/* Hero Section */}
       <section className="relative py-20 md:py-32 bg-gradient-to-br from-orange-50 via-white to-transparent">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,7 +63,6 @@ export default function About() {
 
             <div className="relative">
               <div className="aspect-square relative group">
-                {/* Decorative Background Blobs */}
                 <div className="absolute inset-0 bg-orange-200 rounded-[3rem] rotate-6 scale-95 blur-2xl opacity-30 group-hover:rotate-12 transition-transform duration-700" />
                 
                 <div className="relative h-full bg-white rounded-[3rem] border-8 border-orange-50 shadow-2xl overflow-hidden flex flex-col items-center justify-center p-12 text-center">
@@ -76,7 +81,12 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values - Grid layout with more 'breathing room' */}
+      {/* 2. DESKTOP FLOATING BADGE - Fixed position */}
+      <div className="hidden md:block fixed bottom-8 left-8 z-50 animate-bounce-slow">
+        <ShippingBadge />
+      </div>
+
+      {/* Values */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16 space-y-4">
@@ -98,9 +108,8 @@ export default function About() {
         </div>
       </section>
 
-      {/* Story - Centered & Premium Typography */}
+      {/* Story */}
       <section className="py-24 bg-gray-900 relative overflow-hidden">
-        {/* Subtle pattern background */}
         <div className="absolute inset-0 opacity-10" style={{ backgroundImage: 'radial-gradient(#fff 1px, transparent 0)', backgroundSize: '40px 40px' }} />
         
         <div className="max-w-3xl mx-auto px-4 relative z-10">
