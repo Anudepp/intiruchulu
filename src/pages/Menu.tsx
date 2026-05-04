@@ -1,4 +1,4 @@
-import { MessageCircle, ShoppingBag } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
 
 interface Product {
   nameTelugu: string;
@@ -26,12 +26,8 @@ const products: Product[] = [
 ];
 
 function ProductCard({ product }: { product: Product }) {
-  const phoneNumber = '919347977431';
-  const message = encodeURIComponent(`Hi! I would like to order ${product.nameTelugu} (${product.nameEnglish}).`);
-  const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
-
   return (
-    <div className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all border border-gray-100 flex flex-col">
+    <div className="bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100 flex flex-col">
       <div className="relative aspect-[16/10] overflow-hidden">
         <img
           src={product.image}
@@ -51,18 +47,11 @@ function ProductCard({ product }: { product: Product }) {
           </p>
         </div>
 
-        <div className="mt-auto pt-2 border-t border-gray-50 flex items-center justify-between">
+        <div className="mt-auto pt-2 border-t border-gray-50 flex items-center">
           <div className="flex items-baseline">
             <span className="text-lg font-black text-gray-900">₹{product.price}</span>
             <span className="text-[9px] text-gray-500 ml-1">{product.unit}</span>
           </div>
-          
-          <a
-            href={whatsappUrl}
-            className="bg-green-500 text-white p-1.5 rounded-lg hover:bg-green-600 transition-colors"
-          >
-            <MessageCircle size={16} />
-          </a>
         </div>
       </div>
     </div>
@@ -87,7 +76,6 @@ export default function Menu() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Super Slim Header */}
       <header className="pt-6 pb-4 px-4 max-w-7xl mx-auto">
         <div className="flex items-center gap-2 text-orange-600 mb-1 text-[10px] font-bold uppercase tracking-widest">
           <ShoppingBag size={12} />
@@ -98,7 +86,6 @@ export default function Menu() {
         </h1>
       </header>
 
-      {/* Main Grid Content - Content starts much higher now */}
       <main className="max-w-7xl mx-auto px-4 py-2">
         <SectionLayout 
           title="Podis" 
