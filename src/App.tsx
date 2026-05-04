@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import WhatsAppFloat from './components/WhatsAppFloat';
 import Home from './pages/Home';
 import About from './pages/About';
 import Menu from './pages/Menu';
@@ -29,7 +28,6 @@ function Layout() {
         </Routes>
       </main>
       <Footer />
-      <WhatsAppFloat />
     </div>
   );
 }

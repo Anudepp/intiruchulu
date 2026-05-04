@@ -37,7 +37,7 @@ export default function About() {
                 <div className="text-center p-8 space-y-2">
                   <div className="text-7xl font-telugu font-bold text-brand-500/30">ఇంటి</div>
                   <div className="text-5xl font-telugu font-bold text-spice-500/30">రుచులు</div>
-                  <p className="text-gray-400 text-sm mt-4 tracking-wider uppercase">Since 2024</p>
+                  <p className="text-gray-400 text-sm mt-4 tracking-wider uppercase">Since 2026</p>
                 </div>
               </div>
             </div>
