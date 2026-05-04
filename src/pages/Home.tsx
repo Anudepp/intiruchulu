@@ -25,19 +25,19 @@ const categories = [
     title: 'Authentic Pickles',
     teluguTitle: 'ఆవకాయ & పచ్చళ్ళు',
     image: '/menu/MamidikayaPacchadi.png', 
-    link: '/menu',
+    link: '/menu#pickles',
   },
   {
     title: 'Edible Powders',
     teluguTitle: 'కారం పొడులు',
     image: '/menu/KarivepakuPodi.png', 
-    link: '/menu',
+    link: '/menu#powders',
   },
   {
     title: 'Soft Chapathis',
     teluguTitle: 'చపాతీలు',
     image: '/menu/Chapathi.png',
-    link: '/menu',
+    link: '/menu#staples',
   },
 ];
 
@@ -80,7 +80,7 @@ export default function Home() {
 
               <div className="flex flex-col sm:flex-row items-center gap-4 justify-center md:justify-start">
                 <Link 
-                  to="/menu" 
+                  to="/menu#powders" 
                   className="w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-5 bg-orange-600 text-white font-bold rounded-2xl hover:bg-orange-700 transition-all shadow-[0_10px_20px_-5px_rgba(234,88,12,0.4)] active:scale-95"
                 >
                   Explore Menu <ArrowRight size={20} />
@@ -131,7 +131,7 @@ export default function Home() {
               <h2 className="text-4xl font-black text-gray-900 mb-2">Our Specialties</h2>
               <p className="text-gray-500 font-medium">Handcrafted with premium ingredients</p>
             </div>
-            <Link to="/menu" className="text-orange-600 font-bold flex items-center gap-2 border-b-2 border-orange-100 hover:border-orange-600 transition-all">
+            <Link to="/menu#powders" className="text-orange-600 font-bold flex items-center gap-2 border-b-2 border-orange-100 hover:border-orange-600 transition-all">
               View all items <ArrowRight size={16} />
             </Link>
           </div>
@@ -190,7 +190,7 @@ export default function Home() {
             <p className="text-gray-400 text-lg max-w-lg mx-auto font-medium">
               We safely pack and ship our authentic homemade delicacies across India and overseas.
             </p>
-            <Link to="/menu" className="inline-flex items-center gap-3 px-12 py-5 bg-white text-gray-900 font-black rounded-2xl hover:bg-orange-500 hover:text-white transition-all shadow-xl">
+            <Link to="/menu#powders" className="inline-flex items-center gap-3 px-12 py-5 bg-white text-gray-900 font-black rounded-2xl hover:bg-orange-500 hover:text-white transition-all shadow-xl">
               ORDER NOW <ArrowRight size={20} />
             </Link>
           </div>
