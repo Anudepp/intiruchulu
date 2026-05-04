@@ -25,9 +25,8 @@ const products: Product[] = [
   { nameTelugu: 'పప్పుల పొడి', nameEnglish: 'Pappula Podi', basePrice: 600, category: 'podis', image: '/menu/PappulaPodi.png' },
   { nameTelugu: 'నువ్వుల పొడి', nameEnglish: 'Sesame Seeds Powder', basePrice: 600, category: 'podis', image: '/menu/NuvvulaPodi.png' },
   { nameTelugu: 'అవిసెగింజల పొడి', nameEnglish: 'Flaxseed Powder', basePrice: 600, category: 'podis', image: '/menu/AvisaginjalaPodi.png' },
-    { nameTelugu: 'చారు పొడి', nameEnglish: 'Rasam Powder', basePrice: 600, category: 'podis', image: '/menu/ChaaruPodi.png' },
+  { nameTelugu: 'చారు పొడి', nameEnglish: 'Rasam Powder', basePrice: 600, category: 'podis', image: '/menu/ChaaruPodi.png' },
 
-  
   // Pacchadis
   { nameTelugu: 'గోంగూర పచ్చడి', nameEnglish: 'Gongura Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/GonguraPacchadi.png' },
   { nameTelugu: 'కొత్తిమీర పచ్చడి', nameEnglish: 'Kotthimera Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/KotthimeraPacchadi.png' },
@@ -36,14 +35,13 @@ const products: Product[] = [
   { nameTelugu: 'మామిడికాయ బెల్లం పచ్చడి', nameEnglish: 'Mongo Jaggery Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/MamidikayaBellamPacchadi.png' },
   { nameTelugu: 'మామిడికాయ పచ్చడి', nameEnglish: 'Mango Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/MamidikayaPacchadi.png' },
   
-  // Daily Staples (Including Pulusu)
-  { nameTelugu: 'పులిహోర పులుసు', nameEnglish: 'Tamarind Rice Paste ', basePrice: 600, category: 'staples', image: '/menu/PulihoraPulusu.png' },
+  // Daily Staples
+  { nameTelugu: 'పులిహోర పులుసు', nameEnglish: 'Tamarind Rice Paste', basePrice: 600, category: 'staples', image: '/menu/PulihoraPulusu.png' },
   { nameTelugu: 'చపాతీలు', nameEnglish: 'Chapathis', basePrice: 12, category: 'staples', image: '/menu/Chapathi.png' },
 ];
 
 function ProductCard({ product }: { product: Product }) {
   const [selectedIdx, setSelectedIdx] = useState(1); 
-  // We check for "Chapathis" specifically for the per-piece pricing logic
   const isPerPiece = product.nameEnglish === 'Chapathis';
   
   const displayPrice = isPerPiece 
@@ -51,27 +49,27 @@ function ProductCard({ product }: { product: Product }) {
     : Math.round(product.basePrice * weightOptions[selectedIdx].factor);
 
   return (
-    <div className="bg-white rounded-3xl overflow-hidden shadow-sm border border-gray-100 flex flex-col transition-all hover:shadow-lg">
-      <div className="relative aspect-[16/13] w-full overflow-hidden bg-gray-100">
+    <div className="bg-white rounded-[2rem] overflow-hidden shadow-sm border border-gray-100 flex flex-col transition-all hover:shadow-xl hover:shadow-orange-100/50 group">
+      <div className="relative aspect-[16/13] w-full overflow-hidden bg-orange-50/30">
         <img
           src={product.image}
           alt={product.nameEnglish}
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
         />
         {!isPerPiece && (
-          <div className="absolute top-3 right-3 bg-orange-600 text-white px-2.5 py-1 rounded-full text-[10px] font-bold shadow-lg animate-pulse">
+          <div className="absolute top-4 right-4 bg-orange-600 text-white px-3 py-1 rounded-full text-[10px] font-black shadow-lg">
             Starts ₹{Math.round(product.basePrice * 0.1)}
           </div>
         )}
       </div>
 
-      <div className="p-4 flex flex-col flex-1">
+      <div className="p-5 flex flex-col flex-1">
         <div className="mb-4">
-          <h3 className="font-telugu font-bold text-lg text-gray-800 leading-tight">
+          <h3 className="font-telugu font-bold text-xl text-gray-900 leading-tight">
             {product.nameTelugu}
           </h3>
-          <p className="text-[11px] text-orange-600/70 uppercase tracking-widest font-bold mt-1">
+          <p className="text-[11px] text-orange-600 font-black uppercase tracking-widest mt-1">
             {product.nameEnglish}
           </p>
         </div>
@@ -79,18 +77,18 @@ function ProductCard({ product }: { product: Product }) {
         <div className="mt-auto">
           {!isPerPiece && (
             <div className="mb-5">
-              <p className="text-[10px] text-gray-400 font-bold uppercase mb-2 ml-1 tracking-wider">
+              <p className="text-[10px] text-gray-400 font-bold uppercase mb-3 ml-1 tracking-wider">
                 Select Quantity
               </p>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="grid grid-cols-4 gap-1.5">
                 {weightOptions.map((opt, idx) => (
                   <button
                     key={opt.label}
                     onClick={() => setSelectedIdx(idx)}
-                    className={`flex-1 py-1.5 px-1 rounded-lg text-[11px] font-bold transition-all border ${
+                    className={`py-2 rounded-xl text-[11px] font-black transition-all border active:scale-90 ${
                       selectedIdx === idx
-                        ? 'bg-orange-600 border-orange-600 text-white shadow-md shadow-orange-100'
-                        : 'bg-gray-50 border-gray-100 text-gray-500 hover:bg-gray-100'
+                        ? 'bg-orange-600 border-orange-600 text-white shadow-md shadow-orange-200'
+                        : 'bg-white border-gray-100 text-gray-500 hover:border-orange-200 hover:bg-orange-50/30'
                     }`}
                   >
                     {opt.label}
@@ -100,15 +98,15 @@ function ProductCard({ product }: { product: Product }) {
             </div>
           )}
 
-          <div className="pt-3 border-t border-gray-50 flex items-center justify-between">
+          <div className="pt-4 border-t border-gray-50 flex items-center justify-between">
             <div>
-              <span className="text-[10px] text-gray-400 font-bold uppercase block mb-0.5">
-                {isPerPiece ? 'Per Piece' : 'Total Price'}
+              <span className="text-[10px] text-gray-400 font-black uppercase block mb-0.5">
+                {isPerPiece ? 'Per Piece' : 'Price'}
               </span>
-              <div className="flex items-center gap-1">
+              <div className="flex items-center gap-1.5">
                 <span className="text-2xl font-black text-gray-900">₹{displayPrice}</span>
                 {!isPerPiece && (
-                  <span className="text-[10px] text-gray-500 font-medium bg-gray-100 px-1.5 py-0.5 rounded">
+                  <span className="text-[10px] text-orange-600 font-bold bg-orange-50 px-2 py-0.5 rounded-lg border border-orange-100">
                     {weightOptions[selectedIdx].label}
                   </span>
                 )}
@@ -125,15 +123,15 @@ export default function Menu() {
   const SectionLayout = ({ title, teluguTitle, items }: any) => {
     if (items.length === 0) return null;
     return (
-      <div className="mb-14">
-        <div className="mb-6 flex flex-col border-l-4 border-orange-500 pl-4">
-          <h2 className="text-2xl font-black text-gray-900 leading-none">
+      <div className="mb-20">
+        <div className="mb-8 flex flex-col border-l-[6px] border-orange-600 pl-6">
+          <h2 className="text-3xl font-black text-gray-900 tracking-tight italic">
             {title}
           </h2>
-          <span className="font-telugu text-orange-600 text-lg mt-1">{teluguTitle}</span>
+          <span className="font-telugu text-orange-600 text-xl mt-1 font-bold">{teluguTitle}</span>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-8">
           {items.map((product: Product) => (
             <ProductCard key={product.nameEnglish} product={product} />
           ))}
@@ -143,38 +141,39 @@ export default function Menu() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50/50">
-      <header className="pt-10 pb-6 px-4 max-w-7xl mx-auto">
+    /* animate-page handles the smooth, eye-friendly entry */
+    <div className="min-h-screen bg-white animate-page">
+      <header className="pt-12 pb-10 px-4 max-w-7xl mx-auto">
         <Link 
           to="/" 
-          className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-600 transition-colors text-sm font-medium mb-6"
+          className="inline-flex items-center gap-2 text-gray-400 hover:text-orange-600 transition-all text-sm font-bold mb-8 active:translate-x-[-4px]"
         >
-          <ArrowLeft size={16} /> Back to Home
+          <ArrowLeft size={16} /> BACK TO HOME
         </Link>
         
-        <div className="flex items-center gap-2 text-orange-600 mb-2 text-[11px] font-bold uppercase tracking-[0.2em]">
-          <ShoppingBag size={14} />
+        <div className="flex items-center gap-2 text-orange-600 mb-3 text-xs font-black uppercase tracking-[0.25em]">
+          <ShoppingBag size={14} className="animate-bounce" />
           Fresh & Homemade
         </div>
         
-        <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight">
-          Our <span className="text-orange-600">Menu</span>
+        <h1 className="text-5xl md:text-7xl font-black text-gray-900 tracking-tighter">
+          Our <span className="text-orange-600 italic">Menu</span>
         </h1>
         
-        <p className="text-gray-500 mt-2 text-sm max-w-md">
-          Authentic Telugu flavors prepared in small batches. Select your preferred quantity to see the price.
+        <p className="text-gray-500 mt-4 text-base max-w-lg font-medium leading-relaxed">
+          Authentic Telugu flavors prepared with love. From our family kitchen to your table.
         </p>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 pb-20">
+      <main className="max-w-7xl mx-auto px-4 pb-24">
         <SectionLayout 
-          title="Podis" 
+          title="Traditional Powders" 
           teluguTitle="పొడిలు" 
           items={products.filter(p => p.category === 'podis')} 
         />
 
         <SectionLayout 
-          title="Pacchadi" 
+          title="Authentic Pickles" 
           teluguTitle="పచ్చడి" 
           items={products.filter(p => p.category === 'pacchadi')} 
         />
@@ -185,10 +184,11 @@ export default function Menu() {
           items={products.filter(p => p.category === 'staples')} 
         />
         
-        <div className="mt-10 p-8 bg-white rounded-3xl border border-dashed border-gray-200 text-center">
-          <p className="text-gray-600 font-medium font-telugu">
-            బల్క్ ఆర్డర్లు లేదా మరిన్ని వివరాల కోసం మమ్మల్ని సంప్రదించండి!
+        <div className="mt-16 p-12 bg-orange-50/50 rounded-[3rem] border-2 border-dashed border-orange-200 text-center">
+          <p className="text-orange-900 text-xl font-bold font-telugu italic">
+            "బల్క్ ఆర్డర్లు లేదా మరిన్ని వివరాల కోసం మమ్మల్ని సంప్రదించండి!"
           </p>
+          <p className="text-gray-500 mt-2 text-sm uppercase font-black tracking-widest">Available for all occasions</p>
         </div>
       </main>
     </div>

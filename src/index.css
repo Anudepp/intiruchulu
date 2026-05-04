@@ -6,7 +6,8 @@
 
 @layer base {
   html {
-    scroll-behavior: smooth;
+    /* REMOVE scroll-behavior: smooth; to stop the straining motion */
+    scroll-behavior: auto; 
   }
 
   body {
@@ -15,27 +16,20 @@
 }
 
 @layer components {
-  .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-brand-600 text-white font-semibold rounded-lg
-           hover:bg-brand-700 active:bg-brand-800 transition-all duration-200 shadow-md hover:shadow-lg
-           focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
+  /* Your existing btn-primary, btn-secondary, etc. stay the same */
+  
+  /* ADD THIS NEW CLASS HERE */
+  .animate-page {
+    animation: pageFadeIn 0.4s ease-out forwards;
   }
+}
 
-  .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-white text-brand-700 font-semibold rounded-lg
-           border-2 border-brand-600 hover:bg-brand-50 active:bg-brand-100 transition-all duration-200
-           focus:outline-none focus:ring-2 focus:ring-brand-500 focus:ring-offset-2;
+/* Add the keyframes at the very bottom */
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
   }
-
-  .section-heading {
-    @apply text-3xl md:text-4xl font-bold text-gray-900 mb-4;
-  }
-
-  .section-subheading {
-    @apply text-lg text-gray-600 max-w-2xl mx-auto;
-  }
-
-  .card {
-    @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden;
+  to {
+    opacity: 1;
   }
 }
