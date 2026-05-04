@@ -72,16 +72,39 @@ export default function Contact() {
 
                 <div className="flex items-start gap-4 pt-4 border-t border-gray-200">
                   <Clock size={24} className="text-orange-600 shrink-0 mt-1" />
-                  <div>
-                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider mb-1">Order Hours</p>
-                    <p className="text-gray-800 font-bold">9:00 AM – 8:00 PM</p>
-                    <p className="text-gray-500 text-xs">Monday to Saturday</p>
-                  </div>
+<div>
+
+  <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider mb-1">
+
+    Availability
+
+  </p>
+
+  <p className="text-gray-800 font-bold leading-relaxed">
+
+    🌍 Serving customers across India & abroad
+
+  </p>
+
+  <p className="text-gray-600 text-sm mt-1 font-medium">
+
+    We’re available on call & WhatsApp — regardless of your time zone.
+
+  </p>
+
+  <p className="text-orange-600 text-xs mt-2 font-bold">
+
+    Quick responses guaranteed ✨
+
+  </p>
+
+</div>
                 </div>
               </div>
             </div>
 
           </div>
+          
 
           {/* Bottom Branding */}
           <div className="mt-16 pt-8 border-t border-gray-100 text-center">

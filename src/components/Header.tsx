@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingBag } from 'lucide-react';
 
@@ -14,11 +14,38 @@ export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
 
+  const menuRef = useRef<HTMLDivElement | null>(null);
+
+  // Scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close menu on route change
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
+  // Close menu on outside click
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        mobileOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node)
+      ) {
+        setMobileOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [mobileOpen]);
 
   return (
     <header 
@@ -31,14 +58,16 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-14">
           
-          {/* Logo - Kept clean and professional */}
-          <Link to="/" className="flex items-center gap-2" onClick={() => setMobileOpen(false)}>
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2">
             <div className="w-9 h-9 rounded-xl bg-orange-600 flex items-center justify-center shadow-orange-200 shadow-lg">
               <span className="text-white font-bold text-base font-telugu">ఇరు</span>
             </div>
             <div className="flex flex-col">
               <span className="font-telugu font-bold text-lg text-gray-900 leading-none">ఇంటి రుచులు</span>
-              <span className="text-[8px] tracking-widest uppercase text-orange-600 font-bold">Inti Ruchulu</span>
+              <span className="text-[8px] tracking-widest uppercase text-orange-600 font-bold">
+                Inti Ruchulu
+              </span>
             </div>
           </Link>
 
@@ -49,7 +78,9 @@ export default function Header() {
                 key={link.to}
                 to={link.to}
                 className={`text-sm font-bold transition-colors ${
-                  location.pathname === link.to ? 'text-orange-600' : 'text-gray-600 hover:text-orange-600'
+                  location.pathname === link.to
+                    ? 'text-orange-600'
+                    : 'text-gray-600 hover:text-orange-600'
                 }`}
               >
                 {link.label}
@@ -57,14 +88,16 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Mobile Right Side Actions */}
+          {/* Mobile Actions */}
           <div className="flex items-center gap-3 md:hidden">
             <Link to="/menu" className="p-2 text-gray-700 bg-gray-50 rounded-full">
               <ShoppingBag size={18} />
             </Link>
             <button
               className={`p-2 rounded-xl transition-all ${
-                mobileOpen ? 'bg-orange-600 text-white rotate-90' : 'bg-gray-100 text-gray-900'
+                mobileOpen
+                  ? 'bg-orange-600 text-white rotate-90'
+                  : 'bg-gray-100 text-gray-900'
               }`}
               onClick={() => setMobileOpen(!mobileOpen)}
             >
@@ -74,16 +107,17 @@ export default function Header() {
         </div>
       </div>
 
-      {/* Mobile Nav - Compact "Floating Card" Style */}
+      {/* Mobile Menu */}
       <div 
+        ref={menuRef}
         className={`absolute top-full left-0 w-full px-4 pt-2 pb-6 md:hidden transition-all duration-300 ease-out ${
-          mobileOpen 
-            ? 'opacity-100 translate-y-0 visible' 
+          mobileOpen
+            ? 'opacity-100 translate-y-0 visible'
             : 'opacity-0 -translate-y-4 invisible'
         }`}
       >
-        {/* The "Island" Container */}
         <div className="bg-white rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden">
+          
           <div className="grid grid-cols-2 gap-2 p-3">
             {navLinks.map((link) => (
               <Link
@@ -93,13 +127,14 @@ export default function Header() {
                 className={`flex items-center justify-center py-4 rounded-2xl text-sm font-bold transition-all ${
                   location.pathname === link.to
                     ? 'bg-orange-50 text-orange-700 border-orange-100 border'
-                    : 'bg-gray-50 text-gray-600 border-transparent border hover:bg-gray-100'
+                    : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
                 }`}
               >
                 {link.label}
               </Link>
             ))}
           </div>
+
           <div className="px-3 pb-3">
             <Link 
               to="/menu"
@@ -109,6 +144,7 @@ export default function Header() {
               EXPLORE FULL MENU
             </Link>
           </div>
+
         </div>
       </div>
     </header>
