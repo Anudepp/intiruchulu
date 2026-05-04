@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
 import { ShoppingBag, ArrowLeft, Phone } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import ShippingBadge from '../components/ShippingBadge'; // Ensure path is correct
-
+import ShippingBadge from '../components/ShippingBadge'; 
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 interface Product {
   nameTelugu: string;
   nameEnglish: string;
@@ -37,8 +36,9 @@ const products: Product[] = [
   { nameTelugu: 'మామిడికాయ పచ్చడి', nameEnglish: 'Mango Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/MamidikayaPacchadi.png' },
   
   // Daily Staples
-  { nameTelugu: 'పులిహోర పులుసు', nameEnglish: 'Tamarind Rice Paste', basePrice: 600, category: 'staples', image: '/menu/PulihoraPulusu.png' },
+  
   { nameTelugu: 'చపాతీలు', nameEnglish: 'Chapathis', basePrice: 12, category: 'staples', image: '/menu/Chapathi.png' },
+  { nameTelugu: 'పులిహోర పులుసు', nameEnglish: 'Tamarind Rice Paste', basePrice: 600, category: 'staples', image: '/menu/PulihoraPulusu.png' },
 ];
 
 function ProductCard({ product }: { product: Product }) {
@@ -122,12 +122,33 @@ function ProductCard({ product }: { product: Product }) {
 
 export default function Menu() {
   const phoneNumber = "+918499962882"; 
+  const location = useLocation();
 
-  const SectionLayout = ({ title, teluguTitle, items }: any) => {
-    if (items.length === 0) return null;
+useEffect(() => {
+
+  if (location.hash) {
+
+    const id = location.hash.replace('#', '');
+
+    const el = document.getElementById(id);
+
+    if (el) {
+
+      setTimeout(() => {
+
+        el.scrollIntoView({ behavior: 'smooth' });
+
+      }, 100);
+
+    }
+
+  }
+
+}, [location]);
+
+const SectionLayout = ({ id, title, teluguTitle, items }: any) => {    if (items.length === 0) return null;
     return (
-      <div className="mb-20">
-        <div className="mb-8 flex flex-col border-l-[6px] border-orange-600 pl-6">
+<div id={id} className="mb-20">        <div className="mb-8 flex flex-col border-l-[6px] border-orange-600 pl-6">
           <h2 className="text-3xl font-black text-gray-900 tracking-tight italic">
             {title}
           </h2>
@@ -179,22 +200,40 @@ export default function Menu() {
 
       <main className="max-w-7xl mx-auto px-4 pb-32">
         <SectionLayout 
-          title="Traditional Powders" 
-          teluguTitle="పొడిలు" 
-          items={products.filter(p => p.category === 'podis')} 
-        />
 
-        <SectionLayout 
-          title="Authentic Pickles" 
-          teluguTitle="పచ్చడి" 
-          items={products.filter(p => p.category === 'pacchadi')} 
-        />
+  id="powders"
 
-        <SectionLayout 
-          title="Daily Staples" 
-          teluguTitle="రోజువారీ వంటలు" 
-          items={products.filter(p => p.category === 'staples')} 
-        />
+  title="Traditional Powders" 
+
+  teluguTitle="పొడిలు" 
+
+  items={products.filter(p => p.category === 'podis')} 
+
+/>
+
+<SectionLayout 
+
+  id="pickles"
+
+  title="Authentic Pickles" 
+
+  teluguTitle="పచ్చడి" 
+
+  items={products.filter(p => p.category === 'pacchadi')} 
+
+/>
+
+<SectionLayout 
+
+  id="staples"
+
+  title="Daily Staples" 
+
+  teluguTitle="రోజువారీ వంటలు" 
+
+  items={products.filter(p => p.category === 'staples')} 
+
+/>
         
         <div className="mt-16 p-12 bg-orange-50/50 rounded-[3rem] border-2 border-dashed border-orange-200 text-center">
           <p className="text-orange-900 text-xl font-bold font-telugu italic">
