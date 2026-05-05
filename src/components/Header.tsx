@@ -1,6 +1,6 @@
-import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ShoppingBag } from 'lucide-react';
+import { Home, UtensilsCrossed, Phone } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -10,40 +10,14 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const menuRef = useRef<HTMLDivElement | null>(null);
 
-  // Scroll effect
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  // Close menu on route change
-  useEffect(() => {
-    setMobileOpen(false);
-  }, [location.pathname]);
-
-  // Close menu on outside click
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        mobileOpen &&
-        menuRef.current &&
-        !menuRef.current.contains(event.target as Node)
-      ) {
-        setMobileOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [mobileOpen]);
 
   return (
     <header
@@ -57,11 +31,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-14">
           
           {/* Logo */}
-          <Link
-            to="/"
-            className="flex items-center gap-2"
-            onClick={() => setMobileOpen(false)}
-          >
+          <Link to="/" className="flex items-center gap-2">
             <div className="w-9 h-9 rounded-xl bg-orange-600 flex items-center justify-center shadow-orange-200 shadow-lg">
               <span className="text-white font-bold text-base font-telugu">ఇరు</span>
             </div>
@@ -92,65 +62,63 @@ export default function Header() {
             ))}
           </nav>
 
-          {/* Mobile Actions */}
-          <div className="flex items-center gap-3 md:hidden">
+          {/* Mobile Nav Icons */}
+          <div className="flex items-center gap-4 md:hidden">
+            
             <Link
-              to="/menu"
-              className="p-2 text-gray-700 bg-gray-50 rounded-full"
+              to="/"
+              className="flex flex-col items-center group"
             >
-              <ShoppingBag size={18} />
-            </Link>
-
-            <button
-              className={`p-2 rounded-xl transition-all ${
-                mobileOpen
-                  ? 'bg-orange-600 text-white rotate-90'
-                  : 'bg-gray-100 text-gray-900'
-              }`}
-              onClick={() => setMobileOpen(!mobileOpen)}
-            >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <div
-        ref={menuRef}
-        className={`absolute top-full left-0 w-full px-4 pt-2 pb-6 md:hidden z-[210] transition-all duration-300 ease-out ${
-          mobileOpen
-            ? 'opacity-100 translate-y-0 visible'
-            : 'opacity-0 -translate-y-4 invisible'
-        }`}
-      >
-        <div className="bg-white rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-gray-100 overflow-hidden">
-          
-          <div className="grid grid-cols-2 gap-2 p-3">
-            {navLinks.map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                onClick={() => setMobileOpen(false)}
-                className={`flex items-center justify-center py-4 rounded-2xl text-sm font-bold transition-all ${
-                  location.pathname === link.to
-                    ? 'bg-orange-50 text-orange-700 border-orange-100 border'
-                    : 'bg-gray-50 text-gray-600 hover:bg-gray-100'
+              <div
+                className={`p-2 rounded-xl transition-all ${
+                  location.pathname === '/'
+                    ? 'bg-orange-100 text-orange-600 scale-105'
+                    : 'bg-gray-100 text-gray-600 group-active:scale-95'
                 }`}
               >
-                {link.label}
-              </Link>
-            ))}
-          </div>
+                <Home size={20} />
+              </div>
+              <span className="text-[10px] font-semibold mt-1 text-gray-700">
+                Home
+              </span>
+            </Link>
 
-          <div className="px-3 pb-3">
             <Link
               to="/menu"
-              onClick={() => setMobileOpen(false)}
-              className="flex items-center justify-center w-full py-4 bg-gray-900 text-white rounded-2xl text-xs font-black tracking-widest shadow-lg active:scale-[0.98] transition-transform"
+              className="flex flex-col items-center group"
             >
-              EXPLORE FULL MENU
+              <div
+                className={`p-2 rounded-xl transition-all ${
+                  location.pathname === '/menu'
+                    ? 'bg-orange-100 text-orange-600 scale-105'
+                    : 'bg-gray-100 text-gray-600 group-active:scale-95'
+                }`}
+              >
+                <UtensilsCrossed size={20} />
+              </div>
+              <span className="text-[10px] font-semibold mt-1 text-gray-700">
+                Menu
+              </span>
             </Link>
+
+            <Link
+              to="/contact"
+              className="flex flex-col items-center group"
+            >
+              <div
+                className={`p-2 rounded-xl transition-all ${
+                  location.pathname === '/contact'
+                    ? 'bg-orange-100 text-orange-600 scale-105'
+                    : 'bg-gray-100 text-gray-600 group-active:scale-95'
+                }`}
+              >
+                <Phone size={20} />
+              </div>
+              <span className="text-[10px] font-semibold mt-1 text-gray-700">
+                Contact
+              </span>
+            </Link>
+
           </div>
         </div>
       </div>
