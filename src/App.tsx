@@ -6,6 +6,7 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Menu from './pages/Menu';
 import Contact from './pages/Contact';
+import PromoBar from './components/PromoBar';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -18,6 +19,7 @@ function ScrollToTop() {
 function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-white">
+      <PromoBar />
       <Header />
       <main className="flex-1">
         <Routes>
