@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Leaf, Flame, Heart, Star, Sparkles } from 'lucide-react';
+import { ArrowRight, Leaf, Flame, Heart, Sparkles } from 'lucide-react';
 import ShippingBadge from '../components/ShippingBadge';
+import ProductCarousel from "../components/ProductCarousel";
 
 const features = [
   {
@@ -41,6 +42,48 @@ const categories = [
   },
 ];
 
+// ✅ Carousel Data (uses menu images)
+const productCarousel = [
+
+{
+    title: "Curry leaves powder",
+    telugu: "కరివేపాకు పొడి",
+    image: "/menu/KarivepakuPodi.png",
+    link: "/menu#powders",
+  },
+  {
+    title: "Garlic Chili Powder",
+    telugu: "వెల్లుల్లి కారం",
+    image: "/menu/VellulliKaram.png",
+    link: "/menu#powders",
+  },
+  {
+    title: "Moringa Leaves Powder",
+    telugu: "మునగాకు పొడి",
+    image: "/menu/MunagakuPodi.png",
+    link: "/menu#powders",
+  },
+  {
+    title: "Pappula Podi",
+    telugu: "పప్పుల పొడి",
+    image: "/menu/PappulaPodi.png",
+    link: "/menu#powders",
+  },
+  {
+    title: "Sesame Seeds Powder",
+    telugu: "నువ్వుల పొడి",
+    image: "/menu/NuvvulaPodi.png",
+    link: "/menu#powders",
+  },
+  {
+    title: "Flaxseed Powder",
+    telugu: "అవిసెగింజల పొడి",
+    image: "/menu/AvisaginjalaPodi.png",
+    link: "/menu#powders",
+  },
+
+];
+
 export default function Home() {
   return (
     <div className="overflow-x-hidden bg-white">
@@ -50,9 +93,8 @@ export default function Home() {
         <ShippingBadge isMobileBar />
       </div>
 
-      {/* HERO (mobile-first optimized, content unchanged) */}
+      {/* HERO */}
       <section className="relative min-h-[65vh] md:min-h-[90vh] flex items-center bg-gradient-to-b from-orange-50 via-white to-transparent pt-8 md:pt-0">
-
         <div className="max-w-7xl mx-auto px-4 w-full">
 
           <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-xs md:text-sm font-bold uppercase tracking-wider shadow-sm">
@@ -82,10 +124,22 @@ export default function Home() {
               Explore Menu <ArrowRight size={20} />
             </Link>
           </div>
+
         </div>
       </section>
 
-      {/* Categories (mobile optimized only layout changed) */}
+{/* 🔥 SWIGGY-STYLE CAROUSEL */}
+<section className="py-6 bg-white">
+  <div className="max-w-7xl mx-auto">
+    <h2 className="text-xl font-bold text-gray-900 px-4 mb-4">
+      Popular Items
+    </h2>
+
+    <ProductCarousel items={productCarousel} />
+  </div>
+</section>
+
+      {/* Categories */}
       <section className="py-14 bg-white">
         <div className="max-w-7xl mx-auto px-4">
 
@@ -108,6 +162,7 @@ export default function Home() {
                 <img
                   src={cat.image}
                   alt={cat.title}
+                  loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
@@ -122,10 +177,11 @@ export default function Home() {
               </Link>
             ))}
           </div>
+
         </div>
       </section>
 
-      {/* Features (unchanged content, compact spacing only) */}
+      {/* Features */}
       <section className="py-14 bg-orange-50/50">
         <div className="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-6">
           {features.map((f) => (
@@ -140,11 +196,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* CTA (unchanged content, mobile optimized spacing) */}
+      {/* CTA */}
       <section className="px-4 py-16">
-        <div className="max-w-6xl mx-auto relative rounded-3xl overflow-hidden bg-gray-900 py-14 px-6 md:px-10 text-center">
-
-          <div className="relative z-10 space-y-6">
+        <div className="max-w-6xl mx-auto rounded-3xl overflow-hidden bg-gray-900 py-14 px-6 md:px-10 text-center">
+          <div className="space-y-6">
             <h2 className="text-3xl md:text-5xl font-black text-white leading-tight">
               From our kitchen to <br />
               <span className="text-orange-500 italic">
