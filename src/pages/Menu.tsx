@@ -24,7 +24,7 @@ const products: Product[] = [
   { nameTelugu: 'మునగాకు పొడి', nameEnglish: 'Moringa Leaves Powder', basePrice: 600, category: 'podis', image: '/menu/MunagakuPodi.png' },
   { nameTelugu: 'పప్పుల పొడి', nameEnglish: 'Pappula Podi', basePrice: 600, category: 'podis', image: '/menu/PappulaPodi.png' },
   { nameTelugu: 'నువ్వుల పొడి', nameEnglish: 'Sesame Seeds Powder', basePrice: 600, category: 'podis', image: '/menu/NuvvulaPodi.png' },
-  { nameTelugu: 'అవిసెగింజల పొడి', nameEnglish: 'Flaxseed Powder', basePrice: 600, category: 'podis', image: '/menu/AvisaginjalaPodi.png' },
+  { nameTelugu: 'అవిసెగింజల పొడి', nameEnglish: 'Flaxseed Powder', basePrice: 700, category: 'podis', image: '/menu/AvisaginjalaPodi.png' },
   { nameTelugu: 'చారు పొడి', nameEnglish: 'Rasam Powder', basePrice: 600, category: 'podis', image: '/menu/ChaaruPodi.png' },
 
   // Pacchadis
