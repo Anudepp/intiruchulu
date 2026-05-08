@@ -2,6 +2,7 @@ import { ShoppingBag, ArrowLeft, Phone } from 'lucide-react';
 import ShippingBadge from '../components/ShippingBadge'; 
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import SmartBanner from "../components/SmartBanner";
 
 interface Product {
   nameTelugu: string;
@@ -184,22 +185,52 @@ export default function Menu() {
         </p>
       </header>
 
+
       <div className="hidden md:block fixed bottom-8 left-8 z-50 animate-bounce-slow">
         <ShippingBadge />
       </div>
 
-      <main className="max-w-7xl mx-auto px-4 pb-32">
-        <SectionLayout id="powders" title="Traditional Powders" teluguTitle="పొడిలు" items={products.filter(p => p.category === 'podis')} />
-        <SectionLayout id="pickles" title="Authentic Pickles" teluguTitle="పచ్చడి" items={products.filter(p => p.category === 'pacchadi')} />
-        <SectionLayout id="staples" title="Daily Staples" teluguTitle="రోజువారీ వంటలు" items={products.filter(p => p.category === 'staples')} />
-        
-        <div className="mt-10 md:mt-16 p-8 md:p-12 bg-orange-50/50 rounded-[2rem] md:rounded-[3rem] border-2 border-dashed border-orange-200 text-center">
-          <p className="text-orange-900 text-lg md:text-xl font-bold font-telugu italic">
-            "బల్క్ ఆర్డర్లు లేదా మరిన్ని వివరాల కోసం మమ్మల్ని సంప్రదించండి!"
-          </p>
-          <p className="text-orange-600 text-[10px] uppercase font-black tracking-widest mt-2">Bulk Orders & Catering</p>
-        </div>
-      </main>
+ <main className="max-w-7xl mx-auto px-4 pb-32">
+
+  {/* SMART CONTEXTUAL BANNER */}
+  <div className="mb-8 md:mb-10">
+    <SmartBanner />
+  </div>
+
+  {/* PRODUCTS */}
+  <SectionLayout
+    id="powders"
+    title="Traditional Powders"
+    teluguTitle="పొడిలు"
+    items={products.filter(p => p.category === 'podis')}
+  />
+
+  <SectionLayout
+    id="pickles"
+    title="Authentic Pickles"
+    teluguTitle="పచ్చడి"
+    items={products.filter(p => p.category === 'pacchadi')}
+  />
+
+  <SectionLayout
+    id="staples"
+    title="Daily Staples"
+    teluguTitle="రోజువారీ వంటలు"
+    items={products.filter(p => p.category === 'staples')}
+  />
+
+  {/* BULK ORDER CTA */}
+  <div className="mt-10 md:mt-16 p-8 md:p-12 bg-orange-50/50 rounded-[2rem] md:rounded-[3rem] border-2 border-dashed border-orange-200 text-center">
+    
+    <p className="text-orange-900 text-lg md:text-xl font-bold font-telugu italic">
+      "బల్క్ ఆర్డర్లు లేదా మరిన్ని వివరాల కోసం మమ్మల్ని సంప్రదించండి!"
+    </p>
+
+    <p className="text-orange-600 text-[10px] uppercase font-black tracking-widest mt-2">
+      Bulk Orders & Catering
+    </p>
+  </div>
+</main>
 
       <div className="fixed bottom-6 right-4 md:right-8 z-50 pointer-events-none">
         <a 
