@@ -2,7 +2,8 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Leaf, Flame, Heart, Sparkles } from 'lucide-react';
 import ShippingBadge from '../components/ShippingBadge';
 import ProductCarousel from "../components/ProductCarousel";
-
+import { useEffect } from 'react';
+import { enableAudio, playTap, playSwoosh } from '../utils/sound';
 const features = [
   {
     icon: Leaf,
@@ -52,6 +53,31 @@ const productCarousel = [
 ];
 
 export default function Home() {
+  useEffect(() => {
+
+  const enable = () => {
+
+    enableAudio();
+
+    window.removeEventListener('click', enable);
+
+    window.removeEventListener('touchstart', enable);
+
+  };
+
+  window.addEventListener('click', enable);
+
+  window.addEventListener('touchstart', enable);
+
+  return () => {
+
+    window.removeEventListener('click', enable);
+
+    window.removeEventListener('touchstart', enable);
+
+  };
+
+}, []);
   return (
     <div className="overflow-x-hidden bg-white">
       {/* Inline Animation Styles */}
@@ -96,6 +122,7 @@ export default function Home() {
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
             <Link
               to="/menu#powders"
+              onClick={() => playSwoosh()}
               className="group relative overflow-hidden w-full sm:w-auto flex items-center justify-center gap-3 px-10 py-5 bg-gradient-to-r from-orange-600 to-red-600 text-white font-black rounded-2xl shadow-xl shadow-orange-200 hover:shadow-orange-400 active:scale-95 transition-all duration-300"
             >
               {/* The Auto-Shining Layer */}
@@ -138,6 +165,7 @@ export default function Home() {
             {categories.map((cat) => (
               <Link
                 key={cat.title}
+                onClick={() => playTap()}
                 to={cat.link}
                 className="group relative h-44 md:h-[400px] overflow-hidden rounded-2xl md:rounded-[2.5rem] shadow-lg"
               >
@@ -190,6 +218,7 @@ export default function Home() {
             </p>
             <Link
               to="/menu#powders"
+               onClick={() => playSwoosh()}
               className="inline-flex items-center gap-3 px-8 py-4 bg-white text-gray-900 font-black rounded-2xl active:scale-95 transition"
             >
               ORDER NOW <ArrowRight size={18} />
