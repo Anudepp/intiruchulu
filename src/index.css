@@ -191,3 +191,45 @@
 .animate-shimmer {
   animation: shimmer 2.8s linear infinite;
 }
+
+@keyframes luxuryShimmer {
+  0% {
+    transform: translateX(-180%) skewX(-25deg);
+  }
+
+  100% {
+    transform: translateX(220%) skewX(-25deg);
+  }
+}
+
+.luxury-shimmer {
+  animation: luxuryShimmer 2.5s linear infinite;
+}
+
+@keyframes loaderMove {
+  0% {
+    transform: translateX(-120%);
+  }
+
+  100% {
+    transform: translateX(220%);
+  }
+}
+
+.animate-loader {
+  animation: loaderMove 1.5s infinite ease-in-out;
+}
+
+@keyframes slowSpin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: slowSpin 12s linear infinite;
+}
