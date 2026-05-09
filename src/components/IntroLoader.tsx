@@ -1,44 +1,57 @@
 export default function IntroLoader() {
   return (
-    <div className="fixed inset-0 z-[9999] overflow-hidden bg-[#1f1a17] flex items-center justify-center">
+    <div className="fixed inset-0 z-[9999] overflow-hidden bg-gradient-to-br from-[#fff7ed] via-[#fffaf5] to-[#fef3e2] flex items-center justify-center">
 
-      {/* Background Glow */}
-      <div className="absolute w-[500px] h-[500px] bg-amber-500/20 blur-3xl rounded-full animate-pulse" />
+      {/* Soft Glow Background */}
+      <div className="absolute w-[500px] h-[500px] bg-orange-300/20 blur-3xl rounded-full animate-pulse" />
 
-      {/* Floating Grain */}
-      <div className="absolute inset-0 opacity-[0.04] bg-[url('https://www.transparenttextures.com/patterns/asfalt-light.png')]" />
+      {/* Secondary Glow */}
+      <div className="absolute bottom-[-120px] right-[-80px] w-[300px] h-[300px] bg-amber-200/30 blur-3xl rounded-full" />
 
-      {/* Content */}
-      <div className="relative flex flex-col items-center">
+      {/* Grain Texture */}
+      <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/rice-paper-3.png')]" />
 
-        {/* Logo Circle */}
-        <div className="relative mb-6">
+      {/* Main Content */}
+      <div className="relative flex flex-col items-center px-6">
 
-          {/* Rotating Border */}
-          <div className="absolute inset-0 rounded-full border border-amber-400/30 animate-spin-slow" />
+        {/* Logo Wrapper */}
+        <div className="relative mb-8">
 
-          {/* Inner Circle */}
-          <div className="w-28 h-28 rounded-full bg-gradient-to-br from-[#4a2c22] to-[#2d1b16] flex items-center justify-center shadow-[0_0_60px_rgba(245,158,11,0.25)] border border-amber-500/20">
+          {/* Rotating Ring */}
+          <div className="absolute inset-0 rounded-full border border-orange-300/40 animate-spin-slow" />
 
-            <span className="text-4xl font-black text-amber-300 font-telugu">
+          {/* Outer Glow */}
+          <div className="absolute inset-0 rounded-full bg-orange-400/10 blur-xl scale-125" />
+
+          {/* Main Logo Circle */}
+          <div className="relative w-28 h-28 rounded-full bg-gradient-to-br from-orange-500 to-red-500 flex items-center justify-center shadow-[0_0_45px_rgba(249,115,22,0.35)]">
+
+            {/* Inner Shine */}
+            <div className="absolute inset-[2px] rounded-full bg-gradient-to-br from-orange-400 to-red-400 opacity-90" />
+
+            {/* Telugu Logo */}
+            <span className="relative text-4xl font-black text-white font-telugu drop-shadow-md">
               ఇరు
             </span>
 
           </div>
         </div>
 
-        {/* Brand */}
-        <h1 className="text-3xl md:text-5xl font-black tracking-tight text-[#f8f5ef]">
+        {/* Brand Name */}
+        <h1 className="text-4xl md:text-5xl font-black tracking-tight text-gray-900">
           ఇంటి రుచులు
         </h1>
 
-        <p className="mt-2 text-sm md:text-base tracking-[0.35em] uppercase text-amber-400/80 font-semibold">
+        {/* Subtitle */}
+        <p className="mt-3 text-[11px] md:text-sm tracking-[0.35em] uppercase text-orange-600 font-bold text-center">
           Homemade Telugu Flavors
         </p>
 
-        {/* Premium Loading Line */}
-        <div className="mt-10 w-52 h-[3px] bg-white/10 rounded-full overflow-hidden">
-          <div className="h-full w-1/2 bg-gradient-to-r from-transparent via-amber-400 to-transparent animate-loader" />
+        {/* Loading Line */}
+        <div className="mt-10 w-56 h-[4px] bg-orange-100 rounded-full overflow-hidden shadow-inner">
+
+          <div className="h-full w-1/2 bg-gradient-to-r from-transparent via-orange-500 to-transparent animate-loader" />
+
         </div>
 
       </div>
