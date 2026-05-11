@@ -49,7 +49,7 @@ export default function About() {
 
               <div className="space-y-6 text-lg text-gray-600 leading-relaxed font-medium">
                 <p>
-                  <span className="font-telugu font-bold text-orange-700 text-xl">ఇంటి రుచులు</span> (Inti Ruchulu) translates to "the flavors of home." We are a small, passionate family-run team dedicated to preserving the authentic soul of Telugu kitchens.
+                  <span className="font-telugu font-bold text-orange-700 text-xl">Inti ruchulu</span> (Inti Ruchulu) translates to "the flavors of home." We are a small, passionate family-run team dedicated to preserving the authentic soul of Telugu kitchens.
                 </p>
                 <p>
                   Our mission is simple: to bring the rich, traditional flavors of Telangana to your dining table. From aromatic podis to tangy pickles and soft chapathis, every product is handcrafted with love.
