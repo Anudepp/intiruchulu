@@ -21,21 +21,20 @@ const weightOptions = [
 
 const products: Product[] = [
   // Podis
-  { nameTelugu: 'కరివేపాకు పొడి', nameEnglish: 'Curry leaves powder', basePrice: 600, category: 'podis', image: '/menu/KarivepakuPodi.png' },
-  { nameTelugu: 'వెల్లుల్లి కారం', nameEnglish: 'Garlic Chili Powder', basePrice: 600, category: 'podis', image: '/menu/VellulliKaram.png' },
-  { nameTelugu: 'మునగాకు పొడి', nameEnglish: 'MoringaLeaves Powder', basePrice: 600, category: 'podis', image: '/menu/MunagakuPodi.png' },
-  { nameTelugu: 'పప్పుల పొడి', nameEnglish: 'Pappula Podi', basePrice: 600, category: 'podis', image: '/menu/PappulaPodi.png' },
-  { nameTelugu: 'నువ్వుల పొడి', nameEnglish: 'Sesame Seeds Powder', basePrice: 600, category: 'podis', image: '/menu/NuvvulaPodi.png' },
+  { nameTelugu: 'కరివేపాకు పొడి', nameEnglish: 'Curry leaves powder', basePrice: 700, category: 'podis', image: '/menu/KarivepakuPodi.png' },
+  { nameTelugu: 'వెల్లుల్లి కారం', nameEnglish: 'Garlic Chili Powder', basePrice: 700, category: 'podis', image: '/menu/VellulliKaram.png' },
+  { nameTelugu: 'మునగాకు పొడి', nameEnglish: 'MoringaLeaves Powder', basePrice: 700, category: 'podis', image: '/menu/MunagakuPodi.png' },
+  { nameTelugu: 'పప్పుల పొడి', nameEnglish: 'Pappula Podi', basePrice: 700, category: 'podis', image: '/menu/PappulaPodi.png' },
+  { nameTelugu: 'నువ్వుల పొడి', nameEnglish: 'Sesame Seeds Powder', basePrice: 700, category: 'podis', image: '/menu/NuvvulaPodi.png' },
   { nameTelugu: 'అవిసెగింజల పొడి', nameEnglish: 'Flaxseed Powder', basePrice: 700, category: 'podis', image: '/menu/AvisaginjalaPodi.png' },
-  { nameTelugu: 'చారు పొడి', nameEnglish: 'Rasam Powder', basePrice: 600, category: 'podis', image: '/menu/ChaaruPodi.png' },
-
+  { nameTelugu: 'చారు పొడి', nameEnglish: 'Rasam Powder', basePrice: 700, category: 'podis', image: '/menu/ChaaruPodi.png' },
   // Pacchadis
-  { nameTelugu: 'గోంగూర పచ్చడి', nameEnglish: 'Gongura Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/GonguraPacchadi.png' },
-  { nameTelugu: 'కొత్తిమీర పచ్చడి', nameEnglish: 'Kotthimera Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/KotthimeraPacchadi.png' },
-  { nameTelugu: 'మీల్ మేకర్ పచ్చడి', nameEnglish: 'Meal Maker Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/MealMakerPacchadi.png' },
-  { nameTelugu: 'టొమాటో పచ్చడి', nameEnglish: 'Tomato Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/TomatoPacchadi.png' },
-  { nameTelugu: 'మామిడికాయ బెల్లం పచ్చడి', nameEnglish: 'Mongo Jaggery Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/MamidikayaBellamPacchadi.png' },
-  { nameTelugu: 'మామిడికాయ పచ్చడి', nameEnglish: 'Mango Pickle', basePrice: 500, category: 'pacchadi', image: '/menu/MamidikayaPacchadi.png' },
+  { nameTelugu: 'గోంగూర పచ్చడి', nameEnglish: 'Gongura Pickle', basePrice: 600, category: 'pacchadi', image: '/menu/GonguraPacchadi.png' },
+  { nameTelugu: 'కొత్తిమీర పచ్చడి', nameEnglish: 'Kotthimera Pickle', basePrice: 600, category: 'pacchadi', image: '/menu/KotthimeraPacchadi.png' },
+  { nameTelugu: 'మీల్ మేకర్ పచ్చడి', nameEnglish: 'Meal Maker Pickle', basePrice: 600, category: 'pacchadi', image: '/menu/MealMakerPacchadi.png' },
+  { nameTelugu: 'టొమాటో పచ్చడి', nameEnglish: 'Tomato Pickle', basePrice: 600, category: 'pacchadi', image: '/menu/TomatoPacchadi.png' },
+  { nameTelugu: 'మామిడికాయ బెల్లం పచ్చడి', nameEnglish: 'Mongo Jaggery Pickle', basePrice: 600, category: 'pacchadi', image: '/menu/MamidikayaBellamPacchadi.png' },
+  { nameTelugu: 'మామిడికాయ పచ్చడి', nameEnglish: 'Mango Pickle', basePrice: 600  , category: 'pacchadi', image: '/menu/MamidikayaPacchadi.png' },
   
   // Daily Staples
   { nameTelugu: 'చపాతీలు', nameEnglish: 'Chapathis', basePrice: 12, category: 'staples', image: '/menu/Chapathi.png' },
