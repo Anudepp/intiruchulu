@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import { useAppDispatch } from "../hooks/redux";
+import { addToCart } from "../store/slices/cartSlice";
 import type { Product } from "../types/product";
 
 const weightOptions = [
@@ -15,6 +17,7 @@ interface ProductCardProps {
 export default function ProductCard({ product }: ProductCardProps) {
   const [selectedWeight, setSelectedWeight] = useState(weightOptions[1]);
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useAppDispatch();
   const isPerPiece = product.nameEnglish === "Chapathis";
 
 const displayPrice = isPerPiece
@@ -35,6 +38,26 @@ const decreaseQuantity = () => {
 
   }
 
+};
+  const handleAddToCart = () => {
+  dispatch(
+    addToCart({
+      id: product.nameEnglish,
+      name: product.nameEnglish,
+      image: product.image,
+      price: displayPrice,
+      quantity,
+      weight: isPerPiece ? "Per Piece" : selectedWeight.label,
+    })
+  );
+
+  // Reset quantity after adding
+  setQuantity(1);
+
+  // Reset weight back to default (except Chapathis)
+  if (!isPerPiece) {
+    setSelectedWeight(weightOptions[1]);
+  }
 };
 
   return (
@@ -130,6 +153,7 @@ selectedWeight.label === opt.label                        ? "bg-orange-600 borde
         </div>
       </div>
       <button
+          onClick={handleAddToCart}
   className="mt-4 w-full bg-orange-600 hover:bg-orange-700 active:scale-95 transition-all text-white py-3 rounded-xl font-bold shadow-md"
 >
   Add to Cart
