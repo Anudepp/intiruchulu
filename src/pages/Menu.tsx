@@ -1,121 +1,17 @@
 import { ShoppingBag, ArrowLeft, Phone } from 'lucide-react';
 import ShippingBadge from '../components/ShippingBadge'; 
-import React, { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SmartBanner from "../components/SmartBanner";
+import type { Product } from "../types/product";
+import { products } from "../data/products";
+import ProductCard from "../components/ProductCard";
 
-interface Product {
-  nameTelugu: string;
-  nameEnglish: string;
-  basePrice: number;
-  category: 'podis' | 'pacchadi' | 'staples';
-  image: string;
-}
 
-const weightOptions = [
-  { label: '100g', factor: 0.1 },
-  { label: '250g', factor: 0.25 },
-  { label: '500g', factor: 0.5 },
-  { label: '1kg', factor: 1.0 },
-];
 
-const products: Product[] = [
-  // Podis
-  { nameTelugu: 'కరివేపాకు పొడి', nameEnglish: 'Curry leaves powder', basePrice: 700, category: 'podis', image: '/menu/KarivepakuPodi.png' },
-  { nameTelugu: 'వెల్లుల్లి కారం', nameEnglish: 'Garlic Chili Powder', basePrice: 700, category: 'podis', image: '/menu/VellulliKaram.png' },
-  { nameTelugu: 'మునగాకు పొడి', nameEnglish: 'MoringaLeaves Powder', basePrice: 700, category: 'podis', image: '/menu/MunagakuPodi.png' },
-  { nameTelugu: 'పప్పుల పొడి', nameEnglish: 'Pappula Podi', basePrice: 700, category: 'podis', image: '/menu/PappulaPodi.png' },
-  { nameTelugu: 'నువ్వుల పొడి', nameEnglish: 'Sesame Seeds Powder', basePrice: 700, category: 'podis', image: '/menu/NuvvulaPodi.png' },
-  { nameTelugu: 'అవిసెగింజల పొడి', nameEnglish: 'Flaxseed Powder', basePrice: 700, category: 'podis', image: '/menu/AvisaginjalaPodi.png' },
-  { nameTelugu: 'చారు పొడి', nameEnglish: 'Rasam Powder', basePrice: 700, category: 'podis', image: '/menu/ChaaruPodi.png' },
-  // Pacchadis
-  { nameTelugu: 'గోంగూర పచ్చడి', nameEnglish: 'Gongura Pickle', basePrice: 600, category: 'pacchadi', image: '/menu/GonguraPacchadi.png' },
-  { nameTelugu: 'కొత్తిమీర పచ్చడి', nameEnglish: 'Kotthimera Pickle', basePrice: 600, category: 'pacchadi', image: '/menu/KotthimeraPacchadi.png' },
-  { nameTelugu: 'మీల్ మేకర్ పచ్చడి', nameEnglish: 'Meal Maker Pickle', basePrice: 600, category: 'pacchadi', image: '/menu/MealMakerPacchadi.png' },
-  { nameTelugu: 'టొమాటో పచ్చడి', nameEnglish: 'Tomato Pickle', basePrice: 600, category: 'pacchadi', image: '/menu/TomatoPacchadi.png' },
-  { nameTelugu: 'మామిడికాయ బెల్లం పచ్చడి', nameEnglish: 'Mongo Jaggery Pickle', basePrice: 600, category: 'pacchadi', image: '/menu/MamidikayaBellamPacchadi.png' },
-  { nameTelugu: 'మామిడికాయ పచ్చడి', nameEnglish: 'Mango Pickle', basePrice: 600  , category: 'pacchadi', image: '/menu/MamidikayaPacchadi.png' },
-  
-  // Daily Staples
-  { nameTelugu: 'చపాతీలు', nameEnglish: 'Chapathis', basePrice: 12, category: 'staples', image: '/menu/Chapathi.png' },
-  { nameTelugu: 'పులిహోర పులుసు', nameEnglish: 'Tamarind Rice Paste', basePrice: 600, category: 'staples', image: '/menu/PulihoraPulusu.png' },
-];
 
-function ProductCard({ product }: { product: Product }) {
-  const [selectedIdx, setSelectedIdx] = useState(1); 
-  const isPerPiece = product.nameEnglish === 'Chapathis';
-  
-  const displayPrice = isPerPiece 
-    ? product.basePrice 
-    : Math.round(product.basePrice * weightOptions[selectedIdx].factor);
 
-  return (
-    <div className="bg-white rounded-[1.5rem] md:rounded-[2rem] overflow-hidden shadow-sm border border-gray-100 flex flex-col transition-all active:scale-[0.98] md:hover:shadow-xl md:hover:shadow-orange-100/50 group">
-      <div className="relative aspect-square w-full overflow-hidden bg-orange-50/30">
-        <img
-          src={product.image}
-          alt={product.nameEnglish}
-          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-        />
-        {!isPerPiece && (
-          <div className="absolute top-2 right-2 md:top-4 md:right-4 bg-orange-600/90 backdrop-blur-sm text-white px-2 py-1 md:px-3 md:py-1 rounded-lg md:rounded-full text-[8px] md:text-[10px] font-black shadow-lg">
-            Starts ₹{Math.round(product.basePrice * 0.1)}
-          </div>
-        )}
-      </div>
 
-      <div className="p-3 md:p-5 flex flex-col flex-1">
-        <div className="mb-3">
-          <h3 className="font-telugu font-bold text-lg md:text-xl text-gray-900 leading-tight">
-            {product.nameTelugu}
-          </h3>
-          <p className="text-[9px] md:text-[11px] text-orange-600 font-black uppercase tracking-widest mt-0.5">
-            {product.nameEnglish}
-          </p>
-        </div>
-
-        <div className="mt-auto">
-          {!isPerPiece && (
-            <div className="mb-4">
-              <div className="grid grid-cols-2 gap-1 md:grid-cols-4 md:gap-1.5">
-                {weightOptions.map((opt, idx) => (
-                  <button
-                    key={opt.label}
-                    onClick={() => setSelectedIdx(idx)}
-                    className={`py-1.5 md:py-2 rounded-lg md:rounded-xl text-[9px] md:text-[11px] font-black transition-all border ${
-                      selectedIdx === idx
-                        ? 'bg-orange-600 border-orange-600 text-white shadow-md shadow-orange-200'
-                        : 'bg-white border-gray-100 text-gray-500 hover:border-orange-200 hover:bg-orange-50/30'
-                    }`}
-                  >
-                    {opt.label}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <div className="pt-3 border-t border-gray-50 flex items-center justify-between">
-            <div>
-              <span className="text-[8px] md:text-[10px] text-gray-400 font-black uppercase block mb-0.5">
-                {isPerPiece ? 'Per Piece' : 'Price'}
-              </span>
-              <div className="flex items-center gap-1.5">
-                <span className="text-xl md:text-2xl font-black text-gray-900">₹{displayPrice}</span>
-                {!isPerPiece && (
-                  <span className="text-[8px] md:text-[10px] text-orange-600 font-bold bg-orange-50 px-1.5 py-0.5 rounded border border-orange-100">
-                    {weightOptions[selectedIdx].label}
-                  </span>
-                )}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 export default function Menu() {
   const phoneNumber = "+918499962882"; 
