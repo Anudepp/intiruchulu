@@ -2,6 +2,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Home, UtensilsCrossed, Phone } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { playTap } from '../utils/sound';
+import CartIcon from "./CartIcon";
 
 const navLinks = [
   { to: '/', label: 'Home' },
@@ -83,33 +84,40 @@ export default function Header() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => {
-                const active = location.pathname === link.to;
+<div className="hidden md:flex items-center gap-8">
 
-                return (
-                  <Link
-                    key={link.to}
-                    to={link.to}
-                    onClick={() => playTap()}
-                    className={`relative text-sm font-bold transition-all duration-300 ${
-                      active
-                        ? 'text-orange-600'
-                        : 'text-gray-600 hover:text-orange-600'
-                    }`}
-                  >
-                    {link.label}
+  <nav className="flex items-center gap-8">
+    {navLinks.map((link) => {
+      const active = location.pathname === link.to;
 
-                    {/* Active underline */}
-                    <span
-                      className={`absolute left-0 -bottom-2 h-[2px] rounded-full bg-orange-500 transition-all duration-300 ${
-                        active ? 'w-full' : 'w-0'
-                      }`}
-                    />
-                  </Link>
-                );
-              })}
-            </nav>
+      return (
+        <Link
+          key={link.to}
+          to={link.to}
+          onClick={() => playTap()}
+          className={`relative text-sm font-bold transition-all duration-300 ${
+            active
+              ? "text-orange-600"
+              : "text-gray-600 hover:text-orange-600"
+          }`}
+        >
+          {link.label}
+
+          <span
+            className={`absolute left-0 -bottom-2 h-[2px] rounded-full bg-orange-500 transition-all duration-300 ${
+              active ? "w-full" : "w-0"
+            }`}
+          />
+        </Link>
+      );
+    })}
+  </nav>
+
+<CartIcon
+  className="cursor-pointer"
+  iconClassName="text-gray-700 hover:text-orange-600"
+/>
+</div>
 
             {/* Mobile Nav */}
             <div className="flex items-center gap-4 md:hidden">
@@ -197,6 +205,26 @@ export default function Header() {
                   Contact
                 </span>
               </Link>
+              {/* Cart */}
+{/* Cart */}
+<div className="flex flex-col items-center group">
+  <CartIcon
+    className={`p-2.5 rounded-2xl transition-all duration-200 ${
+      location.pathname === "/cart"
+        ? "bg-gradient-to-br from-orange-100 to-orange-50 shadow-md shadow-orange-200/50"
+        : "bg-gray-100"
+    }`}
+    iconClassName={`${
+      location.pathname === "/cart"
+        ? "text-orange-600"
+        : "text-gray-600"
+    }`}
+  />
+
+  <span className="text-[10px] font-semibold mt-1 text-gray-700">
+    Cart
+  </span>
+</div>
 
             </div>
           </div>
