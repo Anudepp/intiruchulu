@@ -1,4 +1,5 @@
 import { ShoppingCart } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useAppSelector } from "../hooks/redux";
 
 interface CartIconProps {
@@ -18,7 +19,10 @@ export default function CartIcon({
   );
 
   return (
-    <div className={`relative ${className}`}>
+    <Link
+      to="/cart"
+      className={`relative block ${className}`}
+    >
       <ShoppingCart
         size={20}
         className={`transition-colors ${iconClassName}`}
@@ -46,6 +50,6 @@ export default function CartIcon({
           {totalItems}
         </span>
       )}
-    </div>
+    </Link>
   );
 }
