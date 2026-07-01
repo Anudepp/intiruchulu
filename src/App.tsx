@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { useEffect, useState } from 'react';
+import Cart from "./pages/Cart";
 
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -38,6 +39,7 @@ function Layout() {
           <Route path="/about" element={<About />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/cart" element={<Cart />} />
         </Routes>
       </main>
 

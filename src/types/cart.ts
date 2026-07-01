@@ -7,6 +7,11 @@ export interface CartItem {
   weight: string;
 }
 
+export interface CartItemIdentifier {
+  id: string;
+  weight: string;
+}
+
 export interface CartState {
   items: CartItem[];
 }
