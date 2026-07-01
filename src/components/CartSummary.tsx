@@ -1,4 +1,5 @@
 import { useAppSelector } from "../hooks/redux";
+import { formatCurrency } from "../utils/currency";
 
 export default function CartSummary() {
   const items = useAppSelector((state) => state.cart.items);
@@ -37,8 +38,7 @@ export default function CartSummary() {
           </span>
 
           <span className="font-bold">
-            ₹{subtotal}
-          </span>
+{formatCurrency(subtotal)}          </span>
         </div>
 
         <div className="flex justify-between">
@@ -57,8 +57,7 @@ export default function CartSummary() {
           <span>Total</span>
 
           <span className="text-orange-600">
-            ₹{subtotal}
-          </span>
+{formatCurrency(subtotal)}          </span>
         </div>
 
       </div>
