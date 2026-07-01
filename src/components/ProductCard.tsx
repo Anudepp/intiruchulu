@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAppDispatch } from "../hooks/redux";
 import { addToCart } from "../store/slices/cartSlice";
 import type { Product } from "../types/product";
+import toast from "react-hot-toast";
 
 const weightOptions = [
   { label: "100g", factor: 0.1 },
@@ -50,6 +51,7 @@ const decreaseQuantity = () => {
       weight: isPerPiece ? "Per Piece" : selectedWeight.label,
     })
   );
+    toast.success(`${product.nameEnglish} added to cart!`);
 
   // Reset quantity after adding
   setQuantity(1);
