@@ -42,5 +42,20 @@ describe("Cart Slice", () => {
 expect(state.items[0].quantity).toBe(1);
 
 expect(state.items[0].weight).toBe("250g");
+  });
+  it("should merge duplicate items by increasing quantity", () => {
+  // Arrange
+  let state = cartReducer(undefined, addToCart(sampleItem));
+
+  // Act
+  state = cartReducer(state, addToCart(sampleItem));
+
+  // Assert
+  expect(state.items).toHaveLength(1);
+
+  
+  expect(state.items[0].name).toBe("Gongura Pickle");
+
+expect(state.items[0].weight).toBe("250g");
 });
 });
