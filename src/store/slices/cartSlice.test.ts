@@ -18,7 +18,13 @@ const sampleItem = {
 };
 
 describe("Cart Slice", () => {
-  it("should setup the cart reducer test suite", () => {
-    expect(true).toBe(true);
+ it("should return the initial state", () => {
+  const state = cartReducer(undefined, {
+    type: "@@INIT",
   });
+
+  expect(state).toEqual({
+    items: [],
+  });
+});
 });
