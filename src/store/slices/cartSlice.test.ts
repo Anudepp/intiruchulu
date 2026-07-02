@@ -26,5 +26,21 @@ describe("Cart Slice", () => {
   expect(state).toEqual({
     items: [],
   });
+ });
+  
+  it("should add a new item to the cart", () => {
+  const state = cartReducer(
+    undefined,
+    addToCart(sampleItem)
+  );
+
+  expect(state.items).toHaveLength(1);
+
+    expect(state.items[0]).toEqual(sampleItem);
+    expect(state.items[0].name).toBe("Gongura Pickle");
+
+expect(state.items[0].quantity).toBe(1);
+
+expect(state.items[0].weight).toBe("250g");
 });
 });
