@@ -57,5 +57,76 @@ expect(state.items[0].weight).toBe("250g");
   expect(state.items[0].name).toBe("Gongura Pickle");
 
 expect(state.items[0].weight).toBe("250g");
+  });
+  it("should keep different weights as separate cart items", () => {
+  // Arrange
+  const item250 = sampleItem;
+
+  const item500 = {
+    ...sampleItem,
+    id: "gongura-500g",
+    weight: "500g",
+    price: 300,
+  };
+
+  // Act
+  let state = cartReducer(undefined, addToCart(item250));
+
+  state = cartReducer(state, addToCart(item500));
+
+  // Assert
+expect(state.items).toHaveLength(2);
+
+expect(state.items[0]).toEqual(item250);
+
+expect(state.items[1]).toEqual(item500);
+  });
+ it("should increase the quantity of an existing item", () => {
+  let state = cartReducer(undefined, addToCart(sampleItem));
+
+  state = cartReducer(
+    state,
+    increaseQuantity({
+      id: sampleItem.id,
+      weight: sampleItem.weight,
+    })
+  );
+
+  expect(state.items).toHaveLength(1);
+  expect(state.items[0].quantity).toBe(2);
+});
+it("should decrease the quantity of an item", () => {
+  let state = cartReducer(undefined, addToCart(sampleItem));
+
+  state = cartReducer(
+    state,
+    increaseQuantity({
+      id: sampleItem.id,
+      weight: sampleItem.weight,
+    })
+  );
+
+  state = cartReducer(
+    state,
+    decreaseQuantity({
+      id: sampleItem.id,
+      weight: sampleItem.weight,
+    })
+  );
+
+  expect(state.items[0].quantity).toBe(1);
+});
+it("should remove the item when quantity reaches zero", () => {
+  let state = cartReducer(undefined, addToCart(sampleItem));
+
+  state = cartReducer(
+    state,
+    decreaseQuantity({
+      id: sampleItem.id,
+      weight: sampleItem.weight,
+    })
+  );
+
+  expect(state.items).toHaveLength(0);
 });
 });
