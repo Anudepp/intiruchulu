@@ -17,6 +17,15 @@ const sampleItem = {
   weight: "250g",
 };
 
+const secondItem = {
+  id: "avakaya-500g",
+  name: "Avakaya Pickle",
+  image: "/menu/AvakayaPacchadi.png",
+  price: 300,
+  quantity: 1,
+  weight: "500g",
+};
+
 describe("Cart Slice", () => {
  it("should return the initial state", () => {
   const state = cartReducer(undefined, {
@@ -128,5 +137,38 @@ it("should remove the item when quantity reaches zero", () => {
   );
 
   expect(state.items).toHaveLength(0);
+});
+  
+  it("should remove only the selected item from the cart", () => {
+  // Arrange
+  let state = cartReducer(undefined, addToCart(sampleItem));
+
+  state = cartReducer(state, addToCart(secondItem));
+
+  // Act
+  state = cartReducer(
+    state,
+    removeFromCart({
+      id: sampleItem.id,
+      weight: sampleItem.weight,
+    })
+  );
+
+  // Assert
+  expect(state.items).toHaveLength(1);
+
+  expect(state.items[0]).toEqual(secondItem);
+  });
+  it("should clear the entire cart", () => {
+  // Arrange
+  let state = cartReducer(undefined, addToCart(sampleItem));
+
+  state = cartReducer(state, addToCart(secondItem));
+
+  // Act
+  state = cartReducer(state, clearCart());
+
+  // Assert
+  expect(state.items).toEqual([]);
 });
 });
