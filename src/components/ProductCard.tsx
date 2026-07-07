@@ -43,7 +43,7 @@ const decreaseQuantity = () => {
   const handleAddToCart = () => {
   dispatch(
     addToCart({
-      id: product.nameEnglish,
+      id: product.id,
       name: product.nameEnglish,
       image: product.image,
       price: displayPrice,
@@ -95,8 +95,9 @@ const decreaseQuantity = () => {
               <div className="grid grid-cols-2 gap-1 md:grid-cols-4 md:gap-1.5">
                 {weightOptions.map((opt, idx) => (
                   <button
-                    key={opt.label}
-onClick={() => setSelectedWeight(opt)}                    className={`py-1.5 md:py-2 rounded-lg md:rounded-xl text-[9px] md:text-[11px] font-black transition-all border ${
+  key={opt.label}
+  onClick={() => setSelectedWeight(opt)}
+  aria-pressed={selectedWeight.label === opt.label}                   className={`py-1.5 md:py-2 rounded-lg md:rounded-xl text-[9px] md:text-[11px] font-black transition-all border ${
 selectedWeight.label === opt.label                        ? "bg-orange-600 border-orange-600 text-white shadow-md shadow-orange-200"
                         : "bg-white border-gray-100 text-gray-500 hover:border-orange-200 hover:bg-orange-50/30"
                     }`}
@@ -115,18 +116,23 @@ selectedWeight.label === opt.label                        ? "bg-orange-600 borde
 
   <div className="flex items-center justify-between border border-gray-200 rounded-xl overflow-hidden">
     <button
-      onClick={decreaseQuantity}
+                onClick={decreaseQuantity}
+                  aria-label="Decrease quantity"
       className="px-4 py-2 text-lg font-bold hover:bg-orange-50 transition"
     >
       −
     </button>
 
-    <span className="font-black text-lg">
-      {quantity}
-    </span>
+   <span
+  data-testid="quantity-display"
+  className="font-black text-lg"
+>
+  {quantity}
+</span>
 
     <button
-      onClick={increaseQuantity}
+                onClick={increaseQuantity}
+                  aria-label="Increase quantity"
       className="px-4 py-2 text-lg font-bold hover:bg-orange-50 transition"
     >
       +
