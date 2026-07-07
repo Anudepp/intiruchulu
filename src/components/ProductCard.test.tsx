@@ -4,6 +4,7 @@ import ProductCard from "./ProductCard";
 import { renderWithProviders } from "../test/test-utils";
 import userEvent from "@testing-library/user-event";
 import { GetState } from "@reduxjs/toolkit";
+import { fireEvent } from "@testing-library/react";
 
 const sampleProduct = {
   id: "gongura-pickle",
@@ -171,4 +172,42 @@ it("should add the selected product to the cart when Add to Cart is clicked", as
     quantity: 3,
     price: 150,
   });
+});
+
+it("should increase quantity when + button is clicked", () => {
+  const preloadedState = {
+    cart: {
+      items: [
+        {
+          id: sampleProduct.id,
+          name: sampleProduct.nameEnglish,
+          image: sampleProduct.image,
+          price: 150,
+          quantity: 2,
+          weight: "250g",
+        },
+      ],
+    },
+  };
+
+  const { store } = renderWithProviders(
+    <ProductCard product={sampleProduct} />,
+    {
+      preloadedState,
+    }
+  );
+
+  const buttons = screen.getAllByRole("button");
+
+  const plusButton = buttons.find(
+    (button) => button.textContent === "+"
+  );
+
+  expect(plusButton).toBeDefined();
+
+  fireEvent.click(plusButton!);
+
+  expect(store.getState().cart.items[0].quantity).toBe(2);
+
+  expect(screen.getByText("2")).toBeInTheDocument();
 });
