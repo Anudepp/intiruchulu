@@ -43,7 +43,7 @@ const decreaseQuantity = () => {
   const handleAddToCart = () => {
   dispatch(
     addToCart({
-      id: product.nameEnglish,
+      id: product.id,
       name: product.nameEnglish,
       image: product.image,
       price: displayPrice,

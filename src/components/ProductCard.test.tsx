@@ -3,6 +3,7 @@ import { screen } from "@testing-library/react";
 import ProductCard from "./ProductCard";
 import { renderWithProviders } from "../test/test-utils";
 import userEvent from "@testing-library/user-event";
+import { GetState } from "@reduxjs/toolkit";
 
 const sampleProduct = {
   id: "gongura-pickle",
@@ -18,6 +19,21 @@ const expectedPrices = {
   "250g": sampleProduct.basePrice * 0.25,
   "500g": sampleProduct.basePrice * 0.5,
   "1kg": sampleProduct.basePrice,
+};
+
+const preloadedState = {
+  cart: {
+    items: [
+      {
+        id: sampleProduct.id,
+        name: sampleProduct.nameEnglish,
+        image: sampleProduct.image,
+        price: 150,
+        quantity: 2,
+        weight: "250g",
+      },
+    ],
+  },
 };
 
 
@@ -123,4 +139,36 @@ expect(
 expect(
   screen.getByText(`₹${expectedPrices["1kg"]}`)
 ).toBeInTheDocument();
+});
+
+it("should add the selected product to the cart when Add to Cart is clicked", async () => {
+  const { store } = renderWithProviders(
+    <ProductCard product={sampleProduct} />,
+
+  {
+
+    preloadedState,
+
+  }
+  );
+
+  const user = userEvent.setup();
+
+  await user.click(
+    screen.getByRole("button", {
+      name: /add to cart/i,
+    })
+  );
+
+  const cartItems = store.getState().cart.items;
+
+  expect(cartItems).toHaveLength(1);
+
+  expect(cartItems[0]).toMatchObject({
+    id: sampleProduct.id,
+    name: sampleProduct.nameEnglish,
+    weight: "250g",
+    quantity: 3,
+    price: 150,
+  });
 });
