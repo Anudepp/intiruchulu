@@ -115,7 +115,8 @@ selectedWeight.label === opt.label                        ? "bg-orange-600 borde
 
   <div className="flex items-center justify-between border border-gray-200 rounded-xl overflow-hidden">
     <button
-      onClick={decreaseQuantity}
+                onClick={decreaseQuantity}
+                  aria-label="Decrease quantity"
       className="px-4 py-2 text-lg font-bold hover:bg-orange-50 transition"
     >
       −
@@ -126,7 +127,8 @@ selectedWeight.label === opt.label                        ? "bg-orange-600 borde
     </span>
 
     <button
-      onClick={increaseQuantity}
+                onClick={increaseQuantity}
+                  aria-label="Increase quantity"
       className="px-4 py-2 text-lg font-bold hover:bg-orange-50 transition"
     >
       +

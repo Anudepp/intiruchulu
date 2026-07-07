@@ -174,40 +174,47 @@ it("should add the selected product to the cart when Add to Cart is clicked", as
   });
 });
 
-it("should increase quantity when + button is clicked", () => {
-  const preloadedState = {
-    cart: {
-      items: [
-        {
-          id: sampleProduct.id,
-          name: sampleProduct.nameEnglish,
-          image: sampleProduct.image,
-          price: 150,
-          quantity: 2,
-          weight: "250g",
-        },
-      ],
-    },
-  };
-
-  const { store } = renderWithProviders(
-    <ProductCard product={sampleProduct} />,
-    {
-      preloadedState,
-    }
+it("should increase quantity when + button is clicked", async () => {
+  renderWithProviders(
+    <ProductCard product={sampleProduct} />
   );
 
-  const buttons = screen.getAllByRole("button");
+  const user = userEvent.setup();
 
-  const plusButton = buttons.find(
-    (button) => button.textContent === "+"
-  );
+  const plusButton = screen.getByRole("button", {
+    name: /increase quantity/i,
+  });
 
-  expect(plusButton).toBeDefined();
+  expect(screen.getByText("1")).toBeInTheDocument();
 
-  fireEvent.click(plusButton!);
-
-  expect(store.getState().cart.items[0].quantity).toBe(2);
+  await user.click(plusButton);
 
   expect(screen.getByText("2")).toBeInTheDocument();
+});
+
+
+it("should decrease quantity when - button is clicked", async () => {
+  renderWithProviders(
+    <ProductCard product={sampleProduct} />
+  );
+
+  const user = userEvent.setup();
+
+  const plusButton = screen.getByRole("button", {
+    name: /increase quantity/i,
+  });
+
+  const minusButton = screen.getByRole("button", {
+    name: /decrease quantity/i,
+  });
+
+  // Increase first (1 -> 2)
+  await user.click(plusButton);
+
+  expect(screen.getByText("2")).toBeInTheDocument();
+
+  // Decrease back (2 -> 1)
+  await user.click(minusButton);
+
+  expect(screen.getByText("1")).toBeInTheDocument();
 });
