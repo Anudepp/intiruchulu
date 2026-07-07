@@ -78,8 +78,13 @@ it("should update the selected weight when the user clicks a different weight", 
 
   await user.click(button500);
 
-  expect(button500).toHaveClass("bg-orange-600");
+expect(button500).toHaveAttribute(
 
+  "aria-pressed",
+
+  "true"
+
+);
 });
 
 it("should recalculate the displayed price when the selected weight changes", async () => {
@@ -217,4 +222,66 @@ it("should decrease quantity when - button is clicked", async () => {
   await user.click(minusButton);
 
   expect(screen.getByText("1")).toBeInTheDocument();
+});
+
+
+it("should reset quantity after adding product to cart", async () => {
+  renderWithProviders(
+    <ProductCard product={sampleProduct} />
+  );
+
+  const user = userEvent.setup();
+
+  const plusButton = screen.getByRole("button", {
+    name: /increase quantity/i,
+  });
+
+  await user.click(plusButton);
+
+  expect(
+    screen.getByTestId("quantity-display")
+  ).toHaveTextContent("2");
+
+  await user.click(
+    screen.getByRole("button", {
+      name: /add to cart/i,
+    })
+  );
+
+  expect(
+    screen.getByTestId("quantity-display")
+  ).toHaveTextContent("1");
+});
+
+it("should reset selected weight to 250g after adding to cart", async () => {
+  renderWithProviders(
+    <ProductCard product={sampleProduct} />
+  );
+
+  const user = userEvent.setup();
+
+  const button500 = screen.getByRole("button", {
+    name: "500g",
+  });
+
+  await user.click(button500);
+
+expect(button500).toHaveAttribute(
+
+  "aria-pressed",
+
+  "true"
+
+);
+  await user.click(
+    screen.getByRole("button", {
+      name: /add to cart/i,
+    })
+  );
+
+  const defaultWeight = screen.getByRole("button", {
+    name: "250g",
+  });
+
+  expect(defaultWeight).toHaveClass("bg-orange-600");
 });
