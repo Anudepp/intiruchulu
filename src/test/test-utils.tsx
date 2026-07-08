@@ -1,8 +1,9 @@
 import { ReactElement } from "react";
 import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit";
+import { MemoryRouter } from "react-router-dom";
 
+import { configureStore } from "@reduxjs/toolkit";
 import cartReducer from "../store/slices/cartSlice";
 
 export function renderWithProviders(
@@ -24,7 +25,9 @@ export function renderWithProviders(
     store,
     ...render(
       <Provider store={store}>
-        {ui}
+        <MemoryRouter>
+          {ui}
+        </MemoryRouter>
       </Provider>
     ),
   };
