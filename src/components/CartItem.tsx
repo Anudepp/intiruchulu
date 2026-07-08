@@ -44,12 +44,15 @@ export default function CartItem({ item }: CartItemProps) {
       <div className="flex flex-col items-center gap-2">
 
 <button
-  onClick={() => dispatch(
-  increaseQuantity({
-    id: item.id,
-    weight: item.weight,
-  })
-)}
+  aria-label="Increase quantity"
+  onClick={() =>
+    dispatch(
+      increaseQuantity({
+        id: item.id,
+        weight: item.weight,
+      })
+    )
+  }
   className="w-8 h-8 rounded-full border border-gray-300 hover:bg-orange-50 transition"
 >
   +
@@ -60,12 +63,15 @@ export default function CartItem({ item }: CartItemProps) {
         </span>
 
 <button
-  onClick={() => dispatch(
-  decreaseQuantity({
-    id: item.id,
-    weight: item.weight,
-  })
-)}
+  aria-label="Decrease quantity"
+  onClick={() =>
+    dispatch(
+      decreaseQuantity({
+        id: item.id,
+        weight: item.weight,
+      })
+    )
+  }
   className="w-8 h-8 rounded-full border border-gray-300 hover:bg-orange-50 transition"
 >
   −
@@ -79,18 +85,20 @@ export default function CartItem({ item }: CartItemProps) {
         <p className="font-black text-lg">
           ₹{item.price * item.quantity}
         </p>
-
 <button
-  onClick={() => dispatch(
-  removeFromCart({
-    id: item.id,
-    weight: item.weight,
-  })
-)}
+  aria-label="Remove item"
+  onClick={() =>
+    dispatch(
+      removeFromCart({
+        id: item.id,
+        weight: item.weight,
+      })
+    )
+  }
   className="mt-4 text-red-500 hover:text-red-700 transition"
 >
-          <Trash2 size={18} />
-        </button>
+  <Trash2 size={18} />
+</button>
 
       </div>
 
