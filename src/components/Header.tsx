@@ -1,7 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { Home, UtensilsCrossed, Phone } from 'lucide-react';
 import { useState, useEffect } from 'react';
-import { playTap } from '../utils/sound';
 import CartIcon from "./CartIcon";
 
 const navLinks = [
@@ -21,7 +20,6 @@ export default function Header() {
     };
 
     window.addEventListener('scroll', handleScroll);
-
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -31,18 +29,10 @@ export default function Header() {
       <style>
         {`
           @keyframes softFloat {
-            0%, 100% {
-              transform: translateY(0px);
-            }
-
-            50% {
-              transform: translateY(-2px);
-            }
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-2px); }
           }
-
-          .animate-soft-float {
-            animation: softFloat 3s ease-in-out infinite;
-          }
+          .animate-soft-float { animation: softFloat 3s ease-in-out infinite; }
         `}
       </style>
 
@@ -59,75 +49,50 @@ export default function Header() {
             {/* Logo */}
             <Link
               to="/"
-              onClick={() => playTap()}
               className="flex items-center gap-2 active:scale-95 transition-transform duration-200"
             >
               <div className="relative">
                 <div className="absolute inset-0 bg-orange-500 blur-lg opacity-20 rounded-2xl" />
-
                 <div className="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-200">
-                  <span className="text-white font-bold text-base font-telugu">
-                    ఇరు
-                  </span>
+                  <span className="text-white font-bold text-base font-telugu">ఇరు</span>
                 </div>
               </div>
-
               <div className="flex flex-col">
-                <span className="font-telugu font-bold text-lg text-gray-900 leading-none">
-                  ఇంటి రుచులు
-                </span>
-
-                <span className="text-[8px] tracking-[0.25em] uppercase text-orange-600 font-bold">
-                  Inti Ruchulu
-                </span>
+                <span className="font-telugu font-bold text-lg text-gray-900 leading-none">ఇంటి రుచులు</span>
+                <span className="text-[8px] tracking-[0.25em] uppercase text-orange-600 font-bold">Inti Ruchulu</span>
               </div>
             </Link>
 
             {/* Desktop Nav */}
-<div className="hidden md:flex items-center gap-8">
-
-  <nav className="flex items-center gap-8">
-    {navLinks.map((link) => {
-      const active = location.pathname === link.to;
-
-      return (
-        <Link
-          key={link.to}
-          to={link.to}
-          onClick={() => playTap()}
-          className={`relative text-sm font-bold transition-all duration-300 ${
-            active
-              ? "text-orange-600"
-              : "text-gray-600 hover:text-orange-600"
-          }`}
-        >
-          {link.label}
-
-          <span
-            className={`absolute left-0 -bottom-2 h-[2px] rounded-full bg-orange-500 transition-all duration-300 ${
-              active ? "w-full" : "w-0"
-            }`}
-          />
-        </Link>
-      );
-    })}
-  </nav>
-
-<CartIcon
-  className="cursor-pointer"
-  iconClassName="text-gray-700 hover:text-orange-600"
-/>
-</div>
+            <div className="hidden md:flex items-center gap-8">
+              <nav className="flex items-center gap-8">
+                {navLinks.map((link) => {
+                  const active = location.pathname === link.to;
+                  return (
+                    <Link
+                      key={link.to}
+                      to={link.to}
+                      className={`relative text-sm font-bold transition-all duration-300 ${
+                        active ? "text-orange-600" : "text-gray-600 hover:text-orange-600"
+                      }`}
+                    >
+                      {link.label}
+                      <span
+                        className={`absolute left-0 -bottom-2 h-[2px] rounded-full bg-orange-500 transition-all duration-300 ${
+                          active ? "w-full" : "w-0"
+                        }`}
+                      />
+                    </Link>
+                  );
+                })}
+              </nav>
+              <CartIcon className="cursor-pointer" iconClassName="text-gray-700 hover:text-orange-600" />
+            </div>
 
             {/* Mobile Nav */}
             <div className="flex items-center gap-4 md:hidden">
-
               {/* Home */}
-              <Link
-                to="/"
-                onClick={() => playTap()}
-                className="flex flex-col items-center group"
-              >
+              <Link to="/" className="flex flex-col items-center group">
                 <div
                   className={`p-2.5 rounded-2xl transition-all duration-200 active:scale-90 ${
                     location.pathname === '/'
@@ -135,27 +100,13 @@ export default function Header() {
                       : 'bg-gray-100 text-gray-600'
                   }`}
                 >
-                  <Home
-                    size={20}
-                    className={
-                      location.pathname === '/'
-                        ? 'animate-soft-float'
-                        : ''
-                    }
-                  />
+                  <Home size={20} className={location.pathname === '/' ? 'animate-soft-float' : ''} />
                 </div>
-
-                <span className="text-[10px] font-semibold mt-1 text-gray-700">
-                  Home
-                </span>
+                <span className="text-[10px] font-semibold mt-1 text-gray-700">Home</span>
               </Link>
 
               {/* Menu */}
-              <Link
-                to="/menu"
-                onClick={() => playTap()}
-                className="flex flex-col items-center group"
-              >
+              <Link to="/menu" className="flex flex-col items-center group">
                 <div
                   className={`p-2.5 rounded-2xl transition-all duration-200 active:scale-90 ${
                     location.pathname === '/menu'
@@ -163,27 +114,13 @@ export default function Header() {
                       : 'bg-gray-100 text-gray-600'
                   }`}
                 >
-                  <UtensilsCrossed
-                    size={20}
-                    className={
-                      location.pathname === '/menu'
-                        ? 'animate-soft-float'
-                        : ''
-                    }
-                  />
+                  <UtensilsCrossed size={20} className={location.pathname === '/menu' ? 'animate-soft-float' : ''} />
                 </div>
-
-                <span className="text-[10px] font-semibold mt-1 text-gray-700">
-                  Menu
-                </span>
+                <span className="text-[10px] font-semibold mt-1 text-gray-700">Menu</span>
               </Link>
 
               {/* Contact */}
-              <Link
-                to="/contact"
-                onClick={() => playTap()}
-                className="flex flex-col items-center group"
-              >
+              <Link to="/contact" className="flex flex-col items-center group">
                 <div
                   className={`p-2.5 rounded-2xl transition-all duration-200 active:scale-90 ${
                     location.pathname === '/contact'
@@ -191,40 +128,23 @@ export default function Header() {
                       : 'bg-gray-100 text-gray-600'
                   }`}
                 >
-                  <Phone
-                    size={20}
-                    className={
-                      location.pathname === '/contact'
-                        ? 'animate-soft-float'
-                        : ''
-                    }
-                  />
+                  <Phone size={20} className={location.pathname === '/contact' ? 'animate-soft-float' : ''} />
                 </div>
-
-                <span className="text-[10px] font-semibold mt-1 text-gray-700">
-                  Contact
-                </span>
+                <span className="text-[10px] font-semibold mt-1 text-gray-700">Contact</span>
               </Link>
-              {/* Cart */}
-{/* Cart */}
-<div className="flex flex-col items-center group">
-  <CartIcon
-    className={`p-2.5 rounded-2xl transition-all duration-200 ${
-      location.pathname === "/cart"
-        ? "bg-gradient-to-br from-orange-100 to-orange-50 shadow-md shadow-orange-200/50"
-        : "bg-gray-100"
-    }`}
-    iconClassName={`${
-      location.pathname === "/cart"
-        ? "text-orange-600"
-        : "text-gray-600"
-    }`}
-  />
 
-  <span className="text-[10px] font-semibold mt-1 text-gray-700">
-    Cart
-  </span>
-</div>
+              {/* Cart */}
+              <div className="flex flex-col items-center group">
+                <CartIcon
+                  className={`p-2.5 rounded-2xl transition-all duration-200 ${
+                    location.pathname === "/cart"
+                      ? "bg-gradient-to-br from-orange-100 to-orange-50 shadow-md shadow-orange-200/50"
+                      : "bg-gray-100"
+                  }`}
+                  iconClassName={location.pathname === "/cart" ? "text-orange-600" : "text-gray-600"}
+                />
+                <span className="text-[10px] font-semibold mt-1 text-gray-700">Cart</span>
+              </div>
 
             </div>
           </div>
