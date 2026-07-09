@@ -36,13 +36,4 @@ const createTone = (
   oscillator.stop(ctx.currentTime + duration);
 };
 
-export const playTap = () => {
-  createTone(520, 0.08, 0.030, "sine");
-};
 
-export const playSwoosh = () => {
-  createTone(320, 0.18, 0.030, "triangle");
-  setTimeout(() => {
-    createTone(420, 0.12, 0.030, "triangle");
-  }, 40);
-};

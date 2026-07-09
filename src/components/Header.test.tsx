@@ -4,9 +4,7 @@ import { renderWithProviders } from "../test/test-utils";
 import Header from "./Header";
 
 // Mock sound utility
-vi.mock("../utils/sound", () => ({
-  playTap: vi.fn(),
-}));
+
 
 describe("Header", () => {
   it("should render the application logo", () => {
