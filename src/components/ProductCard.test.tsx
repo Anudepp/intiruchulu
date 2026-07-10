@@ -285,3 +285,4 @@ expect(button500).toHaveAttribute(
 
   expect(defaultWeight).toHaveClass("bg-orange-600");
 });
+
