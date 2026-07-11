@@ -2,6 +2,7 @@ import { describe, it, expect, vi } from "vitest";
 import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../test/test-utils";
 import Header from "./Header";
+import { fireEvent } from "@testing-library/react";
 
 // Mock sound utility
 
@@ -97,4 +98,65 @@ describe("Header", () => {
     // Desktop + Mobile cart links
     expect(cartLinks).toHaveLength(2);
   });
+  it("should apply the scrolled styles after scrolling", () => {
+  Object.defineProperty(window, "scrollY", {
+    writable: true,
+    configurable: true,
+    value: 20,
+  });
+
+  const { container } = renderWithProviders(<Header />);
+
+  fireEvent.scroll(window);
+
+  const header = container.querySelector("header");
+
+  expect(header).toHaveClass("bg-white/80");
+  });
+  it("should highlight the Contact navigation when on the contact page", () => {
+  const { container } = renderWithProviders(<Header />, {
+    route: "/contact",
+  });
+
+  const activeIcons = container.querySelectorAll(".animate-soft-float");
+
+  expect(activeIcons).toHaveLength(1);
+
+  expect(
+    screen.getAllByText("Contact").length
+  ).toBeGreaterThan(0);
+  });
+  it("should highlight the Menu navigation when on the menu page", () => {
+  const { container } = renderWithProviders(<Header />, {
+    route: "/menu",
+  });
+
+  const activeIcons = container.querySelectorAll(".animate-soft-float");
+
+  expect(activeIcons).toHaveLength(1);
+
+  expect(
+    screen.getAllByText("Menu").length
+  ).toBeGreaterThan(0);
+  });
+  it("should highlight the Cart navigation when on the cart page", () => {
+  const { container } = renderWithProviders(<Header />, {
+    route: "/cart",
+    preloadedState: {
+      cart: {
+        items: [],
+      },
+    },
+  });
+
+  const activeIcons = container.querySelectorAll(".animate-soft-float");
+
+  // Cart becomes active, but only Home/Menu/Contact use the
+  // animate-soft-float class, so there should be no animated icons.
+  expect(activeIcons).toHaveLength(0);
+
+  expect(
+    screen.getAllByText("Cart").length
+  ).toBeGreaterThan(0);
+});
 });
