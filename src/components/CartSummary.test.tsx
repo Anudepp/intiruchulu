@@ -1,6 +1,5 @@
 import { describe, it, expect } from "vitest";
 import { screen } from "@testing-library/react";
-
 import CartSummary from "./CartSummary";
 import { renderWithProviders } from "../test/test-utils";
 
