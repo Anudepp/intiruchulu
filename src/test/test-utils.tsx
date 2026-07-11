@@ -10,8 +10,10 @@ export function renderWithProviders(
   ui: ReactElement,
   {
     preloadedState,
+    route = "/",
   }: {
     preloadedState?: any;
+    route?: string;
   } = {}
 ) {
   const store = configureStore({
@@ -25,7 +27,7 @@ export function renderWithProviders(
     store,
     ...render(
       <Provider store={store}>
-        <MemoryRouter>
+        <MemoryRouter initialEntries={[route]}>
           {ui}
         </MemoryRouter>
       </Provider>

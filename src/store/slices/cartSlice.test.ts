@@ -44,7 +44,7 @@ describe("Cart Slice", () => {
   });
  });
   
-  it("should add a new item to the cart", () => {
+it("should add a new item to the cart", () => {
   const state = cartReducer(
     undefined,
     addToCart(sampleItem)
@@ -58,8 +58,8 @@ describe("Cart Slice", () => {
 expect(state.items[0].quantity).toBe(1);
 
 expect(state.items[0].weight).toBe("250g");
-  });
-  it("should merge duplicate items by increasing quantity", () => {
+});
+it("should merge duplicate items by increasing quantity", () => {
   // Arrange
 let state = createCartState(sampleItem);
 
@@ -74,8 +74,8 @@ expect(state.items[0].quantity).toBe(2);
 
 expect(state.items[0].name).toBe("Gongura Pickle");
 expect(state.items[0].weight).toBe("250g");
-  });
-  it("should keep different weights as separate cart items", () => {
+});
+it("should keep different weights as separate cart items", () => {
   // Arrange
   const item250 = sampleItem;
 
@@ -97,8 +97,8 @@ expect(state.items).toHaveLength(2);
 expect(state.items[0]).toEqual(item250);
 
 expect(state.items[1]).toEqual(item500);
-  });
- it("should increase the quantity of an existing item", () => {
+});
+it("should increase the quantity of an existing item", () => {
 let state = createCartState(sampleItem);
 
 state = cartReducer(
@@ -146,7 +146,7 @@ state = cartReducer(
 expect(state.items).toHaveLength(0);
 });
   
-  it("should remove only the selected item from the cart", () => {
+it("should remove only the selected item from the cart", () => {
   // Arrange
 let state = createCartState(sampleItem, secondItem);  
 
@@ -163,14 +163,37 @@ let state = createCartState(sampleItem, secondItem);
   expect(state.items).toHaveLength(1);
 
   expect(state.items[0]).toEqual(secondItem);
-  });
-  it("should clear the entire cart", () => {
+});
+it("should clear the entire cart", () => {
   // Arrange
 let state = createCartState(sampleItem, secondItem); 
   // Act
   state = cartReducer(state, clearCart());
 
   // Assert
+  expect(state.items).toEqual([]);
+});
+  it("should do nothing when increasing a non-existent item", () => {
+  const state = cartReducer(
+    undefined,
+    increaseQuantity({
+      id: "invalid-id",
+      weight: "250g",
+    })
+  );
+
+  expect(state.items).toEqual([]);
+});
+
+it("should do nothing when decreasing a non-existent item", () => {
+  const state = cartReducer(
+    undefined,
+    decreaseQuantity({
+      id: "invalid-id",
+      weight: "250g",
+    })
+  );
+
   expect(state.items).toEqual([]);
 });
 });
