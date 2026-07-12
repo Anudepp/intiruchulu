@@ -93,7 +93,7 @@ const decreaseQuantity = () => {
 <div className="mt-auto flex flex-col gap-4">          {!isPerPiece && (
             <div className="mb-4">
               <div className="grid grid-cols-2 gap-1 md:grid-cols-4 md:gap-1.5">
-                {weightOptions.map((opt, idx) => (
+                {weightOptions.map((opt) => (
                   <button
   key={opt.label}
   onClick={() => setSelectedWeight(opt)}

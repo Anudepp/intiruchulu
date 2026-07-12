@@ -1,4 +1,3 @@
-import React from 'react';
 import { Globe, Truck } from 'lucide-react';
 
 interface ShippingBadgeProps {

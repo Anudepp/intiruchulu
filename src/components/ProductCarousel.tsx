@@ -1,28 +1,56 @@
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, PanInfo } from "framer-motion";
 import { Link } from "react-router-dom";
 
-export default function ProductCarousel({ items = [] }) {
+interface CarouselItem {
+  title: string;
+  telugu: string;
+  image: string;
+  link: string;
+}
+
+interface ProductCarouselProps {
+  items: CarouselItem[];
+}
+
+export default function ProductCarousel({
+  items,
+}: ProductCarouselProps) {
   const [index, setIndex] = useState(0);
-  const intervalRef = useRef(null);
-  const resumeRef = useRef(null);
+
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const resumeRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const startAutoSlide = () => {
-    if (intervalRef.current) clearInterval(intervalRef.current);
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
 
     intervalRef.current = setInterval(() => {
-      setIndex(prev => (prev + 1) % items.length);
+      setIndex((prev) => (prev + 1) % items.length);
     }, 3500);
   };
 
   useEffect(() => {
-    if (items.length > 0) startAutoSlide();
-    return () => clearInterval(intervalRef.current);
+    if (items.length > 0) {
+      startAutoSlide();
+    }
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
   }, [index, items.length]);
 
   const pause = () => {
-    clearInterval(intervalRef.current);
-    clearTimeout(resumeRef.current);
+    if (intervalRef.current) {
+      clearInterval(intervalRef.current);
+    }
+
+    if (resumeRef.current) {
+      clearTimeout(resumeRef.current);
+    }
   };
 
   const resume = () => {
@@ -31,24 +59,29 @@ export default function ProductCarousel({ items = [] }) {
     }, 5000);
   };
 
-  const handleDragEnd = (_, info) => {
+  const handleDragEnd = (
+    _: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
     const threshold = 50;
 
     if (info.offset.x < -threshold) {
-      setIndex(prev => (prev + 1) % items.length);
+      setIndex((prev) => (prev + 1) % items.length);
     } else if (info.offset.x > threshold) {
-      setIndex(prev => (prev === 0 ? items.length - 1 : prev - 1));
+      setIndex((prev) => (prev === 0 ? items.length - 1 : prev - 1));
     }
 
     pause();
     resume();
   };
 
-  if (!items.length) return null;
+  if (items.length === 0) {
+    return null;
+  }
 
   return (
     <>
-      {/* 📱 MOBILE: Carousel */}
+      {/* Mobile Carousel */}
       <div
         className="relative overflow-hidden md:hidden"
         onMouseEnter={pause}
@@ -82,6 +115,7 @@ export default function ProductCarousel({ items = [] }) {
                   <p className="text-orange-400 text-xs font-bold font-telugu">
                     {item.telugu}
                   </p>
+
                   <h3 className="text-white text-sm font-bold">
                     {item.title}
                   </h3>
@@ -91,7 +125,7 @@ export default function ProductCarousel({ items = [] }) {
           ))}
         </motion.div>
 
-        {/* Dots */}
+        {/* Navigation Dots */}
         <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
           {items.map((_, i) => (
             <button
@@ -104,12 +138,13 @@ export default function ProductCarousel({ items = [] }) {
               className={`h-2 w-2 rounded-full ${
                 i === index ? "bg-white" : "bg-white/50"
               }`}
+              aria-label={`Go to slide ${i + 1}`}
             />
           ))}
         </div>
       </div>
 
-      {/* 💻 DESKTOP: Clean Grid */}
+      {/* Desktop Grid */}
       <div className="hidden md:grid md:grid-cols-3 gap-6 px-4">
         {items.map((item, i) => (
           <Link
@@ -130,6 +165,7 @@ export default function ProductCarousel({ items = [] }) {
               <p className="text-orange-400 text-sm font-bold font-telugu">
                 {item.telugu}
               </p>
+
               <h3 className="text-white text-lg font-bold">
                 {item.title}
               </h3>
