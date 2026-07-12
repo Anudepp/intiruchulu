@@ -29,7 +29,14 @@ export default function Menu() {
     }
   }, [location]);
 
-  const SectionLayout = ({ id, title, teluguTitle, items }: any) => {
+  interface SectionLayoutProps {
+  id: string;
+  title: string;
+  teluguTitle: string;
+  items: Product[];
+}
+
+  const SectionLayout = ({ id, title, teluguTitle, items }: SectionLayoutProps) => {
     if (items.length === 0) return null;
     return (
       <div id={id} className="mb-12 md:mb-20"> 

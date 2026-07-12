@@ -1,10 +1,8 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect} from "vitest";
 import { screen } from "@testing-library/react";
 import { renderWithProviders } from "../test/test-utils";
 import Header from "./Header";
 import { fireEvent } from "@testing-library/react";
-
-// Mock sound utility
 
 
 describe("Header", () => {

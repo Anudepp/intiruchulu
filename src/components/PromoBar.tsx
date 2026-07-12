@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { X } from 'lucide-react';
 
 export default function PromoBar() {
   const [visible, setVisible] = useState(true);

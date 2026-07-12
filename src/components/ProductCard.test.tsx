@@ -3,10 +3,9 @@ import { screen } from "@testing-library/react";
 import ProductCard from "./ProductCard";
 import { renderWithProviders } from "../test/test-utils";
 import userEvent from "@testing-library/user-event";
-import { GetState } from "@reduxjs/toolkit";
-import { fireEvent } from "@testing-library/react";
+import type { Product } from "../types/product";
 
-const sampleProduct = {
+const sampleProduct: Product = {
   id: "gongura-pickle",
   nameEnglish: "Gongura Pickle",
   nameTelugu: "గోంగూర పచ్చడి",

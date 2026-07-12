@@ -2,7 +2,6 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Leaf, Flame, Heart, Sparkles } from 'lucide-react';
 import ShippingBadge from '../components/ShippingBadge';
 import ProductCarousel from "../components/ProductCarousel";
-import { useEffect } from 'react';
 const features = [
   {
     icon: Leaf,
@@ -52,31 +51,6 @@ const productCarousel = [
 ];
 
 export default function Home() {
-  useEffect(() => {
-
-  const enable = () => {
-
-    enableAudio();
-
-    window.removeEventListener('click', enable);
-
-    window.removeEventListener('touchstart', enable);
-
-  };
-
-  window.addEventListener('click', enable);
-
-  window.addEventListener('touchstart', enable);
-
-  return () => {
-
-    window.removeEventListener('click', enable);
-
-    window.removeEventListener('touchstart', enable);
-
-  };
-
-}, []);
   return (
     <div className="overflow-x-hidden bg-white">
       {/* Inline Animation Styles */}

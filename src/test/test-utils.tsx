@@ -2,9 +2,10 @@ import { ReactElement } from "react";
 import { render } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { MemoryRouter } from "react-router-dom";
-
 import { configureStore } from "@reduxjs/toolkit";
-import cartReducer from "../store/slices/cartSlice";
+
+import { rootReducer } from "../store/rootReducer";
+import type { RootState } from "../store";
 
 export function renderWithProviders(
   ui: ReactElement,
@@ -12,14 +13,12 @@ export function renderWithProviders(
     preloadedState,
     route = "/",
   }: {
-    preloadedState?: any;
+    preloadedState?: Partial<RootState>;
     route?: string;
   } = {}
 ) {
   const store = configureStore({
-    reducer: {
-      cart: cartReducer,
-    },
+    reducer: rootReducer,
     preloadedState,
   });
 
