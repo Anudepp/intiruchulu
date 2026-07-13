@@ -8,19 +8,19 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./src/test/setupTests.ts",
 
+    // 👇 Ignore Playwright tests
+    exclude: [
+      "**/node_modules/**",
+      "**/dist/**",
+      "**/coverage/**",
+      "**/tests/**",
+       "**src/test/**",
+    ],
+
     coverage: {
       provider: "v8",
-      reporter: [
-        "text",
-        "html",
-      ],
-
+      reporter: ["text", "html"],
       reportsDirectory: "./coverage",
-
-      exclude: [
-        "node_modules/",
-        "src/test/",
-      ],
     },
   },
 });
