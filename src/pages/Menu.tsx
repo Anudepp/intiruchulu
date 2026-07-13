@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SmartBanner from "../components/SmartBanner";
 import type { Product } from "../types/product";
-import { products } from "../data/products";
+import { useProducts } from "../hooks/useProducts";
 import ProductCard from "../components/ProductCard";
 
 
@@ -16,6 +16,8 @@ import ProductCard from "../components/ProductCard";
 export default function Menu() {
   const phoneNumber = "+918499962882"; 
   const location = useLocation();
+
+  const { products, loading, error } = useProducts();
 
   useEffect(() => {
     if (location.hash) {
@@ -56,6 +58,22 @@ export default function Menu() {
       </div>
     );
   };
+
+  if (loading) {
+  return (
+    <div className="py-20 text-center text-lg">
+      Loading products...
+    </div>
+  );
+}
+
+if (error) {
+  return (
+    <div className="py-20 text-center text-red-600">
+      {error}
+    </div>
+  );
+}
 
   return (
     <div className="min-h-screen bg-white animate-page relative">
