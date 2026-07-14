@@ -6,6 +6,9 @@ import SmartBanner from "../components/SmartBanner";
 import type { Product } from "../types/product";
 import { useProducts } from "../hooks/useProducts";
 import ProductCard from "../components/ProductCard";
+import ProductCardSkeleton from "../components/ProductCardSkeleton";
+
+
 
 
 
@@ -59,11 +62,20 @@ export default function Menu() {
     );
   };
 
-  if (loading) {
+if (loading) {
   return (
-    <div className="py-20 text-center text-lg">
-      Loading products...
-    </div>
+    <main className="max-w-7xl mx-auto px-4 py-10">
+      <div className="mb-8">
+        <div className="h-8 w-60 rounded bg-gray-200 animate-pulse" />
+        <div className="mt-3 h-4 w-96 rounded bg-gray-200 animate-pulse" />
+      </div>
+
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-8">
+        {Array.from({ length: 8 }).map((_, index) => (
+          <ProductCardSkeleton key={index} />
+        ))}
+      </div>
+    </main>
   );
 }
 
