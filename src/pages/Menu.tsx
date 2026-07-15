@@ -20,8 +20,12 @@ export default function Menu() {
   const phoneNumber = "+918499962882"; 
   const location = useLocation();
 
-  const { products, loading, error } = useProducts();
-
+const {
+  products,
+  loading,
+  error,
+  refetch,
+} = useProducts();
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '');
@@ -81,9 +85,24 @@ if (loading) {
 
 if (error) {
   return (
-    <div className="py-20 text-center text-red-600">
-      {error}
-    </div>
+    <main className="max-w-7xl mx-auto px-4 py-20">
+      <div className="text-center">
+        <h2 className="text-2xl font-bold text-red-600">
+          Unable to load products
+        </h2>
+
+        <p className="mt-3 text-gray-600">
+          {error}
+        </p>
+
+        <button
+          onClick={refetch}
+          className="mt-8 rounded-xl bg-orange-600 px-6 py-3 font-semibold text-white transition hover:bg-orange-700"
+        >
+          Retry
+        </button>
+      </div>
+    </main>
   );
 }
 
