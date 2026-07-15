@@ -4,8 +4,11 @@ import { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SmartBanner from "../components/SmartBanner";
 import type { Product } from "../types/product";
-import { products } from "../data/products";
+import { useProducts } from "../hooks/useProducts";
 import ProductCard from "../components/ProductCard";
+import ProductCardSkeleton from "../components/ProductCardSkeleton";
+
+
 
 
 
@@ -17,6 +20,12 @@ export default function Menu() {
   const phoneNumber = "+918499962882"; 
   const location = useLocation();
 
+const {
+  products,
+  loading,
+  error,
+  refetch,
+} = useProducts();
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '');
@@ -56,6 +65,46 @@ export default function Menu() {
       </div>
     );
   };
+
+if (loading) {
+  return (
+    <main className="max-w-7xl mx-auto px-4 py-10">
+      <div className="mb-8">
+        <div className="h-8 w-60 rounded bg-gray-200 animate-pulse" />
+        <div className="mt-3 h-4 w-96 rounded bg-gray-200 animate-pulse" />
+      </div>
+
+      <div className="grid grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 md:gap-8">
+        {Array.from({ length: 8 }).map((_, index) => (
+          <ProductCardSkeleton key={index} />
+        ))}
+      </div>
+    </main>
+  );
+}
+
+if (error) {
+  return (
+    <main className="max-w-7xl mx-auto px-4 py-20">
+      <div className="text-center">
+        <h2 className="text-2xl font-bold text-red-600">
+          Unable to load products
+        </h2>
+
+        <p className="mt-3 text-gray-600">
+          {error}
+        </p>
+
+        <button
+          onClick={refetch}
+          className="mt-8 rounded-xl bg-orange-600 px-6 py-3 font-semibold text-white transition hover:bg-orange-700"
+        >
+          Retry
+        </button>
+      </div>
+    </main>
+  );
+}
 
   return (
     <div className="min-h-screen bg-white animate-page relative">
