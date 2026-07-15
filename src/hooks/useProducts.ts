@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import type { Product } from "../types/product";
 import { getProducts } from "../../api/productApi";
+import { getApiErrorMessage } from "../../api/errorHandler";
 
 export function useProducts() {
   const [products, setProducts] = useState<Product[]>([]);
@@ -14,9 +15,9 @@ export function useProducts() {
     try {
       const data = await getProducts();
       setProducts(data);
-    } catch {
-      setError("Failed to load products.");
-    } finally {
+    } catch (error) {
+  setError(getApiErrorMessage(error));
+} finally {
       setLoading(false);
     }
   }, []);
