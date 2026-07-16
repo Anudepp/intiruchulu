@@ -1,11 +1,13 @@
 import { ShoppingBag, ArrowLeft, Phone } from 'lucide-react';
 import ShippingBadge from '../components/ShippingBadge'; 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SmartBanner from "../components/SmartBanner";
 import type { Product } from "../types/product";
 import { products } from "../data/products";
 import ProductCard from "../components/ProductCard";
+import SearchBar from "../components/SearchBar";
+
 
 
 
@@ -16,6 +18,8 @@ import ProductCard from "../components/ProductCard";
 export default function Menu() {
   const phoneNumber = "+918499962882"; 
   const location = useLocation();
+
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     if (location.hash) {
@@ -96,8 +100,13 @@ export default function Menu() {
 
   {/* SMART CONTEXTUAL BANNER */}
   <div className="mb-8 md:mb-10">
-    <SmartBanner />
-  </div>
+          <SmartBanner
+          />
+        </div>
+        <SearchBar
+  value={searchQuery}
+  onChange={setSearchQuery}
+/>
 
   {/* PRODUCTS */}
   <SectionLayout
