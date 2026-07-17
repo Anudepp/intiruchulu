@@ -1,11 +1,14 @@
 import { ShoppingBag, ArrowLeft, Phone } from 'lucide-react';
 import ShippingBadge from '../components/ShippingBadge'; 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import SmartBanner from "../components/SmartBanner";
 import type { Product } from "../types/product";
 import { products } from "../data/products";
 import ProductCard from "../components/ProductCard";
+import SearchBar from "../components/SearchBar";
+import { filterProducts } from "../utils/filterProducts";
+
 
 
 
@@ -16,6 +19,15 @@ import ProductCard from "../components/ProductCard";
 export default function Menu() {
   const phoneNumber = "+918499962882"; 
   const location = useLocation();
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const filteredProducts = filterProducts(
+  products,
+  searchQuery
+);
+
+  
+  const hasSearchResults = filteredProducts.length > 0;
 
   useEffect(() => {
     if (location.hash) {
@@ -96,30 +108,67 @@ export default function Menu() {
 
   {/* SMART CONTEXTUAL BANNER */}
   <div className="mb-8 md:mb-10">
-    <SmartBanner />
-  </div>
+          <SmartBanner
+          />
+        </div>
+        <SearchBar
+  value={searchQuery}
+  onChange={setSearchQuery}
+/>
 
   {/* PRODUCTS */}
-  <SectionLayout
-    id="powders"
-    title="Traditional Powders"
-    teluguTitle="పొడిలు"
-    items={products.filter(p => p.category === 'podis')}
-  />
+{hasSearchResults ? (
+  <>
+    <SectionLayout
+      id="powders"
+      title="Traditional Powders"
+      teluguTitle="పొడిలు"
+      items={filteredProducts.filter(
+        (p) => p.category === "podis"
+      )}
+    />
 
-  <SectionLayout
-    id="pickles"
-    title="Authentic Pickles"
-    teluguTitle="పచ్చడి"
-    items={products.filter(p => p.category === 'pacchadi')}
-  />
+    <SectionLayout
+      id="pickles"
+      title="Authentic Pickles"
+      teluguTitle="పచ్చడి"
+      items={filteredProducts.filter(
+        (p) => p.category === "pacchadi"
+      )}
+    />
 
-  <SectionLayout
-    id="staples"
-    title="Daily Staples"
-    teluguTitle="రోజువారీ వంటలు"
-    items={products.filter(p => p.category === 'staples')}
-  />
+    <SectionLayout
+      id="staples"
+      title="Daily Staples"
+      teluguTitle="రోజువారీ వంటలు"
+      items={filteredProducts.filter(
+        (p) => p.category === "staples"
+      )}
+    />
+  </>
+        ) : (
+            
+<div className="py-20 text-center">
+  <div className="text-6xl mb-4">🔍</div>
+
+  <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
+    No products found
+  </h2>
+
+  <p className="mt-4 text-gray-600">
+    We couldn't find any products matching
+  </p>
+
+  <p className="mt-2 font-semibold text-orange-600">
+    "{searchQuery}"
+  </p>
+
+  <div className="mt-8 text-sm text-gray-500 space-y-2">
+    <p>✓ Check the spelling</p>
+    <p>✓ Search in English or Telugu</p>
+    <p>✓ Try using fewer words</p>
+  </div>
+</div>)}
 
   {/* BULK ORDER CTA */}
   <div className="mt-10 md:mt-16 p-8 md:p-12 bg-orange-50/50 rounded-[2rem] md:rounded-[3rem] border-2 border-dashed border-orange-200 text-center">
