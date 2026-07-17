@@ -21,6 +21,15 @@ export default function Menu() {
 
   const [searchQuery, setSearchQuery] = useState("");
 
+  const filteredProducts = products.filter((product) => {
+  const query = searchQuery.trim().toLowerCase();
+
+  return (
+    product.nameEnglish.toLowerCase().includes(query) ||
+    product.nameTelugu.toLowerCase().includes(query)
+  );
+});
+
   useEffect(() => {
     if (location.hash) {
       const id = location.hash.replace('#', '');
@@ -113,21 +122,25 @@ export default function Menu() {
     id="powders"
     title="Traditional Powders"
     teluguTitle="పొడిలు"
-    items={products.filter(p => p.category === 'podis')}
+    items={filteredProducts.filter(
+
+    p => p.category === "podis"
+
+)}
   />
 
   <SectionLayout
     id="pickles"
     title="Authentic Pickles"
     teluguTitle="పచ్చడి"
-    items={products.filter(p => p.category === 'pacchadi')}
+    items={filteredProducts.filter(p => p.category === 'pacchadi')}
   />
 
   <SectionLayout
     id="staples"
     title="Daily Staples"
     teluguTitle="రోజువారీ వంటలు"
-    items={products.filter(p => p.category === 'staples')}
+    items={filteredProducts.filter(p => p.category === 'staples')}
   />
 
   {/* BULK ORDER CTA */}
