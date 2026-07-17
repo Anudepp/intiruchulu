@@ -7,6 +7,7 @@ import type { Product } from "../types/product";
 import { products } from "../data/products";
 import ProductCard from "../components/ProductCard";
 import SearchBar from "../components/SearchBar";
+import { filterProducts } from "../utils/filterProducts";
 
 
 
@@ -20,15 +21,12 @@ export default function Menu() {
   const location = useLocation();
 
   const [searchQuery, setSearchQuery] = useState("");
+  const filteredProducts = filterProducts(
+  products,
+  searchQuery
+);
 
-  const filteredProducts = products.filter((product) => {
-  const query = searchQuery.trim().toLowerCase();
-
-  return (
-    product.nameEnglish.toLowerCase().includes(query) ||
-    product.nameTelugu.toLowerCase().includes(query)
-  );
-  });
+  
   const hasSearchResults = filteredProducts.length > 0;
 
   useEffect(() => {
