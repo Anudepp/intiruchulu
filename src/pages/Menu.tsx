@@ -8,6 +8,7 @@ import { products } from "../data/products";
 import ProductCard from "../components/ProductCard";
 import SearchBar from "../components/SearchBar";
 import { filterProducts } from "../utils/filterProducts";
+import { useDebounce } from "../hooks/useDebounce";
 
 
 
@@ -21,9 +22,10 @@ export default function Menu() {
   const location = useLocation();
 
   const [searchQuery, setSearchQuery] = useState("");
+  const debouncedSearchQuery = useDebounce(searchQuery, 300);
   const filteredProducts = filterProducts(
   products,
-  searchQuery
+  debouncedSearchQuery
 );
 
   
