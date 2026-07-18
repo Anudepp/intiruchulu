@@ -1,11 +1,10 @@
 import type { Product } from "../types/product";
 
-
-
 export function filterProducts(
   products: Product[],
   searchQuery: string
 ): Product[] {
+
   const query = searchQuery.trim().toLowerCase();
 
   if (!query) {
