@@ -20,46 +20,36 @@ export default function CartSummary() {
         Order Summary
       </h2>
 
-      <div className="space-y-3 text-sm">
-
+      <div className="space-y-3.5 text-sm">
         <div className="flex justify-between">
-          <span className="text-gray-500">
-            Items
-          </span>
+          <span className="text-gray-500">Items ({totalItems})</span>
+          <span className="font-bold">{formatCurrency(subtotal)}</span>
+        </div>
 
-          <span className="font-bold">
-            {totalItems}
+        <div className="flex justify-between items-center">
+          <span className="text-gray-500">Delivery Charges</span>
+          <span className="text-gray-800 font-semibold text-xs bg-gray-100 px-2.5 py-1 rounded-md">
+            As per courier partner
           </span>
         </div>
 
-        <div className="flex justify-between">
-          <span className="text-gray-500">
-            Subtotal
-          </span>
-
-          <span className="font-bold">
-{formatCurrency(subtotal)}          </span>
+        <div className="p-3 bg-amber-50/70 border border-amber-100 rounded-xl text-[11px] text-amber-900 leading-relaxed">
+          <span className="font-semibold block mb-0.5">Shipping Note:</span>
+          Delivery charges vary based on order weight, distance, and rates charged by our courier partners at dispatch.
         </div>
 
-        <div className="flex justify-between">
-          <span className="text-gray-500">
-            Delivery
-          </span>
+        <hr className="border-gray-100 my-2" />
 
-          <span className="text-green-600 font-bold">
-            FREE
-          </span>
+        <div className="flex justify-between items-end text-lg font-black">
+          <div className="flex flex-col">
+            <span>Items Total</span>
+            <span className="text-[11px] font-normal text-gray-500">
+              (Excl. delivery charges)
+            </span>
+          </div>
+
+          <span className="text-orange-600">{formatCurrency(subtotal)}</span>
         </div>
-
-        <hr />
-
-        <div className="flex justify-between text-lg font-black">
-          <span>Total</span>
-
-          <span className="text-orange-600">
-{formatCurrency(subtotal)}          </span>
-        </div>
-
       </div>
     </div>
   );
