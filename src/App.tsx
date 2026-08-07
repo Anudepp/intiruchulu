@@ -14,7 +14,6 @@ import Home from './pages/Home';
 import About from './pages/About';
 import Menu from './pages/Menu';
 import Contact from './pages/Contact';
-import PromoBar from './components/PromoBar';
 import IntroLoader from './components/IntroLoader';
 import { Toaster } from "react-hot-toast";
 
@@ -31,7 +30,6 @@ function ScrollToTop() {
 function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-[#f8f5ef]">
-      <PromoBar />
       <Header />
 
       <main className="flex-1">
