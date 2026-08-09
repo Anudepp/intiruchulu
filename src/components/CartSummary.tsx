@@ -45,7 +45,7 @@ const phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
     })
     .join("\n");
 
-  const message = `Hello! I would like to place an order:
+  const message = `Hello Suneetha I would like to place an order:
 
 *Order Details:*
 ${itemList}

@@ -2,7 +2,14 @@ import { Phone, MapPin, Sparkles, Clock, MessageCircle } from 'lucide-react';
 import ShippingBadge from '../components/ShippingBadge'; 
 
 export default function Contact() {
-  const phoneNumber = "+91 8499962882";
+  const phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER;;
+  const rawPhoneNumber = phoneNumber.replace(/[^0-9]/g, ''); 
+  
+  const whatsappMessage = encodeURIComponent(
+    "Hello, Suneetha , I am interested in your products and would like to place an  order"
+  );
+  
+  const whatsappUrl = `https://wa.me/${rawPhoneNumber}?text=${whatsappMessage}`;
 
   return (
     <div className="bg-white min-h-screen animate-page relative">
@@ -47,7 +54,7 @@ export default function Contact() {
                     </span>
                   </div>
                   <a 
-                    href={`tel:${phoneNumber.replace(/\s+/g, '')}`} 
+                    href={`tel:${rawPhoneNumber}`} 
                     className="flex items-center gap-4 group transition-all active:scale-95 w-fit"
                   >
                     <div className="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all shadow-sm">
@@ -62,24 +69,29 @@ export default function Contact() {
                   </a>
                 </div>
 
-                {/* International Contact */}
+                {/* International Contact / WhatsApp */}
                 <div className="group">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-[9px] font-black bg-green-100 text-green-700 px-2 py-0.5 rounded uppercase tracking-tighter">
                       Ordering from Abroad
                     </span>
                   </div>
-                  <div className="flex items-center gap-4 w-fit">
-                    <div className="w-12 h-12 rounded-2xl bg-green-50 flex items-center justify-center text-green-600 shadow-sm border border-green-100">
+                  <a 
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 w-fit group transition-all active:scale-95 cursor-pointer"
+                  >
+                    <div className="w-12 h-12 rounded-2xl bg-green-50 flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-all shadow-sm border border-green-100">
                       <MessageCircle size={24} fill="currentColor" fillOpacity="0.2" />
                     </div>
                     <div>
                       <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider">WhatsApp Contact</p>
-                      <p className="text-lg font-bold text-gray-800">
+                      <p className="text-lg font-bold text-gray-800 group-hover:text-green-600 transition-colors">
                         {phoneNumber}
                       </p>
                     </div>
-                  </div>
+                  </a>
                 </div>
               </div>
             </div>
