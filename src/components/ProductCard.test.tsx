@@ -282,6 +282,6 @@ expect(button500).toHaveAttribute(
     name: "250g",
   });
 
-  expect(defaultWeight).toHaveClass("bg-orange-600");
+  expect(defaultWeight).toHaveClass("bg-emerald-800");
 });
 
