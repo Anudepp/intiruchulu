@@ -2,7 +2,6 @@ import { ShoppingBag, ArrowLeft, Phone } from 'lucide-react';
 import ShippingBadge from '../components/ShippingBadge'; 
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import SmartBanner from "../components/SmartBanner";
 import type { Product } from "../types/product";
 import { products } from "../data/products";
 import ProductCard from "../components/ProductCard";
@@ -110,10 +109,6 @@ export default function Menu() {
       </div>
 
       <main className="max-w-7xl mx-auto px-4 pb-36">
-        {/* Smart Banner Container */}
-        <div className="mb-8 md:mb-10 rounded-2xl overflow-hidden shadow-sm border border-emerald-900/10">
-          <SmartBanner />
-        </div>
 
         {/* Search Bar Wrapper */}
         <div className="mb-12">
