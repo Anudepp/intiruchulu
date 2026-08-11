@@ -4,6 +4,8 @@ import { addToCart } from "../store/slices/cartSlice";
 import type { Product } from "../types/product";
 import toast from "react-hot-toast";
 import { Plus, Minus } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
 
 interface ProductCardProps {
   product: Product;
@@ -16,6 +18,7 @@ export default function ProductCard({ product }: ProductCardProps) {
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const isPerPiece = product.nameEnglish === "Chapathis";
 
@@ -67,32 +70,35 @@ export default function ProductCard({ product }: ProductCardProps) {
   return (
     <div className="bg-white rounded-2xl border border-emerald-900/10 p-2.5 md:p-3.5 flex flex-col justify-between transition-all hover:border-emerald-700/30 hover:shadow-md group relative">
       {/* IMAGE CONTAINER WITH TOP BADGES */}
-      <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-emerald-50/40 mb-2.5">
-        <img
-          src={product.image}
-          alt={product.nameEnglish}
-          className={`w-full h-full object-cover object-center transition-transform duration-300 ${
-            isUnavailable
-              ? "grayscale opacity-75"
-              : "group-hover:scale-105"
-          }`}
-          loading="lazy"
-        />
+        <button
+    type="button"
+    onClick={() => { if (isAvailable) navigate(`/product/${product.id}`); }}
+    aria-label={`View ${product.nameEnglish}`}
+    className="relative aspect-square w-full rounded-xl overflow-hidden bg-emerald-50/40 mb-2.5 cursor-pointer"
+  >
+    <img
+      src={product.image}
+      alt={product.nameEnglish}
+      className={`w-full h-full object-cover object-center transition-transform duration-300 ${
+        isUnavailable ? "grayscale opacity-75" : "group-hover:scale-105"
+      }`}
+      loading="lazy"
+    />
 
-        {/* STARTING PRICE BADGE */}
-        {isAvailable && !isPerPiece && (
-          <div className="absolute top-2 left-2 bg-emerald-950/85 backdrop-blur-md text-amber-300 px-2 py-0.5 rounded-md text-[9px] md:text-[10px] font-semibold tracking-tight shadow-sm border border-amber-400/20">
-            Starts ₹{product.quantities[0].price}
-          </div>
-        )}
-
-        {/* AVAILABILITY BADGE */}
-        {isUnavailable && (
-          <div className="absolute top-2 left-2 bg-emerald-950/90 backdrop-blur-md text-amber-300 px-2 py-1 rounded-md text-[9px] md:text-[10px] font-semibold tracking-tight shadow-sm border border-amber-400/20">
-            {isSeasonal ? "SEASONAL" : "OUT OF STOCK"}
-          </div>
-        )}
+    {/* STARTING PRICE BADGE */}
+    {isAvailable && !isPerPiece && (
+      <div className="absolute top-2 left-2 bg-emerald-950/85 backdrop-blur-md text-amber-300 px-2 py-0.5 rounded-md text-[9px] md:text-[10px] font-semibold tracking-tight shadow-sm border border-amber-400/20">
+        Starts ₹{product.quantities[0].price}
       </div>
+    )}
+
+    {/* AVAILABILITY BADGE */}
+    {isUnavailable && (
+      <div className="absolute top-2 left-2 bg-emerald-950/90 backdrop-blur-md text-amber-300 px-2 py-1 rounded-md text-[9px] md:text-[10px] font-semibold tracking-tight shadow-sm border border-amber-400/20">
+        {isSeasonal ? "SEASONAL" : "OUT OF STOCK"}
+      </div>
+    )}
+  </button>
 
       {/* CONTENT BLOCK */}
       <div className="flex flex-col flex-1">
