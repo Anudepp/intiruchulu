@@ -4,27 +4,27 @@ import { addToCart } from "../store/slices/cartSlice";
 import type { Product } from "../types/product";
 import toast from "react-hot-toast";
 import { Plus, Minus } from "lucide-react";
-
-const weightOptions = [
-  { label: "100g", factor: 0.1 },
-  { label: "250g", factor: 0.25 },
-  { label: "500g", factor: 0.5 },
-  { label: "1kg", factor: 1.0 },
-];
+import { useNavigate } from "react-router-dom";
 
 interface ProductCardProps {
   product: Product;
 }
 
 export default function ProductCard({ product }: ProductCardProps) {
-  const [selectedWeight, setSelectedWeight] = useState(weightOptions[1]);
-  const [quantity, setQuantity] = useState(1);
   const dispatch = useAppDispatch();
-  const isPerPiece = product.nameEnglish === "Chapathis";
+  const navigate = useNavigate();
 
-  const displayPrice = isPerPiece
-    ? product.basePrice
-    : Math.round(product.basePrice * selectedWeight.factor);
+  const isPerPiece = product.id === "chapathi";
+
+  // Use the first available quantity as the default.
+  // For regular products this will be 250g.
+  const [selectedQuantity, setSelectedQuantity] = useState(
+    product.quantities[1]
+  );
+
+  const [quantity, setQuantity] = useState(1);
+
+  const displayPrice = selectedQuantity.price;
 
   const increaseQuantity = () => {
     setQuantity((prev) => prev + 1);
@@ -44,25 +44,28 @@ export default function ProductCard({ product }: ProductCardProps) {
         image: product.image,
         price: displayPrice,
         quantity,
-        weight: isPerPiece ? "Per Piece" : selectedWeight.label,
+        weight: selectedQuantity.weight,
       })
     );
+
     toast.success(`${product.nameEnglish} added to cart!`);
 
-    // Reset quantity after adding
+    // Reset quantity after adding.
     setQuantity(1);
 
-    // Reset weight back to default (except Chapathis)
-    if (!isPerPiece) {
-      setSelectedWeight(weightOptions[1]);
-    }
+    // Reset the selected quantity to the first available option.
+    setSelectedQuantity(product.quantities[0]);
   };
 
   return (
     <div className="bg-white rounded-2xl border border-emerald-900/10 p-2.5 md:p-3.5 flex flex-col justify-between transition-all hover:border-emerald-700/30 hover:shadow-md group relative">
-      
       {/* IMAGE CONTAINER WITH TOP BADGES */}
-      <div className="relative aspect-square w-full rounded-xl overflow-hidden bg-emerald-50/40 mb-2.5">
+     <button
+  type="button"
+  onClick={() => navigate(`/product/${product.id}`)}
+  className="relative aspect-square w-full rounded-xl overflow-hidden bg-emerald-50/40 mb-2.5 cursor-pointer"
+  aria-label={`View ${product.nameEnglish}`}
+>
         <img
           src={product.image}
           alt={product.nameEnglish}
@@ -72,52 +75,65 @@ export default function ProductCard({ product }: ProductCardProps) {
 
         {!isPerPiece && (
           <div className="absolute top-2 left-2 bg-emerald-950/85 backdrop-blur-md text-amber-300 px-2 py-0.5 rounded-md text-[9px] md:text-[10px] font-semibold tracking-tight shadow-sm border border-amber-400/20">
-            Starts ₹{Math.round(product.basePrice * 0.1)}
+            Starts ₹{product.quantities[0].price}
           </div>
         )}
-      </div>
+      </button>
 
       {/* CONTENT BLOCK */}
       <div className="flex flex-col flex-1">
-        
         {/* NAMES */}
         <div className="min-h-[44px]">
-          <h3 className="font-telugu font-bold text-sm md:text-base text-emerald-950 line-clamp-1 leading-tight">
-            {product.nameTelugu}
-          </h3>
+<button
+  type="button"
+  onClick={() => navigate(`/product/${product.id}`)}
+  className="text-left font-telugu font-bold text-sm md:text-base text-emerald-950 line-clamp-1 leading-tight hover:text-emerald-700 transition-colors"
+>
+  {product.nameTelugu}
+</button>
+
           <p className="text-[11px] md:text-xs text-emerald-800/70 font-medium truncate mt-0.5">
             {product.nameEnglish}
           </p>
         </div>
 
-        {/* WEIGHT PILL SELECTOR */}
-        {!isPerPiece && (
-          <div className="my-2.5">
-            <div className="grid grid-cols-4 gap-1 bg-emerald-50/80 p-1 rounded-lg border border-emerald-100/50">
-              {weightOptions.map((opt) => (
-                <button
-                  key={opt.label}
-                  onClick={() => setSelectedWeight(opt)}
-                  aria-pressed={selectedWeight.label === opt.label}
-                  className={`py-1 rounded-md text-[10px] font-bold transition-all ${
-                    selectedWeight.label === opt.label
-                      ? "bg-emerald-800 text-amber-300 shadow-sm"
-                      : "text-emerald-900/60 hover:text-emerald-900"
-                  }`}
-                >
-                  {opt.label}
-                </button>
-              ))}
-            </div>
+        {/* QUANTITY / WEIGHT SELECTOR */}
+        <div className="my-2.5">
+          <div
+            className={`grid gap-1 bg-emerald-50/80 p-1 rounded-lg border border-emerald-100/50 ${
+              product.quantities.length === 4
+                ? "grid-cols-4"
+                : product.quantities.length === 3
+                ? "grid-cols-3"
+                : "grid-cols-2"
+            }`}
+          >
+            {product.quantities.map((option) => (
+              <button
+                key={option.weight}
+                onClick={() => setSelectedQuantity(option)}
+                aria-pressed={
+                  selectedQuantity.weight === option.weight
+                }
+                className={`py-1 rounded-md text-[10px] font-bold transition-all ${
+                  selectedQuantity.weight === option.weight
+                    ? "bg-emerald-800 text-amber-300 shadow-sm"
+                    : "text-emerald-900/60 hover:text-emerald-900"
+                }`}
+              >
+                {option.weight}
+              </button>
+            ))}
           </div>
-        )}
+        </div>
 
         {/* QUANTITY CONTROL & PRICE ROW */}
         <div className="mt-auto pt-2 flex items-center justify-between border-t border-emerald-100/60">
           <div>
             <span className="text-[9px] text-emerald-800/60 font-medium uppercase block">
-              {isPerPiece ? "Per Piece" : selectedWeight.label}
+              {selectedQuantity.weight}
             </span>
+
             <span className="text-base md:text-lg font-bold text-emerald-950">
               ₹{displayPrice}
             </span>

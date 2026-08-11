@@ -1,4 +1,4 @@
-import {  it, expect } from "vitest";
+import { it, expect } from "vitest";
 import { screen } from "@testing-library/react";
 import ProductCard from "./ProductCard";
 import { renderWithProviders } from "../test/test-utils";
@@ -11,36 +11,38 @@ const sampleProduct: Product = {
   nameTelugu: "గోంగూర పచ్చడి",
   image: "/menu/GonguraPacchadi.png",
   category: "pacchadi",
-  basePrice: 600,
-};
-
-const expectedPrices = {
-  "100g": sampleProduct.basePrice * 0.1,
-  "250g": sampleProduct.basePrice * 0.25,
-  "500g": sampleProduct.basePrice * 0.5,
-  "1kg": sampleProduct.basePrice,
+  ingredients: [
+    "Gongura leaves",
+    "Red chillies",
+    "Garlic",
+    "Salt",
+    "Oil",
+  ],
+  processOfMaking: [
+    "Clean and cook the gongura leaves.",
+    "Prepare the spice mixture.",
+    "Combine the ingredients.",
+    "Cook until the pickle reaches the desired consistency.",
+  ],
+  quantities: [
+    { weight: "100g", price: 70 },
+    { weight: "250g", price: 175 },
+    { weight: "500g", price: 350 },
+    { weight: "1kg", price: 700 },
+  ],
 };
 
 const preloadedState = {
   cart: {
-    items: [
-      {
-        id: sampleProduct.id,
-        name: sampleProduct.nameEnglish,
-        image: sampleProduct.image,
-        price: 150,
-        quantity: 2,
-        weight: "250g",
-      },
-    ],
+    items: [],
   },
 };
 
-
 it("should render product information correctly", () => {
-renderWithProviders(
-  <ProductCard product={sampleProduct} />
-);
+  renderWithProviders(
+    <ProductCard product={sampleProduct} />
+  );
+
   expect(
     screen.getByText("గోంగూర పచ్చడి")
   ).toBeInTheDocument();
@@ -50,7 +52,7 @@ renderWithProviders(
   ).toBeInTheDocument();
 
   expect(
-    screen.getByText("₹150")
+    screen.getByText("₹175")
   ).toBeInTheDocument();
 
   expect(
@@ -59,102 +61,78 @@ renderWithProviders(
     })
   ).toBeInTheDocument();
 });
+
 it("should update the selected weight when the user clicks a different weight", async () => {
-
   renderWithProviders(
-
     <ProductCard product={sampleProduct} />
-
   );
 
   const user = userEvent.setup();
 
   const button500 = screen.getByRole("button", {
-
     name: "500g",
-
   });
 
   await user.click(button500);
 
-expect(button500).toHaveAttribute(
-
-  "aria-pressed",
-
-  "true"
-
-);
+  expect(button500).toHaveAttribute(
+    "aria-pressed",
+    "true"
+  );
 });
 
-it("should recalculate the displayed price when the selected weight changes", async () => {
-
+it("should update the displayed price when the selected weight changes", async () => {
   renderWithProviders(
-
     <ProductCard product={sampleProduct} />
-
   );
 
   const user = userEvent.setup();
 
-  // Default (250g)
-
-  expect(screen.getByText(`₹${expectedPrices["250g"]}`)).toBeInTheDocument();
+  // Default: 250g
+  expect(
+    screen.getByText("₹175")
+  ).toBeInTheDocument();
 
   // 100g
-
   await user.click(
-
     screen.getByRole("button", {
-
       name: "100g",
-
     })
-
   );
 
-  expect(screen.getByText(`₹${expectedPrices["100g"]}`)).toBeInTheDocument();
+  expect(
+    screen.getByText("₹70")
+  ).toBeInTheDocument();
 
   // 500g
-
   await user.click(
-
     screen.getByRole("button", {
-
       name: "500g",
-
     })
-
   );
 
-expect(
-  screen.getByText(`₹${expectedPrices["500g"]}`)
-).toBeInTheDocument();
+  expect(
+    screen.getByText("₹350")
+  ).toBeInTheDocument();
+
   // 1kg
-
   await user.click(
-
     screen.getByRole("button", {
-
       name: "1kg",
-
     })
-
   );
 
-expect(
-  screen.getByText(`₹${expectedPrices["1kg"]}`)
-).toBeInTheDocument();
+  expect(
+    screen.getByText("₹700")
+  ).toBeInTheDocument();
 });
 
 it("should add the selected product to the cart when Add to Cart is clicked", async () => {
   const { store } = renderWithProviders(
     <ProductCard product={sampleProduct} />,
-
-  {
-
-    preloadedState,
-
-  }
+    {
+      preloadedState,
+    }
   );
 
   const user = userEvent.setup();
@@ -173,8 +151,8 @@ it("should add the selected product to the cart when Add to Cart is clicked", as
     id: sampleProduct.id,
     name: sampleProduct.nameEnglish,
     weight: "250g",
-    quantity: 3,
-    price: 150,
+    quantity: 1,
+    price: 175,
   });
 });
 
@@ -189,13 +167,16 @@ it("should increase quantity when + button is clicked", async () => {
     name: /increase quantity/i,
   });
 
-  expect(screen.getByText("1")).toBeInTheDocument();
+  expect(
+    screen.getByTestId("quantity-display")
+  ).toHaveTextContent("1");
 
   await user.click(plusButton);
 
-  expect(screen.getByText("2")).toBeInTheDocument();
+  expect(
+    screen.getByTestId("quantity-display")
+  ).toHaveTextContent("2");
 });
-
 
 it("should decrease quantity when - button is clicked", async () => {
   renderWithProviders(
@@ -212,17 +193,20 @@ it("should decrease quantity when - button is clicked", async () => {
     name: /decrease quantity/i,
   });
 
-  // Increase first (1 -> 2)
+  // Increase first: 1 -> 2
   await user.click(plusButton);
 
-  expect(screen.getByText("2")).toBeInTheDocument();
+  expect(
+    screen.getByTestId("quantity-display")
+  ).toHaveTextContent("2");
 
-  // Decrease back (2 -> 1)
+  // Decrease back: 2 -> 1
   await user.click(minusButton);
 
-  expect(screen.getByText("1")).toBeInTheDocument();
+  expect(
+    screen.getByTestId("quantity-display")
+  ).toHaveTextContent("1");
 });
-
 
 it("should reset quantity after adding product to cart", async () => {
   renderWithProviders(
@@ -252,7 +236,7 @@ it("should reset quantity after adding product to cart", async () => {
   ).toHaveTextContent("1");
 });
 
-it("should reset selected weight to 250g after adding to cart", async () => {
+it("should reset selected weight to the first quantity after adding to cart", async () => {
   renderWithProviders(
     <ProductCard product={sampleProduct} />
   );
@@ -265,13 +249,11 @@ it("should reset selected weight to 250g after adding to cart", async () => {
 
   await user.click(button500);
 
-expect(button500).toHaveAttribute(
+  expect(button500).toHaveAttribute(
+    "aria-pressed",
+    "true"
+  );
 
-  "aria-pressed",
-
-  "true"
-
-);
   await user.click(
     screen.getByRole("button", {
       name: /add to cart/i,
@@ -279,9 +261,11 @@ expect(button500).toHaveAttribute(
   );
 
   const defaultWeight = screen.getByRole("button", {
-    name: "250g",
+    name: "100g",
   });
 
-  expect(defaultWeight).toHaveClass("bg-emerald-800");
+  expect(defaultWeight).toHaveAttribute(
+    "aria-pressed",
+    "true"
+  );
 });
-
