@@ -45,6 +45,7 @@ export const products: Product[] = [
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
     ],
+    availability: "available",
   },
 
   {
@@ -84,6 +85,7 @@ export const products: Product[] = [
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
     ],
+    availability: "available",
   },
 
   {
@@ -124,6 +126,7 @@ export const products: Product[] = [
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
     ],
+    availability: "available",
   },
 
   {
@@ -163,6 +166,7 @@ export const products: Product[] = [
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
     ],
+    availability: "available",
   },
 
   {
@@ -203,6 +207,7 @@ export const products: Product[] = [
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
     ],
+    availability: "available",
   },
 
   {
@@ -242,6 +247,7 @@ export const products: Product[] = [
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
     ],
+    availability: "available",
   },
 
   {
@@ -284,6 +290,7 @@ export const products: Product[] = [
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
     ],
+    availability: "available",
   },
 
   // ============================================================
@@ -328,6 +335,7 @@ export const products: Product[] = [
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
     ],
+    availability: "available",
   },
 
    {
@@ -366,7 +374,8 @@ export const products: Product[] = [
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
-    ],
+     ],
+    availability: "available",
   },
 
   {
@@ -408,6 +417,7 @@ export const products: Product[] = [
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
     ],
+    availability: "available",
   },
 
   {
@@ -448,6 +458,7 @@ export const products: Product[] = [
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
     ],
+    availability: "available",
   },
 
   {
@@ -489,6 +500,7 @@ export const products: Product[] = [
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
     ],
+    availability: "available",
   },
 
   {
@@ -530,6 +542,8 @@ export const products: Product[] = [
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
     ],
+    availability: "seasonal",
+availabilityMessage: "Available during mango season.",
   },
 
   {
@@ -571,6 +585,8 @@ export const products: Product[] = [
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
     ],
+    availability: "seasonal",
+availabilityMessage: "Available during mango season.",
   },
 
   // ============================================================
@@ -610,6 +626,7 @@ export const products: Product[] = [
       { weight: "20 pieces", price: 240 },
       { weight: "30 pieces", price: 360 },
     ],
+    availability: "available",
   },
 
   {
@@ -652,5 +669,6 @@ export const products: Product[] = [
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
     ],
+    availability: "available",
   },
 ];
