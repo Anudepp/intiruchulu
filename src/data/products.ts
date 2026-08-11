@@ -18,7 +18,8 @@ export const products: Product[] = [
       "Urad dal",
       "Dry red chillies",
       "Cumin seeds",
-      "Black pepper",
+      "Coriander seeds",
+      "Turmeric",
       "Garlic",
       "Salt",
     ],
@@ -58,8 +59,7 @@ export const products: Product[] = [
       "Dry red chillies",
       "Coriander seeds",
       "Cumin seeds",
-      "Urad dal",
-      "Chana dal",
+      "Turmeric",
       "Salt",
     ],
 
@@ -99,7 +99,7 @@ export const products: Product[] = [
       "Urad dal",
       "Dry red chillies",
       "Cumin seeds",
-      "Garlic",
+      "Turmeric",
       "Salt",
     ],
 
@@ -134,9 +134,8 @@ export const products: Product[] = [
     image: "/menu/PappulaPodi.png",
 
     ingredients: [
-      "Chana dal",
-      "Urad dal",
-      "Toor dal",
+      "peanuts ",
+      "Roasted gram",
       "Dry red chillies",
       "Cumin seeds",
       "Garlic",
@@ -218,8 +217,7 @@ export const products: Product[] = [
       "Dry red chillies",
       "Cumin seeds",
       "Garlic",
-      "Urad dal",
-      "Chana dal",
+      "Coriander seeds",
       "Salt",
     ],
 
@@ -255,11 +253,12 @@ export const products: Product[] = [
 
     ingredients: [
       "Coriander seeds",
+      "Urad dal",
+      "Toor dal",
       "Cumin seeds",
-      "Black pepper",
+      "Fenugreek seeds",
       "Dry red chillies",
       "Toor dal",
-      "Fenugreek seeds",
       "Curry leaves",
       "Salt",
     ],
@@ -332,6 +331,46 @@ export const products: Product[] = [
     ],
   },
 
+   {
+    id: "Ginger-pickle",
+    nameTelugu: "అల్లం పచ్చడి",
+    nameEnglish: "Ginger Pickle",
+    category: "pacchadi",
+    image: "/menu/GingerPacchadi.png",
+    ingredients: [
+      "Fresh Ginger",
+      "Red chillies",
+      "Garlic",
+      "Mustard seeds",
+      "Fenugreek seeds",
+      "Turmeric",
+      "Salt",
+      "Oil",
+    ],
+
+    flavorProfile:
+      "Tangy, sour, bold, and fiery authentic Andhra signature taste.",
+
+    servingSuggestions: [
+      "Ultimate combination with hot steamed rice, melted ghee, and raw onions.",
+      "Pairs exceptionally well with curd rice and hot biryani.",
+      "Spread on chapathis or parathas for a tangy spicy roll.",
+    ],
+
+    storageInstructions: [
+      "Store in a cool, dry place in a clean glass or ceramic jar.",
+      "Always use a dry spoon; never allow water or moisture inside.",
+      "Refrigerate after opening to retain freshness for up to 6 months.",
+    ],
+
+    quantities: [
+      { weight: "100g", price: 70 },
+      { weight: "250g", price: 175 },
+      { weight: "500g", price: 350 },
+      { weight: "1kg", price: 700 },
+    ],
+  },
+
   {
     id: "kotthimera-pickle",
     nameTelugu: "కొత్తిమీర పచ్చడి",
@@ -341,13 +380,14 @@ export const products: Product[] = [
 
     ingredients: [
       "Fresh coriander leaves",
-      "Green chillies",
-      "Dry red chillies",
+      "Dry red chillies Powder",
       "Garlic",
       "Tamarind",
-      "Mustard seeds",
+      "Mustard seeds powder",
+      "Fenugreek seeds powder",
       "Salt",
-      "Oil",
+      " Peanut Oil",
+      "Hing (Asafoetida)",
     ],
 
     flavorProfile:
@@ -381,15 +421,14 @@ export const products: Product[] = [
     image: "/menu/MealMakerPacchadi.png",
 
     ingredients: [
-      "Meal maker / soy chunks",
-      "Red chillies",
+      "Meal maker (soya chunks)",
+      "Dry red chillies Powder",
       "Garlic",
-      "Tamarind",
-      "Mustard seeds",
-      "Fenugreek seeds",
-      "Turmeric",
+      "Mustard seeds powder",
+      "Fenugreek seeds powder",
       "Salt",
-      "Oil",
+      "Garam masala",
+      " Peanut Oil",
     ],
 
     flavorProfile:
@@ -424,14 +463,14 @@ export const products: Product[] = [
 
     ingredients: [
       "Fresh tomatoes",
-      "Dry red chillies",
+      "Dry red chillies Powder",
       "Garlic",
       "Tamarind",
-      "Mustard seeds",
-      "Fenugreek seeds",
-      "Turmeric",
+      "Mustard seeds powder",
+      "Fenugreek seeds powder",
       "Salt",
-      "Oil",
+      " Peanut Oil",
+      "Hing (Asafoetida)"
     ],
 
     flavorProfile:
@@ -472,7 +511,8 @@ export const products: Product[] = [
       "Fenugreek seeds",
       "Turmeric",
       "Salt",
-      "Oil",
+      " Peanut Oil",
+      "Hing (Asafoetida)"
     ],
 
     flavorProfile:
@@ -513,7 +553,8 @@ export const products: Product[] = [
       "Turmeric",
       "Salt",
       "Garlic",
-      "Oil",
+      "peanut Oil",
+      "Hing (Asafoetida)"
     ],
 
     flavorProfile:
@@ -553,7 +594,6 @@ export const products: Product[] = [
     ingredients: [
       "Whole wheat flour",
       "Water",
-      "Salt",
       "Oil",
     ],
 
@@ -595,7 +635,8 @@ export const products: Product[] = [
       "Curry leaves",
       "Turmeric",
       "Salt",
-      "Sesame oil",
+      "Peanut Oil",
+      "Hing (Asafoetida)"
     ],
 
     flavorProfile:
