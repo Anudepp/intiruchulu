@@ -62,7 +62,7 @@ describe("Cart Page", () => {
     ).toBeInTheDocument();
 
     expect(
-      screen.getByText("Add some delicious homemade items.")
+      screen.getByText("Explore our authentic homemade Andhra & Telangana delicacies.")
     ).toBeInTheDocument();
 
     expect(

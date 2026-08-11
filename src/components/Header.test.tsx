@@ -109,7 +109,7 @@ describe("Header", () => {
 
   const header = container.querySelector("header");
 
-  expect(header).toHaveClass("bg-white/80");
+  expect(header).toHaveClass("bg-white/90 backdrop-blur-md");
   });
   it("should highlight the Contact navigation when on the contact page", () => {
   const { container } = renderWithProviders(<Header />, {

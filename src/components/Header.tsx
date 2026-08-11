@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, UtensilsCrossed, Phone, Info } from 'lucide-react';
+import { Home, UtensilsCrossed, Phone } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import CartIcon from "./CartIcon";
 
