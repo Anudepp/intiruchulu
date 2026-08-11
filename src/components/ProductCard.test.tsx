@@ -5,32 +5,46 @@ import { renderWithProviders } from "../test/test-utils";
 import userEvent from "@testing-library/user-event";
 import type { Product } from "../types/product";
 
-const sampleProduct: Product = {
-  id: "gongura-pickle",
-  nameEnglish: "Gongura Pickle",
-  nameTelugu: "గోంగూర పచ్చడి",
-  image: "/menu/GonguraPacchadi.png",
-  category: "pacchadi",
-  ingredients: [
-    "Gongura leaves",
-    "Red chillies",
-    "Garlic",
-    "Salt",
-    "Oil",
-  ],
-  processOfMaking: [
-    "Clean and cook the gongura leaves.",
-    "Prepare the spice mixture.",
-    "Combine the ingredients.",
-    "Cook until the pickle reaches the desired consistency.",
-  ],
-  quantities: [
-    { weight: "100g", price: 70 },
-    { weight: "250g", price: 175 },
-    { weight: "500g", price: 350 },
-    { weight: "1kg", price: 700 },
-  ],
-};
+const sampleProduct: Product =  {
+    id: "gongura-pickle",
+    nameTelugu: "గోంగూర పచ్చడి",
+    nameEnglish: "Gongura Pickle",
+    category: "pacchadi",
+    image: "/menu/GonguraPacchadi.png",
+
+    ingredients: [
+      "Fresh gongura leaves",
+      "Red chillies",
+      "Garlic",
+      "Mustard seeds",
+      "Fenugreek seeds",
+      "Turmeric",
+      "Salt",
+      "Oil",
+    ],
+
+    flavorProfile:
+      "Tangy, sour, bold, and fiery authentic Andhra signature taste.",
+
+    servingSuggestions: [
+      "Ultimate combination with hot steamed rice, melted ghee, and raw onions.",
+      "Pairs exceptionally well with curd rice and hot biryani.",
+      "Spread on chapathis or parathas for a tangy spicy roll.",
+    ],
+
+    storageInstructions: [
+      "Store in a cool, dry place in a clean glass or ceramic jar.",
+      "Always use a dry spoon; never allow water or moisture inside.",
+      "Refrigerate after opening to retain freshness for up to 6 months.",
+    ],
+
+    quantities: [
+      { weight: "100g", price: 70 },
+      { weight: "250g", price: 175 },
+      { weight: "500g", price: 350 },
+      { weight: "1kg", price: 700 },
+    ],
+  };
 
 const preloadedState = {
   cart: {
