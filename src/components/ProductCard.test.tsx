@@ -43,7 +43,8 @@ const sampleProduct: Product =  {
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
-    ],
+  ],
+  availability: "available"
   };
 
 const preloadedState = {
@@ -275,7 +276,7 @@ it("should reset selected weight to the first quantity after adding to cart", as
   );
 
   const defaultWeight = screen.getByRole("button", {
-    name: "100g",
+    name: "250g",
   });
 
   expect(defaultWeight).toHaveAttribute(

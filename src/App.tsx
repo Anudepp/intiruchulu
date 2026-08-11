@@ -47,7 +47,7 @@ function Layout() {
           position="top-center"
           reverseOrder={false}
           toastOptions={{
-            duration: 2000,
+            duration: 1000,
             style: {
               background: "#064e3b", // emerald-950
               color: "#fcd34d",      // amber-300

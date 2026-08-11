@@ -3,6 +3,11 @@ export interface ProductQuantity {
   price: number;
 }
 
+export type ProductAvailability =
+  | "available"
+  | "out_of_stock"
+  | "seasonal";
+
 export interface Product {
   id: string;
   nameTelugu: string;
@@ -15,4 +20,8 @@ export interface Product {
   flavorProfile: string;
   servingSuggestions: string[];
   storageInstructions: string[];
+
+  availability: ProductAvailability;
+
+  availabilityMessage?: string;
 }
