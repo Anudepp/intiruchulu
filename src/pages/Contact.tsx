@@ -2,7 +2,7 @@ import { Phone, MapPin, Sparkles, Clock, MessageCircle } from 'lucide-react';
 import ShippingBadge from '../components/ShippingBadge'; 
 
 export default function Contact() {
-  const phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER;;
+  const phoneNumber = import.meta.env.VITE_WHATSAPP_NUMBER;
   const rawPhoneNumber = phoneNumber.replace(/[^0-9]/g, ''); 
   
   const whatsappMessage = encodeURIComponent(
@@ -19,13 +19,13 @@ export default function Contact() {
       </div>
 
       {/* Header Area */}
-      <div className="bg-orange-50/50 py-24 px-4 text-center border-b border-orange-100">
-        <div className="inline-flex items-center gap-2 bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-[10px] font-black uppercase tracking-widest mb-6">
-          <span className="animate-pulse"><Sparkles size={14} /></span>
+      <div className="bg-gradient-to-b from-emerald-50/70 via-white to-transparent py-8 md:py-20 px-3.5 text-center border-b border-emerald-900/10">
+        <div className="inline-flex items-center gap-1.5 bg-emerald-100/70 border border-emerald-200/60 text-emerald-950 px-3 py-1.5 md:px-4 md:py-2 rounded-full text-[10px] md:text-xs font-black uppercase tracking-widest mb-3 md:mb-6 shadow-sm">
+          <span className="animate-pulse"><Sparkles size={14} className="text-amber-500" /></span>
           Get in touch with us
         </div>
-        <h1 className="text-6xl md:text-7xl font-telugu font-black text-gray-900 mb-4">సంప్రదించండి</h1>
-        <p className="text-orange-600 font-black tracking-[0.3em] uppercase text-xs">Contact Details</p>
+        <h1 className="text-4xl md:text-7xl font-telugu font-black text-emerald-950 mb-1.5 md:mb-4">సంప్రదించండి</h1>
+        <p className="text-emerald-800/80 font-black tracking-[0.2em] md:tracking-[0.3em] uppercase text-[10px] md:text-xs">Contact Details</p>
       </div>
 
       {/* 2. DESKTOP FLOATING BADGE */}
@@ -33,36 +33,36 @@ export default function Contact() {
         <ShippingBadge />
       </div>
 
-      <div className="max-w-4xl mx-auto px-4 -mt-16 pb-20">
-        <div className="bg-white rounded-[3rem] shadow-2xl shadow-orange-900/10 overflow-hidden border border-gray-100 p-8 md:p-16">
-          <div className="grid md:grid-cols-2 gap-12">
+      <div className="max-w-4xl mx-auto px-3.5 md:px-4 -mt-6 md:-mt-12 pb-10 md:pb-20">
+        <div className="bg-white rounded-2xl md:rounded-[3rem] shadow-xl md:shadow-2xl shadow-emerald-950/5 overflow-hidden border border-emerald-900/10 p-5 md:p-14">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-12">
             
             {/* Left Column: Personal Contact */}
-            <div className="space-y-10">
+            <div className="space-y-6 md:space-y-10">
               <div>
-                <h2 className="text-sm font-black text-orange-600 uppercase tracking-widest mb-2">Owner & Primary Contact</h2>
-                <h3 className="text-3xl font-black text-gray-900">Suneetha Debbata</h3>
-                <div className="h-1.5 w-12 bg-orange-500 rounded-full mt-4" />
+                <h2 className="text-xs md:text-sm font-black text-emerald-800 uppercase tracking-widest mb-1 md:mb-2">Owner & Primary Contact</h2>
+                <h3 className="text-2xl md:text-3xl font-black text-emerald-950">Suneetha Debbata</h3>
+                <div className="h-1 md:h-1.5 w-10 md:w-12 bg-amber-400 rounded-full mt-2 md:mt-4" />
               </div>
 
-              <div className="space-y-8">
+              <div className="space-y-4 md:space-y-8">
                 {/* Domestic Contact */}
                 <div className="group">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-[9px] font-black bg-orange-100 text-orange-700 px-2 py-0.5 rounded uppercase tracking-tighter">
+                  <div className="flex items-center gap-2 mb-2 md:mb-3">
+                    <span className="text-[9px] font-black bg-emerald-100/80 text-emerald-950 border border-emerald-200/60 px-2 py-0.5 rounded uppercase tracking-tighter">
                       Orders within India
                     </span>
                   </div>
                   <a 
                     href={`tel:${rawPhoneNumber}`} 
-                    className="flex items-center gap-4 group transition-all active:scale-95 w-fit"
+                    className="flex items-center gap-3 md:gap-4 group transition-all active:scale-95 w-fit"
                   >
-                    <div className="w-12 h-12 rounded-2xl bg-orange-50 flex items-center justify-center text-orange-600 group-hover:bg-orange-600 group-hover:text-white transition-all shadow-sm">
-                      <Phone size={24} />
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-emerald-50 border border-emerald-200/60 flex items-center justify-center text-emerald-800 group-hover:bg-emerald-800 group-hover:text-amber-300 transition-all shadow-sm">
+                      <Phone size={20} className="md:w-6 md:h-6" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider">Phone Number</p>
-                      <p className="text-lg font-bold text-gray-800 group-hover:text-orange-600 transition-colors">
+                      <p className="text-[9px] md:text-[10px] font-black text-emerald-800/60 uppercase tracking-wider">Phone Number</p>
+                      <p className="text-base md:text-lg font-bold text-emerald-950 group-hover:text-emerald-800 transition-colors">
                         {phoneNumber}
                       </p>
                     </div>
@@ -71,8 +71,8 @@ export default function Contact() {
 
                 {/* International Contact / WhatsApp */}
                 <div className="group">
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className="text-[9px] font-black bg-green-100 text-green-700 px-2 py-0.5 rounded uppercase tracking-tighter">
+                  <div className="flex items-center gap-2 mb-2 md:mb-3">
+                    <span className="text-[9px] font-black bg-emerald-950 text-amber-300 px-2 py-0.5 rounded uppercase tracking-tighter shadow-sm">
                       Ordering from Abroad
                     </span>
                   </div>
@@ -80,14 +80,14 @@ export default function Contact() {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-4 w-fit group transition-all active:scale-95 cursor-pointer"
+                    className="flex items-center gap-3 md:gap-4 w-fit group transition-all active:scale-95 cursor-pointer"
                   >
-                    <div className="w-12 h-12 rounded-2xl bg-green-50 flex items-center justify-center text-green-600 group-hover:bg-green-600 group-hover:text-white transition-all shadow-sm border border-green-100">
-                      <MessageCircle size={24} fill="currentColor" fillOpacity="0.2" />
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-emerald-900 flex items-center justify-center text-amber-300 group-hover:bg-emerald-800 transition-all shadow-sm border border-emerald-700/50">
+                      <MessageCircle size={20} className="md:w-6 md:h-6" fill="currentColor" fillOpacity="0.2" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider">WhatsApp Contact</p>
-                      <p className="text-lg font-bold text-gray-800 group-hover:text-green-600 transition-colors">
+                      <p className="text-[9px] md:text-[10px] font-black text-emerald-800/60 uppercase tracking-wider">WhatsApp Contact</p>
+                      <p className="text-base md:text-lg font-bold text-emerald-950 group-hover:text-emerald-800 transition-colors">
                         {phoneNumber}
                       </p>
                     </div>
@@ -97,30 +97,30 @@ export default function Contact() {
             </div>
 
             {/* Right Column: Location & Hours */}
-            <div className="space-y-8">
-              <div className="bg-gray-50 rounded-[2rem] p-8 space-y-6 border border-gray-100">
-                <div className="flex items-start gap-4">
-                  <MapPin size={24} className="text-orange-600 shrink-0 mt-1" />
+            <div className="space-y-6 md:space-y-8">
+              <div className="bg-emerald-50/40 rounded-xl md:rounded-[2rem] p-4 md:p-8 space-y-4 md:space-y-6 border border-emerald-900/10">
+                <div className="flex items-start gap-3 md:gap-4">
+                  <MapPin size={20} className="text-emerald-800 shrink-0 mt-0.5 md:w-6 md:h-6" />
                   <div>
-                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider mb-1">Business Location</p>
-                    <p className="text-gray-800 font-bold leading-relaxed">
+                    <p className="text-[9px] md:text-[10px] font-black text-emerald-800/60 uppercase tracking-wider mb-0.5 md:mb-1">Business Location</p>
+                    <p className="text-emerald-950 font-bold text-sm md:text-base leading-relaxed">
                       Hanamkonda, Warangal,<br />
                       Telangana, India
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4 pt-4 border-t border-gray-200">
-                  <Clock size={24} className="text-orange-600 shrink-0 mt-1" />
+                <div className="flex items-start gap-3 md:gap-4 pt-3 md:pt-4 border-t border-emerald-200/50">
+                  <Clock size={20} className="text-emerald-800 shrink-0 mt-0.5 md:w-6 md:h-6" />
                   <div>
-                    <p className="text-[10px] font-black text-gray-400 uppercase tracking-wider mb-1">Availability</p>
-                    <p className="text-gray-800 font-bold leading-relaxed">
+                    <p className="text-[9px] md:text-[10px] font-black text-emerald-800/60 uppercase tracking-wider mb-0.5 md:mb-1">Availability</p>
+                    <p className="text-emerald-950 font-bold text-xs md:text-base leading-relaxed">
                       🌍 Serving customers across India & abroad
                     </p>
-                    <p className="text-gray-600 text-sm mt-1 font-medium italic">
+                    <p className="text-emerald-800/80 text-xs md:text-sm mt-1 font-medium italic">
                       Available on call & WhatsApp for all time zones.
                     </p>
-                    <p className="text-orange-600 text-xs mt-2 font-bold">
+                    <p className="text-emerald-800 text-[11px] md:text-xs mt-2 font-bold">
                       Quick responses guaranteed ✨
                     </p>
                   </div>
@@ -131,9 +131,9 @@ export default function Contact() {
           </div>
 
           {/* Bottom Branding */}
-          <div className="mt-16 pt-8 border-t border-gray-100 text-center">
-            <p className="text-gray-400 text-sm font-medium">
-              Thank you for choosing <span className="text-orange-600 font-bold font-telugu">ఇంటి రుచులు</span>. <br /> 
+          <div className="mt-8 md:mt-16 pt-4 md:pt-8 border-t border-emerald-900/10 text-center">
+            <p className="text-emerald-800/70 text-xs md:text-sm font-medium leading-relaxed">
+              Thank you for choosing <span className="text-emerald-950 font-bold font-telugu">ఇంటి రుచులు</span>. <br /> 
               Handcrafted with tradition since 2026.
             </p>
           </div>
