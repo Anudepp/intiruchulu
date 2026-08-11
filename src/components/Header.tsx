@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Home, UtensilsCrossed, Phone } from 'lucide-react';
+import { Home, UtensilsCrossed, Phone, Info } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import CartIcon from "./CartIcon";
 
@@ -39,12 +39,12 @@ export default function Header() {
       <header
         className={`sticky top-0 z-[200] transition-all duration-300 ${
           scrolled
-            ? 'bg-white/80 backdrop-blur-xl shadow-[0_4px_30px_rgba(0,0,0,0.04)] py-2 border-b border-orange-100/40'
-            : 'bg-white py-4'
+            ? 'bg-white/90 backdrop-blur-md shadow-[0_4px_20px_rgba(6,78,59,0.06)] py-2 border-b border-emerald-900/10'
+            : 'bg-white py-3 md:py-4'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-12 md:h-14">
 
             {/* Logo */}
             <Link
@@ -52,14 +52,14 @@ export default function Header() {
               className="flex items-center gap-2 active:scale-95 transition-transform duration-200"
             >
               <div className="relative">
-                <div className="absolute inset-0 bg-orange-500 blur-lg opacity-20 rounded-2xl" />
-                <div className="relative w-10 h-10 rounded-2xl bg-gradient-to-br from-orange-500 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-200">
-                  <span className="text-white font-bold text-base font-telugu">ఇరు</span>
+                <div className="absolute inset-0 bg-emerald-800 blur-md opacity-25 rounded-xl md:rounded-2xl" />
+                <div className="relative w-9 h-9 md:w-10 md:h-10 rounded-xl md:rounded-2xl bg-emerald-950 border border-emerald-800/50 flex items-center justify-center shadow-md shadow-emerald-950/20">
+                  <span className="text-amber-300 font-bold text-sm md:text-base font-telugu">ఇరు</span>
                 </div>
               </div>
               <div className="flex flex-col">
-                <span className="font-telugu font-bold text-lg text-gray-900 leading-none">ఇంటి రుచులు</span>
-                <span className="text-[8px] tracking-[0.25em] uppercase text-orange-600 font-bold">Inti Ruchulu</span>
+                <span className="font-telugu font-black text-base md:text-lg text-emerald-950 leading-none">ఇంటి రుచులు</span>
+                <span className="text-[7.5px] md:text-[8px] tracking-[0.25em] uppercase text-emerald-800 font-black">Inti Ruchulu</span>
               </div>
             </Link>
 
@@ -73,12 +73,12 @@ export default function Header() {
                       key={link.to}
                       to={link.to}
                       className={`relative text-sm font-bold transition-all duration-300 ${
-                        active ? "text-orange-600" : "text-gray-600 hover:text-orange-600"
+                        active ? "text-emerald-950" : "text-emerald-800/70 hover:text-emerald-950"
                       }`}
                     >
                       {link.label}
                       <span
-                        className={`absolute left-0 -bottom-2 h-[2px] rounded-full bg-orange-500 transition-all duration-300 ${
+                        className={`absolute left-0 -bottom-1.5 h-[2.5px] rounded-full bg-emerald-800 transition-all duration-300 ${
                           active ? "w-full" : "w-0"
                         }`}
                       />
@@ -86,64 +86,71 @@ export default function Header() {
                   );
                 })}
               </nav>
-              <CartIcon className="cursor-pointer" iconClassName="text-gray-700 hover:text-orange-600" />
+              <CartIcon className="cursor-pointer" iconClassName="text-emerald-900 hover:text-emerald-800" />
             </div>
 
             {/* Mobile Nav */}
-            <div className="flex items-center gap-4 md:hidden">
+            <div className="flex items-center gap-1.5 sm:gap-3 md:hidden">
               {/* Home */}
               <Link to="/" className="flex flex-col items-center group">
                 <div
-                  className={`p-2.5 rounded-2xl transition-all duration-200 active:scale-90 ${
+                  className={`p-2 rounded-xl transition-all duration-200 active:scale-90 ${
                     location.pathname === '/'
-                      ? 'bg-gradient-to-br from-orange-100 to-orange-50 text-orange-600 scale-105 shadow-md shadow-orange-200/50'
-                      : 'bg-gray-100 text-gray-600'
+                      ? 'bg-emerald-950 text-amber-300 shadow-md shadow-emerald-950/20'
+                      : 'bg-emerald-50/70 text-emerald-900/80 border border-emerald-900/5'
                   }`}
                 >
-                  <Home size={20} className={location.pathname === '/' ? 'animate-soft-float' : ''} />
+                  <Home size={18} className={location.pathname === '/' ? 'animate-soft-float' : ''} />
                 </div>
-                <span className="text-[10px] font-semibold mt-1 text-gray-700">Home</span>
+                <span className={`text-[9px] font-bold mt-1 ${location.pathname === '/' ? 'text-emerald-950' : 'text-emerald-800/70'}`}>
+                  Home
+                </span>
               </Link>
 
               {/* Menu */}
               <Link to="/menu" className="flex flex-col items-center group">
                 <div
-                  className={`p-2.5 rounded-2xl transition-all duration-200 active:scale-90 ${
+                  className={`p-2 rounded-xl transition-all duration-200 active:scale-90 ${
                     location.pathname === '/menu'
-                      ? 'bg-gradient-to-br from-orange-100 to-orange-50 text-orange-600 scale-105 shadow-md shadow-orange-200/50'
-                      : 'bg-gray-100 text-gray-600'
+                      ? 'bg-emerald-950 text-amber-300 shadow-md shadow-emerald-950/20'
+                      : 'bg-emerald-50/70 text-emerald-900/80 border border-emerald-900/5'
                   }`}
                 >
-                  <UtensilsCrossed size={20} className={location.pathname === '/menu' ? 'animate-soft-float' : ''} />
+                  <UtensilsCrossed size={18} className={location.pathname === '/menu' ? 'animate-soft-float' : ''} />
                 </div>
-                <span className="text-[10px] font-semibold mt-1 text-gray-700">Menu</span>
+                <span className={`text-[9px] font-bold mt-1 ${location.pathname === '/menu' ? 'text-emerald-950' : 'text-emerald-800/70'}`}>
+                  Menu
+                </span>
               </Link>
-
               {/* Contact */}
               <Link to="/contact" className="flex flex-col items-center group">
                 <div
-                  className={`p-2.5 rounded-2xl transition-all duration-200 active:scale-90 ${
+                  className={`p-2 rounded-xl transition-all duration-200 active:scale-90 ${
                     location.pathname === '/contact'
-                      ? 'bg-gradient-to-br from-orange-100 to-orange-50 text-orange-600 scale-105 shadow-md shadow-orange-200/50'
-                      : 'bg-gray-100 text-gray-600'
+                      ? 'bg-emerald-950 text-amber-300 shadow-md shadow-emerald-950/20'
+                      : 'bg-emerald-50/70 text-emerald-900/80 border border-emerald-900/5'
                   }`}
                 >
-                  <Phone size={20} className={location.pathname === '/contact' ? 'animate-soft-float' : ''} />
+                  <Phone size={18} className={location.pathname === '/contact' ? 'animate-soft-float' : ''} />
                 </div>
-                <span className="text-[10px] font-semibold mt-1 text-gray-700">Contact</span>
+                <span className={`text-[9px] font-bold mt-1 ${location.pathname === '/contact' ? 'text-emerald-950' : 'text-emerald-800/70'}`}>
+                  Contact
+                </span>
               </Link>
 
               {/* Cart */}
               <div className="flex flex-col items-center group">
                 <CartIcon
-                  className={`p-2.5 rounded-2xl transition-all duration-200 ${
+                  className={`p-2 rounded-xl transition-all duration-200 ${
                     location.pathname === "/cart"
-                      ? "bg-gradient-to-br from-orange-100 to-orange-50 shadow-md shadow-orange-200/50"
-                      : "bg-gray-100"
+                      ? "bg-emerald-950 text-amber-300 shadow-md shadow-emerald-950/20"
+                      : "bg-emerald-50/70 border border-emerald-900/5"
                   }`}
-                  iconClassName={location.pathname === "/cart" ? "text-orange-600" : "text-gray-600"}
+                  iconClassName={location.pathname === "/cart" ? "text-amber-300" : "text-emerald-900/80"}
                 />
-                <span className="text-[10px] font-semibold mt-1 text-gray-700">Cart</span>
+                <span className={`text-[9px] font-bold mt-1 ${location.pathname === '/cart' ? 'text-emerald-950' : 'text-emerald-800/70'}`}>
+                  Cart
+                </span>
               </div>
 
             </div>
