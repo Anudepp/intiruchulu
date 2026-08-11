@@ -324,7 +324,6 @@ export const products: Product[] = [
     ],
 
     quantities: [
-      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -364,7 +363,6 @@ export const products: Product[] = [
     ],
 
     quantities: [
-      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -406,7 +404,6 @@ export const products: Product[] = [
     ],
 
     quantities: [
-      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -447,7 +444,6 @@ export const products: Product[] = [
     ],
 
     quantities: [
-      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -489,7 +485,6 @@ export const products: Product[] = [
     ],
 
     quantities: [
-      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -531,7 +526,6 @@ export const products: Product[] = [
     ],
 
     quantities: [
-      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -573,7 +567,6 @@ export const products: Product[] = [
     ],
 
     quantities: [
-      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -655,7 +648,6 @@ export const products: Product[] = [
     ],
 
     quantities: [
-      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
