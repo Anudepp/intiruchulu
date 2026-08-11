@@ -16,6 +16,7 @@ import Menu from './pages/Menu';
 import Contact from './pages/Contact';
 import IntroLoader from './components/IntroLoader';
 import { Toaster } from "react-hot-toast";
+import ProductDetail from './pages/ProductDetail';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -39,6 +40,7 @@ function Layout() {
           <Route path="/menu" element={<Menu />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/product/:productId" element={<ProductDetail />} />
         </Routes>
 <Toaster
   position="top-center"
