@@ -42,26 +42,35 @@ function Layout() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/product/:productId" element={<ProductDetail />} />
         </Routes>
-<Toaster
-  position="top-center"
-  reverseOrder={false}
-  toastOptions={{
-    duration: 2000,
-    style: {
-      background: "#fff",
-      color: "#1f2937",
-      border: "1px solid #fdba74",
-      borderRadius: "12px",
-      fontWeight: "600",
-    },
-    success: {
-      iconTheme: {
-        primary: "#ea580c",
-        secondary: "#ffffff",
-      },
-    },
-  }}
-/>
+
+        <Toaster
+          position="top-center"
+          reverseOrder={false}
+          toastOptions={{
+            duration: 2000,
+            style: {
+              background: "#064e3b", // emerald-950
+              color: "#fcd34d",      // amber-300
+              border: "1px solid rgba(4, 120, 87, 0.5)", // emerald-700
+              borderRadius: "14px",
+              fontWeight: "700",
+              fontSize: "14px",
+              boxShadow: "0 10px 25px -5px rgba(6, 78, 59, 0.25)",
+            },
+            success: {
+              iconTheme: {
+                primary: "#fcd34d",   // amber-300 checkmark
+                secondary: "#064e3b", // emerald-950 icon background
+              },
+            },
+            error: {
+              iconTheme: {
+                primary: "#f87171",   // soft red
+                secondary: "#064e3b",
+              },
+            },
+          }}
+        />
       </main>
 
       <Footer />
