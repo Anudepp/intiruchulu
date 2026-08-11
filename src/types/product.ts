@@ -10,6 +10,9 @@ export interface Product {
   category: "podis" | "pacchadi" | "staples";
   image: string;
   ingredients: string[];
-  processOfMaking: string[];
+  //processOfMaking: string[];
   quantities: ProductQuantity[];
+  flavorProfile: string;
+  servingSuggestions: string[];
+  storageInstructions: string[];
 }

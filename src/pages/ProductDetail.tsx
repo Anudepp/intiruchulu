@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ArrowLeft, Minus, Plus, ShoppingCart } from "lucide-react";
+import { ArrowLeft, ChevronDown, Minus, Plus, ShoppingCart } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
@@ -8,7 +8,11 @@ import { useAppDispatch } from "../hooks/redux";
 import { addToCart } from "../store/slices/cartSlice";
 import { formatCurrency } from "../utils/currency";
 
-type ProductTab = "ingredients" | "process";
+type ProductTab =
+  | "ingredients"
+  | "flavorProfile"
+  | "servingSuggestions"
+  | "storageInstructions";
 
 export default function ProductDetail() {
   const { productId } = useParams<{ productId: string }>();
@@ -22,10 +26,18 @@ export default function ProductDetail() {
   );
   const [itemQuantity, setItemQuantity] = useState(1);
   const [activeTab, setActiveTab] = useState<ProductTab>("ingredients");
+  
+  // Controls expanded sections for mobile accordion
+  const [openSections, setOpenSections] = useState<Record<ProductTab, boolean>>({
+    ingredients: true,
+    flavorProfile: false,
+    servingSuggestions: false,
+    storageInstructions: false,
+  });
 
   if (!product) {
     return (
-      <section className="min-h-[60vh] flex items-center justify-center px-4">
+      <section className="flex min-h-[60vh] items-center justify-center px-4">
         <div className="text-center">
           <h1 className="text-2xl font-black text-emerald-950">
             Product not found
@@ -48,7 +60,6 @@ export default function ProductDetail() {
   }
 
   const currentQuantity = selectedQuantity ?? product.quantities[0];
-
   const totalPrice = currentQuantity.price * itemQuantity;
 
   const increaseQuantity = () => {
@@ -72,14 +83,78 @@ export default function ProductDetail() {
     );
 
     toast.success(`${product.nameEnglish} added to cart!`);
-
     setItemQuantity(1);
+  };
+
+  const toggleSection = (section: ProductTab) => {
+    setOpenSections((prev) => ({
+      ...prev,
+      [section]: !prev[section],
+    }));
+  };
+
+  const sections: { id: ProductTab; label: string }[] = [
+    { id: "ingredients", label: "Ingredients" },
+    { id: "flavorProfile", label: "Flavor Profile" },
+    { id: "servingSuggestions", label: "Serving Suggestions" },
+    { id: "storageInstructions", label: "Storage Instructions" },
+  ];
+
+  const renderSectionContent = (id: ProductTab) => {
+    switch (id) {
+      case "ingredients":
+        return (
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {product.ingredients.map((ingredient) => (
+              <li
+                key={ingredient}
+                className="rounded-xl bg-emerald-50/70 px-4 py-3 text-sm font-medium text-emerald-950"
+              >
+                {ingredient}
+              </li>
+            ))}
+          </ul>
+        );
+      case "flavorProfile":
+        return (
+          <p className="rounded-xl bg-emerald-50/60 p-4 text-sm leading-6 text-emerald-950/80">
+            {product.flavorProfile}
+          </p>
+        );
+      case "servingSuggestions":
+        return (
+          <ul className="space-y-3">
+            {product.servingSuggestions.map((suggestion) => (
+              <li
+                key={suggestion}
+                className="flex items-center gap-3 rounded-xl bg-emerald-50/60 p-4 text-sm font-medium text-emerald-950/80"
+              >
+                <span className="h-2 w-2 rounded-full bg-emerald-800 shrink-0" />
+                {suggestion}
+              </li>
+            ))}
+          </ul>
+        );
+      case "storageInstructions":
+        return (
+          <ul className="space-y-3">
+            {product.storageInstructions.map((instruction) => (
+              <li
+                key={instruction}
+                className="flex items-center gap-3 rounded-xl bg-emerald-50/60 p-4 text-sm font-medium text-emerald-950/80"
+              >
+                <span className="h-2 w-2 rounded-full bg-emerald-800 shrink-0" />
+                {instruction}
+              </li>
+            ))}
+          </ul>
+        );
+    }
   };
 
   return (
     <section className="bg-[#f8f5ef] py-8 md:py-12">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         {/* Back Button */}
         <button
           onClick={() => navigate("/menu")}
@@ -91,7 +166,6 @@ export default function ProductDetail() {
 
         {/* Product Overview */}
         <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-
           {/* Product Image */}
           <div className="flex items-start justify-center">
             <div className="w-full max-w-lg overflow-hidden rounded-3xl border border-emerald-900/10 bg-white shadow-sm">
@@ -105,7 +179,6 @@ export default function ProductDetail() {
 
           {/* Product Information */}
           <div className="flex flex-col">
-
             {/* Category */}
             <span className="w-fit rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-emerald-800">
               {product.category}
@@ -235,88 +308,76 @@ export default function ProductDetail() {
           </div>
         </div>
 
-        {/* Product Details Tabs */}
+        {/* Product Details - Responsive Container */}
         <div className="mt-12 rounded-3xl border border-emerald-900/10 bg-white p-5 shadow-sm md:p-8">
+          
+          {/* ========================================================= */}
+          {/* MOBILE VIEW: Collapsible Accordion (sm:hidden)            */}
+          {/* ========================================================= */}
+          <div className="divide-y divide-gray-100 sm:hidden">
+            {sections.map((section) => {
+              const isOpen = openSections[section.id];
+              return (
+                <div key={section.id} className="py-3 first:pt-0 last:pb-0">
+                  <button
+                    type="button"
+                    onClick={() => toggleSection(section.id)}
+                    className="flex w-full items-center justify-between py-2 text-left font-black text-emerald-950"
+                  >
+                    <span className="text-base">{section.label}</span>
+                    <ChevronDown
+                      size={18}
+                      className={`text-emerald-800 transition-transform duration-200 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
 
-          {/* Tabs */}
-          <div className="flex border-b border-gray-100">
-            <button
-              type="button"
-              onClick={() => setActiveTab("ingredients")}
-              className={`relative px-4 pb-3 text-sm font-bold transition ${
-                activeTab === "ingredients"
-                  ? "text-emerald-900"
-                  : "text-gray-400 hover:text-gray-700"
-              }`}
-            >
-              Ingredients
-
-              {activeTab === "ingredients" && (
-                <span className="absolute bottom-0 left-0 h-0.5 w-full rounded-full bg-emerald-800" />
-              )}
-            </button>
-
-            <button
-              type="button"
-              onClick={() => setActiveTab("process")}
-              className={`relative px-4 pb-3 text-sm font-bold transition ${
-                activeTab === "process"
-                  ? "text-emerald-900"
-                  : "text-gray-400 hover:text-gray-700"
-              }`}
-            >
-              Process of Making
-
-              {activeTab === "process" && (
-                <span className="absolute bottom-0 left-0 h-0.5 w-full rounded-full bg-emerald-800" />
-              )}
-            </button>
+                  {isOpen && (
+                    <div className="pt-3 pb-1">
+                      {renderSectionContent(section.id)}
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
-          {/* Tab Content */}
-          <div className="pt-6">
-            {activeTab === "ingredients" ? (
-              <div>
-                <h2 className="text-lg font-black text-emerald-950">
-                  Ingredients
-                </h2>
+          {/* ========================================================= */}
+          {/* DESKTOP VIEW: Horizontal Tabs (hidden sm:block)           */}
+          {/* ========================================================= */}
+          <div className="hidden sm:block">
+            {/* Tabs Header */}
+            <div className="flex border-b border-gray-100">
+              {sections.map((tab) => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  onClick={() => setActiveTab(tab.id)}
+                  className={`relative px-5 pb-3 text-sm font-bold transition ${
+                    activeTab === tab.id
+                      ? "text-emerald-900"
+                      : "text-gray-400 hover:text-gray-700"
+                  }`}
+                >
+                  {tab.label}
 
-                <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                  {product.ingredients.map((ingredient) => (
-                    <li
-                      key={ingredient}
-                      className="rounded-xl bg-emerald-50/70 px-4 py-3 text-sm font-medium text-emerald-950"
-                    >
-                      {ingredient}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : (
-              <div>
-                <h2 className="text-lg font-black text-emerald-950">
-                  Process of Making
-                </h2>
+                  {activeTab === tab.id && (
+                    <span className="absolute bottom-0 left-0 h-0.5 w-full rounded-full bg-emerald-800" />
+                  )}
+                </button>
+              ))}
+            </div>
 
-                <ol className="mt-4 space-y-3">
-                  {product.processOfMaking.map((step, index) => (
-                    <li
-                      key={step}
-                      className="flex gap-3 rounded-xl bg-emerald-50/60 p-4"
-                    >
-                      <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-emerald-800 text-xs font-bold text-amber-300">
-                        {index + 1}
-                      </span>
-
-                      <p className="pt-1 text-sm leading-6 text-emerald-950/80">
-                        {step}
-                      </p>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            )}
+            {/* Tab Content */}
+            <div className="pt-6">
+              <h2 className="text-lg font-black text-emerald-950 mb-4">
+                {sections.find((s) => s.id === activeTab)?.label}
+              </h2>
+              {renderSectionContent(activeTab)}
+            </div>
           </div>
+
         </div>
       </div>
     </section>
