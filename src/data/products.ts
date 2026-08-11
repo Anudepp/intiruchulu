@@ -23,17 +23,23 @@ export const products: Product[] = [
       "Salt",
     ],
 
-    processOfMaking: [
-      "Fresh curry leaves are cleaned thoroughly and dried.",
-      "Curry leaves and lentils are roasted separately on low heat.",
-      "Dry red chillies and spices are roasted until aromatic.",
-      "All roasted ingredients are allowed to cool completely.",
-      "The ingredients are ground together into a flavorful coarse powder.",
-      "The finished curry leaves powder is packed in an airtight container.",
+    flavorProfile:
+      "Aromatic, herbal, and mild-spicy with rich nutty notes from roasted lentils.",
+
+    servingSuggestions: [
+      "Mix with steamed rice and a spoonful of hot ghee.",
+      "Sprinkle over warm idlis or dosa with sesame oil.",
+      "Pair with upma or pongal for an added herbal kick.",
+    ],
+
+    storageInstructions: [
+      "Store in an airtight glass or plastic container in a cool, dry place.",
+      "Keep away from direct sunlight and heat.",
+      "Use a dry spoon to preserve freshness up to 6 months.",
     ],
 
     quantities: [
-     { weight: "100g", price: 70 },
+      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -57,17 +63,23 @@ export const products: Product[] = [
       "Salt",
     ],
 
-    processOfMaking: [
-      "Fresh garlic is cleaned and prepared.",
-      "Garlic and lentils are roasted separately until fragrant.",
-      "Dry red chillies and spices are roasted on low heat.",
-      "All ingredients are cooled before grinding.",
-      "The roasted ingredients are ground together to create a balanced spicy powder.",
-      "The finished garlic chili powder is packed airtight to preserve freshness.",
+    flavorProfile:
+      "Pungent, bold, fiery red chili warmth balanced by savory garlic aroma.",
+
+    servingSuggestions: [
+      "Serve with hot rice and ghee or oil.",
+      "Dust generously on ghee dosa, uttapam, or vada.",
+      "Use as a dry spice rub for fried potatoes or roasted arbi.",
+    ],
+
+    storageInstructions: [
+      "Store in an airtight container in a dry pantry.",
+      "Ensure garlic oil moisture doesn't collect; avoid damp spoons.",
+      "Refrigeration extends flavor punch up to 6 months.",
     ],
 
     quantities: [
-       { weight: "100g", price: 70 },
+      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -91,17 +103,23 @@ export const products: Product[] = [
       "Salt",
     ],
 
-    processOfMaking: [
-      "Fresh moringa leaves are cleaned and dried.",
-      "The leaves are gently roasted to remove excess moisture.",
-      "Lentils, chillies, and spices are roasted separately.",
-      "All ingredients are cooled to room temperature.",
-      "The ingredients are ground into a fine and aromatic powder.",
-      "The moringa leaves powder is packed in an airtight container.",
+    flavorProfile:
+      "Earthy, slightly peppery, nutrient-dense herbal flavor with warm garlic undertones.",
+
+    servingSuggestions: [
+      "Mix into hot rice with ghee for a healthy meal starter.",
+      "Sprinkle over parathas, dosas, or multigrain rotis.",
+      "Stir a spoonful into curd rice for enhanced flavor and nutrition.",
+    ],
+
+    storageInstructions: [
+      "Store in a cool, dark, airtight container to maintain leaf color and nutrition.",
+      "Keep strictly dry; use only dry utensils.",
+      "Best consumed within 6 months for optimal flavor and potency.",
     ],
 
     quantities: [
-     { weight: "100g", price: 70 },
+      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -125,17 +143,23 @@ export const products: Product[] = [
       "Salt",
     ],
 
-    processOfMaking: [
-      "The lentils are cleaned and roasted separately.",
-      "Dry red chillies and cumin are roasted until aromatic.",
-      "Garlic is lightly roasted to enhance its flavor.",
-      "All ingredients are cooled completely.",
-      "The roasted ingredients are ground into a coarse powder.",
-      "The finished podi is packed airtight for freshness.",
+    flavorProfile:
+      "Nutty, mild, comforting lentil flavor with gentle spice and aromatic cumin.",
+
+    servingSuggestions: [
+      "Classic comfort food mixed into hot rice with generous ghee.",
+      "Ideal companion for idli, vada, and crispy dosa.",
+      "Great topping for stuffed brinjal or okra stir-fries.",
+    ],
+
+    storageInstructions: [
+      "Store in an airtight jar in a cool, moisture-free space.",
+      "Keep tightly sealed to prevent humidity softening the coarse texture.",
+      "Stays fresh for up to 6 months.",
     ],
 
     quantities: [
-     { weight: "100g", price: 70 },
+      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -159,17 +183,23 @@ export const products: Product[] = [
       "Salt",
     ],
 
-    processOfMaking: [
-      "Sesame seeds are cleaned and roasted carefully on low heat.",
-      "Lentils, chillies, and spices are roasted separately.",
-      "All ingredients are cooled before grinding.",
-      "The roasted ingredients are ground together with sesame seeds.",
-      "The mixture is ground to a slightly coarse texture.",
-      "The finished sesame powder is packed airtight.",
+    flavorProfile:
+      "Deeply nutty, rich, toasted sesame aroma with medium red chili warmth.",
+
+    servingSuggestions: [
+      "Serve with piping hot rice and ghee or sesame oil.",
+      "Toss with boiled potatoes or ivy gourd (dondakaya) fry.",
+      "Pair with steamed rice and raw onion slices on the side.",
+    ],
+
+    storageInstructions: [
+      "Store in a clean, airtight glass container away from direct sunlight.",
+      "Keep cool to protect natural sesame oils from going rancid.",
+      "Shelf life is up to 5-6 months at room temperature.",
     ],
 
     quantities: [
-     { weight: "100g", price: 70 },
+      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -193,17 +223,23 @@ export const products: Product[] = [
       "Salt",
     ],
 
-    processOfMaking: [
-      "Flax seeds are cleaned and lightly roasted.",
-      "Lentils, chillies, and spices are roasted separately.",
-      "All ingredients are cooled completely.",
-      "The roasted ingredients are ground together.",
-      "The mixture is ground into a flavorful powder while retaining the natural aroma of flax seeds.",
-      "The finished powder is packed in an airtight container.",
+    flavorProfile:
+      "Nutty, earthy, robust spice blend with health-boosting flax seeds and garlic.",
+
+    servingSuggestions: [
+      "Mix with hot rice and ghee as an omega-3 rich food starter.",
+      "Sprinkle over dosas, uttapam, or chapathi rolls.",
+      "Add to warm porridge or curd rice for a healthy crunch.",
+    ],
+
+    storageInstructions: [
+      "Store in an airtight container, preferably in the refrigerator.",
+      "Protect from heat and air exposure to preserve natural oils.",
+      "Best consumed within 6 months for optimal flavor and potency.",
     ],
 
     quantities: [
-     { weight: "100g", price: 70 },
+      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -228,17 +264,23 @@ export const products: Product[] = [
       "Salt",
     ],
 
-    processOfMaking: [
-      "Whole spices and lentils are cleaned carefully.",
-      "Each ingredient is roasted separately to preserve its individual aroma.",
-      "The roasted ingredients are cooled completely.",
-      "All ingredients are blended and ground into a fine aromatic powder.",
-      "The powder is mixed thoroughly for an even flavor.",
-      "The rasam powder is packed airtight for freshness.",
+    flavorProfile:
+      "Fragrant, citrusy coriander, spicy black pepper, and digestive aromatic spices.",
+
+    servingSuggestions: [
+      "Add while preparing traditional South Indian Rasam / Charu.",
+      "Use as a seasoning accent for lentil soups and tomato broth.",
+      "Sprinkle over roasted vegetables for aromatic warmth.",
+    ],
+
+    storageInstructions: [
+      "Store in a cool, dry place in an airtight jar.",
+      "Keep away from steam and moisture when cooking.",
+      "Retains essential aroma for up to 6 months.",
     ],
 
     quantities: [
-     { weight: "100g", price: 70 },
+      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -267,17 +309,23 @@ export const products: Product[] = [
       "Oil",
     ],
 
-    processOfMaking: [
-      "Fresh gongura leaves are cleaned thoroughly and dried.",
-      "The leaves are cooked until tender and the excess moisture is removed.",
-      "Dry red chillies and spices are prepared separately.",
-      "The gongura leaves are blended with the roasted spices.",
-      "Garlic and seasoning are added along with the required oil and salt.",
-      "The pickle is mixed thoroughly and stored in a clean airtight container.",
+    flavorProfile:
+      "Tangy, sour, bold, and fiery authentic Andhra signature taste.",
+
+    servingSuggestions: [
+      "Ultimate combination with hot steamed rice, melted ghee, and raw onions.",
+      "Pairs exceptionally well with curd rice and hot biryani.",
+      "Spread on chapathis or parathas for a tangy spicy roll.",
+    ],
+
+    storageInstructions: [
+      "Store in a cool, dry place in a clean glass or ceramic jar.",
+      "Always use a dry spoon; never allow water or moisture inside.",
+      "Refrigerate after opening to retain freshness for up to 6 months.",
     ],
 
     quantities: [
-     { weight: "100g", price: 70 },
+      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -302,17 +350,23 @@ export const products: Product[] = [
       "Oil",
     ],
 
-    processOfMaking: [
-      "Fresh coriander leaves are cleaned and excess moisture is removed.",
-      "Coriander leaves and chillies are prepared and cooked lightly.",
-      "Tamarind and spices are prepared separately.",
-      "The ingredients are blended into a thick pickle mixture.",
-      "Tempering is prepared with oil and mustard seeds.",
-      "The tempering is mixed into the pickle and the finished product is packed.",
+    flavorProfile:
+      "Herbaceous, fresh citrus green note with balanced tamarind tang and garlic spice.",
+
+    servingSuggestions: [
+      "Great condiment for breakfast items like idli, dosa, and vada.",
+      "Mix with hot rice and ghee for a refreshing herbal meal.",
+      "Serve alongside rotis, curd rice, or upma.",
+    ],
+
+    storageInstructions: [
+      "Keep refrigerated immediately for long-lasting vibrant flavor.",
+      "Use only dry stainless steel or glass spoons.",
+      "Best consumed within 6 months of opening.",
     ],
 
     quantities: [
-     { weight: "100g", price: 70 },
+      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -338,17 +392,23 @@ export const products: Product[] = [
       "Oil",
     ],
 
-    processOfMaking: [
-      "Meal maker pieces are prepared and excess moisture is removed.",
-      "The pieces are seasoned and cooked until they develop a firm texture.",
-      "Spices and chillies are prepared separately.",
-      "The prepared ingredients are combined with tamarind and seasoning.",
-      "Oil tempering is added to enhance the flavor.",
-      "The pickle is mixed thoroughly and packed after cooling.",
+    flavorProfile:
+      "Chewy, savory protein-packed chunks infused with spicy, mustardy, tamarind masala.",
+
+    servingSuggestions: [
+      "Pairs brilliantly with plain steamed rice and dal.",
+      "Serve as a flavorful side for curd rice or chapathi.",
+      "Great companion for fried rice or pulao.",
+    ],
+
+    storageInstructions: [
+      "Keep stored in an airtight glass jar away from direct heat.",
+      "Refrigeration recommended to keep soy chunks fresh and firm.",
+      "Consumable up to 6 months when stored properly.",
     ],
 
     quantities: [
-     { weight: "100g", price: 70 },
+      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -374,17 +434,23 @@ export const products: Product[] = [
       "Oil",
     ],
 
-    processOfMaking: [
-      "Fresh tomatoes are cleaned and chopped.",
-      "Tomatoes are cooked until their excess moisture reduces.",
-      "Red chillies, garlic, and spices are prepared separately.",
-      "The cooked tomatoes are combined with the spice mixture.",
-      "Oil tempering with mustard and other spices is added.",
-      "The pickle is cooled and packed in a clean airtight container.",
+    flavorProfile:
+      "Rich tomato umami, zesty tamarind sourness, and deep garlic-tempered spice.",
+
+    servingSuggestions: [
+      "Serve with piping hot rice and a spoonful of ghee.",
+      "Excellent side for idli, dosa, uttapam, and vada.",
+      "Pairs perfectly with parathas and curd rice.",
+    ],
+
+    storageInstructions: [
+      "Store in a cool, dry place in an airtight jar.",
+      "Refrigerate after opening to prolong freshness up to 6 months.",
+      "Use strict dry spoon hygiene.",
     ],
 
     quantities: [
-     { weight: "100g", price: 70 },
+      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -409,17 +475,23 @@ export const products: Product[] = [
       "Oil",
     ],
 
-    processOfMaking: [
-      "Raw mangoes are washed, dried, and cut into pieces.",
-      "Mango pieces are mixed with salt and turmeric.",
-      "Spices are prepared and roasted carefully.",
-      "Jaggery is added to create the characteristic sweet and spicy flavor.",
-      "The ingredients are mixed thoroughly with oil and seasoning.",
-      "The pickle is allowed to develop its flavor before being packed.",
+    flavorProfile:
+      "Sweet, tangy, and mildly spicy sweet-and-sour raw mango delight (Teepi Avakaya).",
+
+    servingSuggestions: [
+      "Serve with hot rice, ghee, or curd rice.",
+      "Spreads nicely over hot chapathis or parathas as a sweet-savory relish.",
+      "Great accompaniment with mathri, poori, or khichdi.",
+    ],
+
+    storageInstructions: [
+      "Store in an airtight ceramic or glass jar in a dry cabinet.",
+      "Protect from moisture; use clean dry utensils.",
+      "Stays good for up to 6 months.",
     ],
 
     quantities: [
-     { weight: "100g", price: 70 },
+      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -444,17 +516,23 @@ export const products: Product[] = [
       "Oil",
     ],
 
-    processOfMaking: [
-      "Fresh raw mangoes are washed, dried, and cut into pieces.",
-      "Mango pieces are mixed with salt and turmeric.",
-      "Red chilli powder and roasted spices are prepared.",
-      "The mango pieces are combined with the spice mixture.",
-      "Garlic and seasoned oil are added and mixed thoroughly.",
-      "The pickle is packed in a clean airtight container for storage.",
+    flavorProfile:
+      "Fiery, pungent mustard kick with sharp sourness from raw cut mangoes (Avakaya).",
+
+    servingSuggestions: [
+      "Classic accompaniment to mudda pappu, hot rice, and ghee.",
+      "Irresistible combination with cold curd rice on warm days.",
+      "Complements parathas and South Indian meals.",
+    ],
+
+    storageInstructions: [
+      "Store in a traditional ceramic (jhad) or glass jar in a cool place.",
+      "Keep oil level floating slightly above pickle surface for preservation.",
+      "Use only clean, completely dry spoons; lasts up to 12 months.",
     ],
 
     quantities: [
-     { weight: "100g", price: 70 },
+      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
@@ -479,13 +557,19 @@ export const products: Product[] = [
       "Oil",
     ],
 
-    processOfMaking: [
-      "Whole wheat flour is mixed with water and a small amount of salt.",
-      "The dough is kneaded until soft and smooth.",
-      "The dough is rested before preparation.",
-      "Individual portions are rolled into thin circular shapes.",
-      "Each chapathi is cooked on a hot tawa until lightly browned and cooked through.",
-      "Fresh chapathis are packed for delivery.",
+    flavorProfile:
+      "Soft, whole-wheat wholesome flavor with light toasted aromas.",
+
+    servingSuggestions: [
+      "Serve warm with veg or non-veg curries, dal, or korma.",
+      "Roll up with Gongura pickle, Tomato pickle, or Podi for quick meals.",
+      "Pair with paneer butter masala or mixed vegetable fry.",
+    ],
+
+    storageInstructions: [
+      "Keep wrapped in foil or an insulated casserole box for immediate meal soft texture.",
+      "Refrigerate in an airtight container for up to 2 days.",
+      "Reheat on a warm hot tava / pan before serving.",
     ],
 
     quantities: [
@@ -514,17 +598,23 @@ export const products: Product[] = [
       "Sesame oil",
     ],
 
-    processOfMaking: [
-      "Tamarind is cleaned and prepared into a concentrated extract.",
-      "Spices and chillies are prepared for the seasoning.",
-      "The tamarind extract is cooked with the spices and seasoning.",
-      "Peanuts and curry leaves are added for texture and flavor.",
-      "The mixture is cooked until it reaches the desired consistency.",
-      "The finished pulihora paste is cooled and packed hygienically.",
+    flavorProfile:
+      "Tangy, spicy, nutty, and savory concentrated traditional tamarind blend.",
+
+    servingSuggestions: [
+      "Mix thoroughly into cooked, cooled steamed rice for instant festival-style Pulihora.",
+      "Garnish with additional fried peanuts and curry leaves.",
+      "Pair prepared Pulihora with curd rice or potato chips.",
+    ],
+
+    storageInstructions: [
+      "Store in a clean, dry airtight glass jar.",
+      "Refrigeration extends freshness and retains rich flavor up to 6 months.",
+      "Use a dry spoon every time.",
     ],
 
     quantities: [
-     { weight: "100g", price: 70 },
+      { weight: "100g", price: 70 },
       { weight: "250g", price: 175 },
       { weight: "500g", price: 350 },
       { weight: "1kg", price: 700 },
