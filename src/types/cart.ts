@@ -1,3 +1,5 @@
+
+export type CartItemType = "product" | "combo";
 export interface CartItem {
   id: string;
   name: string;
@@ -5,6 +7,7 @@ export interface CartItem {
   image: string;
   quantity: number;
   weight: string;
+  type?: CartItemType;
 }
 
 export interface CartItemIdentifier {
@@ -15,3 +18,4 @@ export interface CartItemIdentifier {
 export interface CartState {
   items: CartItem[];
 }
+
