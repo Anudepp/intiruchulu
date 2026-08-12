@@ -26,6 +26,35 @@ const existingItem = state.items.find(
         state.items.push(action.payload);
       }
     },
+    addComboToCart: (
+  state,
+  action: PayloadAction<{
+    id: string;
+    name: string;
+    image: string;
+    price: number;
+    quantity?: number;
+  }>
+) => {
+  const existingItem = state.items.find(
+    (item) => item.id === action.payload.id && item.type === "combo"
+  );
+
+  if (existingItem) {
+    existingItem.quantity += action.payload.quantity ?? 1;
+    return;
+  }
+
+  state.items.push({
+    id: action.payload.id,
+    name: action.payload.name,
+    image: action.payload.image,
+    price: action.payload.price,
+    quantity: action.payload.quantity ?? 1,
+    weight: "Combo",
+    type: "combo",
+  });
+},
 
  removeFromCart(
   state,
@@ -91,6 +120,7 @@ increaseQuantity(
 
 export const {
   addToCart,
+  addComboToCart,
   removeFromCart,
   increaseQuantity,
   decreaseQuantity,

@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Leaf, Flame, Heart, Sparkles } from 'lucide-react';
+import { ArrowRight, Leaf, Flame, Heart, Sparkles, Gift } from 'lucide-react';
 import ShippingBadge from '../components/ShippingBadge';
 import ProductCarousel from "../components/ProductCarousel";
+import ComboCard from "../components/ComboCard"; // Import ComboCard
+import { combos } from "../data/combos"; // Adjust path to where your combos data/type resides
 
 const features = [
   {
@@ -161,6 +163,49 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* SPECIAL COMBO PACKS SECTION */}
+      {combos && combos.length > 0 && (
+        <section className="py-8 md:py-16 bg-gradient-to-b from-emerald-50/40 via-white to-emerald-50/20">
+          <div className="max-w-7xl mx-auto px-3.5 md:px-4">
+            <div className="flex flex-col md:flex-row md:items-end justify-between mb-6 md:mb-10">
+              <div>
+                <div className="inline-flex items-center gap-1.5 text-amber-600 font-bold text-xs uppercase tracking-wider mb-1">
+                  <Gift size={16} /> Save Big with Bundles
+                </div>
+                <h2 className="text-2xl md:text-4xl font-black text-emerald-950">
+                  Special Combo Packs
+                </h2>
+                <p className="text-xs md:text-base text-emerald-800/70 font-medium mt-1">
+                  Curated combinations of your favorite Telugu delicacies at discounted prices
+                </p>
+              </div>
+              <Link
+                to="/menu#combos"
+                className="hidden md:inline-flex items-center gap-2 text-emerald-800 hover:text-emerald-950 font-bold text-sm transition"
+              >
+                View All Products <ArrowRight size={16} />
+              </Link>
+            </div>
+
+            {/* Responsive Grid for Combos */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              {combos.slice(0, 3).map((combo) => (
+                <ComboCard key={combo.id} combo={combo} />
+              ))}
+            </div>
+
+            <div className="mt-6 text-center md:hidden">
+              <Link
+                to="/menu#combos"
+                className="inline-flex items-center gap-2 text-emerald-800 font-bold text-sm"
+              >
+                View All Products <ArrowRight size={16} />
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Features */}
       <section className="py-6 md:py-14 bg-emerald-50/40">
