@@ -42,6 +42,7 @@ const categories = [
     image: '/menu/Chapathi.png',
     link: '/menu#staples',
   },
+
 ];
 
 const productCarousel = [
@@ -97,7 +98,7 @@ export default function Home() {
 
           <div className="mt-4 md:mt-8 flex flex-col sm:flex-row gap-3 md:gap-4">
             <Link
-              to="/menu#powders"
+              to="/menu#combos"
               className="group relative overflow-hidden w-full sm:w-auto flex items-center justify-center gap-2 md:gap-3 px-6 py-3.5 md:px-10 md:py-5 bg-emerald-800 hover:bg-emerald-900 text-amber-300 font-bold rounded-xl md:rounded-2xl shadow-md border border-emerald-700/50 active:scale-95 transition-all duration-300"
             >
               {/* The Auto-Shining Layer */}

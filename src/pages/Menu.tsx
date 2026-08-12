@@ -1,10 +1,12 @@
-import { ShoppingBag, ArrowLeft, Phone } from 'lucide-react';
+import { ShoppingBag, ArrowLeft, Phone, Gift } from 'lucide-react';
 import ShippingBadge from '../components/ShippingBadge'; 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import type { Product } from "../types/product";
 import { products } from "../data/products";
+import { combos } from "../data/combos";
 import ProductCard from "../components/ProductCard";
+import ComboCard from "../components/ComboCard";
 import SearchBar from "../components/SearchBar";
 import { useDebounce } from "../hooks/useDebounce";
 import { useFilteredProducts } from "../hooks/useFilteredProducts";
@@ -15,12 +17,28 @@ export default function Menu() {
 
   const [searchQuery, setSearchQuery] = useState("");
   const debouncedSearchQuery = useDebounce(searchQuery, 300);
+  
   const filteredProducts = useFilteredProducts(
     products,
     debouncedSearchQuery
   );
 
-  const hasSearchResults = filteredProducts.length > 0;
+  // Filter combos based on search query
+  const filteredCombos = useMemo(() => {
+    if (!debouncedSearchQuery.trim()) return combos;
+    const query = debouncedSearchQuery.toLowerCase();
+    
+    return combos.filter((combo) => {
+      const matchName = combo.name.toLowerCase().includes(query);
+      const matchDesc = combo.description.toLowerCase().includes(query);
+      const matchItems = combo.items.some((item) =>
+        item.productId.toLowerCase().includes(query)
+      );
+      return matchName || matchDesc || matchItems;
+    });
+  }, [debouncedSearchQuery]);
+
+  const hasSearchResults = filteredProducts.length > 0 || filteredCombos.length > 0;
 
   useEffect(() => {
     if (location.hash) {
@@ -115,9 +133,40 @@ export default function Menu() {
           <SearchBar value={searchQuery} onChange={setSearchQuery} />
         </div>
 
-        {/* PRODUCTS */}
+        {/* PRODUCTS & COMBOS */}
         {hasSearchResults ? (
           <>
+            {/* SPECIAL COMBO PACKS SECTION */}
+            {filteredCombos.length > 0 && (
+              <div id="combos" className="mb-14 md:mb-24 scroll-mt-24">
+                <div className="mb-8 flex items-baseline justify-between border-b border-emerald-900/10 pb-4">
+                  <div className="flex items-center gap-3">
+                    <span className="w-1.5 h-8 bg-amber-500 rounded-full" />
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <h2 className="text-2xl md:text-3xl font-serif font-bold text-emerald-950 tracking-tight">
+                          Special Combo Packs
+                        </h2>
+                        <Gift size={20} className="text-amber-600" />
+                      </div>
+                      <span className="font-telugu text-emerald-800 text-sm md:text-base font-semibold block mt-0.5">
+                        కాంబో ప్యాక్‌లు
+                      </span>
+                    </div>
+                  </div>
+                  <span className="text-xs text-emerald-800/60 font-medium tracking-wider uppercase hidden sm:block">
+                    {filteredCombos.length} {filteredCombos.length === 1 ? 'combo' : 'combos'}
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+                  {filteredCombos.map((combo) => (
+                    <ComboCard key={combo.id} combo={combo} />
+                  ))}
+                </div>
+              </div>
+            )}
+
             <SectionLayout
               id="powders"
               title="Traditional Powders"
@@ -148,7 +197,7 @@ export default function Menu() {
             </h2>
 
             <p className="mt-3 text-emerald-800/70">
-              We couldn't find any products matching
+              We couldn't find any products or combos matching
             </p>
 
             <p className="mt-2 font-semibold text-emerald-800 text-lg">
