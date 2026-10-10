@@ -594,40 +594,38 @@ availabilityMessage: "Available during mango season.",
   // ============================================================
 
   {
-    id: "chapathi",
-    nameTelugu: "చపాతీలు",
-    nameEnglish: "Chapathis",
-    category: "staples",
-    image: "/menu/Chapathi.png",
+  "id": "pure-ghee",
+  "nameTelugu": "నెయ్యి",
+  "nameEnglish": "Pure Homemade Ghee",
+  "category": "staples",
+  "image": "/menu/PureGhee.png",
 
-    ingredients: [
-      "Whole wheat flour",
-      "Water",
-      "Oil",
-    ],
+  "ingredients": [
+    "Pure Milk Fat (Cream)",
+    "Curd Culture"
+  ],
 
-    flavorProfile:
-      "Soft, whole-wheat wholesome flavor with light toasted aromas.",
+  "flavorProfile": "Rich, nutty, aromatic, and traditionally simmered with a classic granular texture.",
 
-    servingSuggestions: [
-      "Serve warm with veg or non-veg curries, dal, or korma.",
-      "Roll up with Gongura pickle, Tomato pickle, or Podi for quick meals.",
-      "Pair with paneer butter masala or mixed vegetable fry.",
-    ],
+  "servingSuggestions": [
+    "Drizzle over piping hot rice, dal, and pacchadis.",
+    "Essential topping for Idli, Dosa, Pesarattu, and Upma.",
+    "Ideal for making authentic traditional sweets and savories."
+  ],
 
-    storageInstructions: [
-      "Keep wrapped in foil or an insulated casserole box for immediate meal soft texture.",
-      "Refrigerate in an airtight container for up to 2 days.",
-      "Reheat on a warm hot tava / pan before serving.",
-    ],
+  "storageInstructions": [
+    "Store in a cool, dark, and dry place in an airtight container.",
+    "Does not require refrigeration; keep away from direct sunlight.",
+    "Use a clean, dry spoon to preserve fresh aroma and quality."
+  ],
 
-    quantities: [
-      { weight: "10 pieces", price: 120 },
-      { weight: "20 pieces", price: 240 },
-      { weight: "30 pieces", price: 360 },
-    ],
-    availability: "available",
-  },
+  "quantities": [
+    { "weight": "250g", "price": 250 },
+    { "weight": "500g", "price": 500 },
+    { "weight": "1kg", "price": 1000 }
+  ],
+  "availability": "available"
+},
 
   {
     id: "pulihora-pulusu",
