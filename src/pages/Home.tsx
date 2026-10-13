@@ -37,9 +37,9 @@ const categories = [
     link: '/menu#powders',
   },
   {
-    title: 'Soft Chapathis',
-    teluguTitle: 'చపాతీలు',
-    image: '/menu/Chapathi.png',
+    title: 'Home Made Pure Ghee',
+    teluguTitle: 'ఇంట్లో తయారుచేసిన నెయ్యి',
+    image: '/menu/PureGhee.png',
     link: '/menu#staples',
   },
 
